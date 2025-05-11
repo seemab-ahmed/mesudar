@@ -1,4 +1,4 @@
-export const CategorySelection = ({ categories, onSelect, onBack }) => {
+export const CategorySelection = ({ categories, categoryObjects, onSelect, onBack }) => {
   return (
     <div className="space-y-8 max-w-2xl mx-auto">
       <div className="text-center">
@@ -12,13 +12,13 @@ export const CategorySelection = ({ categories, onSelect, onBack }) => {
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {categories.map((category, index) => (
+          {categoryObjects.map((category, index) => (
             <button
-              key={index}
+              key={category._id}
               onClick={() => onSelect(category)}
               className="border-2 border-teal-500 rounded-full py-3 px-4 text-center hover:bg-teal-50 transition-colors"
             >
-              {category}
+              {category.categoryTitle}
             </button>
           ))}
         </div>

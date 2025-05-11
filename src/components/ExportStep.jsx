@@ -5,8 +5,8 @@ import { useRef } from 'react';
 import { saveAs } from 'file-saver';
 import { utils, writeFile } from 'xlsx';
 import { Document, Paragraph, Packer, TextRun } from 'docx';
-import { jsPDF } from 'jspdf';
-import 'jspdf-autotable';
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
 
 export const ExportStep = ({ 
   selectedCategory, 
@@ -30,135 +30,236 @@ export const ExportStep = ({
   };
 
   // Generate PDF
-  const generatePDF = () => {
-    const doc = new jsPDF();
-    const checkedTasks = getCheckedTasks();
-    
-    // Add title
-    doc.setFontSize(20);
-    doc.text(`${selectedCategory} Checklist`, 105, 20, { align: 'center' });
-    
-    let yPosition = 40;
-    
-    // Add each subcategory and tasks
-    Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
-      if (tasks.length > 0) {
-        // Add subcategory heading
-        doc.setFontSize(14);
-        doc.text(subcategory, 14, yPosition);
-        yPosition += 10;
-        
-        // Add tasks as a table
-        const taskData = tasks.map(task => [String.fromCharCode(9744), task]);
-        
-        doc.autoTable({
-          startY: yPosition,
-          head: [['', 'Task']],
-          body: taskData,
-          margin: { left: 10 },
-          styles: { cellPadding: 5, fontSize: 12 },
-          columnStyles: { 0: { cellWidth: 10 } },
-          didDrawCell: (data) => {
-            if (data.section === 'body' && data.column.index === 0) {
-              doc.setFontSize(16);
-            }
-          }
-        });
-        
-        yPosition = doc.lastAutoTable.finalY + 10;
-      }
-    });
-    
-    // Add footer
-    doc.setFontSize(10);
-    doc.setTextColor(150);
-    doc.text('mesudar.com - making gabboim\'s lives easier', 105, doc.internal.pageSize.height - 10, { align: 'center' });
-    
-    doc.save(`${selectedCategory}_Checklist.pdf`);
-  };
 
+const generatePDF = () => {
+  const doc = new jsPDF();
+  const checkedTasks = getCheckedTasks();
+  
+  // Set initial position
+  let yPos = 30;
+  
+  // Add title in rounded rectangle (simulating your rounded-full div)
+  doc.setFillColor(22, 160, 133); // Teal color
+  doc.setDrawColor(22, 160, 133);
+  doc.roundedRect(
+    105 - 75, // x (centered)
+    yPos - 10, // y
+    150, // width
+    15, // height
+    7.5, // corner radius
+    7.5,
+    'FD' // Fill and stroke
+  );
+  
+  // Add title text
+  doc.setFontSize(14);
+  doc.setTextColor(255, 255, 255); // White text
+  doc.text(`${selectedCategory} Checklist`, 105, yPos, { align: 'center' });
+  
+  yPos += 25;
+  
+  // Add each subcategory and tasks
+  Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
+    if (tasks.length > 0) {
+      // Add subcategory heading
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(0, 0, 0); // Black text
+      doc.text(subcategory, 20, yPos);
+      yPos += 10;
+      
+      // Add tasks with checkboxes
+      tasks.forEach(task => {
+        // Draw checkbox (empty square)
+        doc.setDrawColor(0, 0, 0);
+        doc.rect(20, yPos - 4, 5, 5);
+        
+        // Add task text
+        doc.setFont('helvetica', 'normal');
+        doc.text(task, 30, yPos);
+        yPos += 8;
+      });
+      
+      yPos += 8; // Extra space between sections
+    }
+  });
+  
+  // Add footer
+  yPos += 15;
+  doc.setFontSize(10);
+  doc.setTextColor(22, 160, 133); // Teal color
+  doc.text('mesudar.com', 105, yPos, { align: 'center' });
+  yPos += 5;
+  doc.setFontSize(8);
+  doc.text('making gabboim\'s lives easier', 105, yPos, { align: 'center' });
+  
+  // Add border around entire content
+  doc.setDrawColor(22, 160, 133); // Teal color
+  doc.rect(15, 15, 180, yPos + 5);
+  
+  doc.save(`${selectedCategory}_Checklist.pdf`);
+};
   // Generate Excel
-  const generateExcel = () => {
+    const generateExcel = () => {
     const checkedTasks = getCheckedTasks();
     const wb = utils.book_new();
     
-    // Create a worksheet for each subcategory
+    // Create a single worksheet for all tasks
+    const wsData = [];
+    
+    // Add title row
+    wsData.push([`${selectedCategory} Checklist`]);
+    wsData.push(['']); // Empty row for spacing
+    
+    // Add each subcategory and tasks
     Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
-      if (tasks.length > 0) {
-        const wsData = [
-          ['Task', 'Completed'],
-          ...tasks.map(task => [task, ''])
-        ];
+        if (tasks.length > 0) {
+        // Add subcategory heading (bold)
+        wsData.push([subcategory]);
         
-        const ws = utils.aoa_to_sheet(wsData);
-        utils.book_append_sheet(wb, ws, subcategory.substring(0, 31)); // Sheet name max 31 chars
-      }
+        // Add tasks (without checkboxes)
+        tasks.forEach(task => {
+            wsData.push([task]);
+        });
+        
+        wsData.push(['']); // Empty row for spacing
+        }
     });
     
+    // Add footer
+    wsData.push(['mesudar.com']);
+    wsData.push(['making gabboim\'s lives easier']);
+    
+    const ws = utils.aoa_to_sheet(wsData);
+    
+    // Apply styling
+    const wscols = [{ wch: 60 }]; // Column width
+    ws['!cols'] = wscols;
+    
+    // Bold the title and subcategories
+    ws['A1'].s = { font: { bold: true, sz: 16 } };
+    
+    Object.keys(ws).forEach(key => {
+        if (key.startsWith('A') && ws[key].v && ws[key].v.endsWith('Checklist')) {
+        ws[key].s = { font: { bold: true, sz: 14 } };
+        }
+        if (key.startsWith('A') && checkedTasks[ws[key].v]) {
+        ws[key].s = { font: { bold: true } };
+        }
+    });
+    
+    utils.book_append_sheet(wb, ws, 'Checklist');
     writeFile(wb, `${selectedCategory}_Checklist.xlsx`);
-  };
+    };
 
-  // Generate Word
-  const generateWord = async () => {
-    const checkedTasks = getCheckedTasks();
-    const doc = new Document();
-    
-    const children = [
-      new Paragraph({
-        text: `${selectedCategory} Checklist`,
-        heading: "Heading1",
-        spacing: { after: 400 }
-      })
-    ];
-    
-    Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
-      if (tasks.length > 0) {
-        children.push(
+     // Generate Word
+
+const generateWord = async () => {
+  const checkedTasks = getCheckedTasks();
+  
+  // Create paragraphs array to hold all content
+  const paragraphs = [];
+  
+  // Add title
+  paragraphs.push(
+    new Paragraph({
+      text: `${selectedCategory} Checklist`,
+      heading: "Heading1",
+      alignment: "center",
+      spacing: { after: 400 },
+      border: {
+        bottom: {
+          color: "16A085",
+          space: 10,
+          value: "single",
+          size: 8
+        }
+      }
+    })
+  );
+  
+  // Add spacing
+  paragraphs.push(
+    new Paragraph({
+      text: "",
+      spacing: { after: 200 }
+    })
+  );
+  
+  // Add content with bullet points
+  Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
+    if (tasks.length > 0) {
+      paragraphs.push(
+        new Paragraph({
+          text: subcategory,
+          heading: "Heading2",
+          spacing: { before: 400, after: 200 },
+          bold: true
+        })
+      );
+      
+      // Add tasks as bullet points
+      tasks.forEach(task => {
+        paragraphs.push(
           new Paragraph({
-            text: subcategory,
-            heading: "Heading2",
-            spacing: { before: 400, after: 200 }
+            text: task,
+            bullet: {
+              level: 0 // Top-level bullet
+            },
+            spacing: { after: 100 },
+            indent: { left: 720 } // 0.5 inch indent
           })
         );
-        
-        tasks.forEach(task => {
-          children.push(
-            new Paragraph({
-              children: [
-                new TextRun({
-                  text: "☐ ",
-                  font: "Wingdings"
-                }),
-                new TextRun({
-                  text: task,
-                  size: 24
-                })
-              ],
-              spacing: { after: 100 }
-            })
-          );
-        });
-      }
-    });
-    
-    children.push(
-      new Paragraph({
-        text: "mesudar.com - making gabboim's lives easier",
-        alignment: "center",
-        size: 20,
-        color: "999999",
-        spacing: { before: 600 }
-      })
-    );
-    
-    doc.addSection({
-      children
-    });
-    
+      });
+      
+      paragraphs.push(
+        new Paragraph({
+          text: "",
+          spacing: { after: 200 }
+        })
+      );
+    }
+  });
+  
+  // Add footer
+  paragraphs.push(
+    new Paragraph({
+      text: "mesudar.com",
+      alignment: "center",
+      spacing: { before: 600 },
+      color: "16A085",
+      size: 22
+    })
+  );
+  
+  paragraphs.push(
+    new Paragraph({
+      text: "making gabboim's lives easier",
+      alignment: "center",
+      color: "16A085",
+      size: 18
+    })
+  );
+
+  // Create document with all content
+  const doc = new Document({
+    creator: "mesudar.com",
+    title: `${selectedCategory} Checklist`,
+    description: "Generated checklist for shul tasks",
+    sections: [{
+      properties: {},
+      children: paragraphs
+    }]
+  });
+
+  try {
     const blob = await Packer.toBlob(doc);
     saveAs(blob, `${selectedCategory}_Checklist.docx`);
-  };
-
+  } catch (error) {
+    console.error("Word export error:", error);
+    alert("Failed to generate Word document. Please try again.");
+  }
+};
   // Render preview
   const renderPreview = () => {
     const checkedTasks = getCheckedTasks();
