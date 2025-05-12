@@ -16,7 +16,7 @@ export const Category = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch('http://206.189.225.119/api/user/event');
+        const response = await fetch('https://206.189.225.119/api/user/event');
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
