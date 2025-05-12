@@ -1,4 +1,4 @@
-const API_BASE = 'http://192.168.18.67:3000/api/admin';
+const API_BASE = 'http://206.189.225.119/api/admin';
 
 export const fetchCategories = async () => {
   const response = await fetch(`${API_BASE}/categories`);

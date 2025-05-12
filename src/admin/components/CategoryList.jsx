@@ -50,7 +50,7 @@ export const CategoryList = ({ onEdit, refreshTrigger  }) => {
       </div>
       
       <div className="space-y-2">
-        {categories.map(category => (
+        {categories?.map(category => (
           <div key={category._id} className="flex justify-between items-center p-4 border rounded-lg">
             <div>
               <h3 className="font-medium">{category.categoryTitle}</h3>
