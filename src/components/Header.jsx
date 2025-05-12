@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "./ui/buttons/Button";
 import { burger, logo } from "../assets";
 
-const navLinks = ["Home", "About us", "Projects", "Publications", "Contact"];
+const navLinks = ["Admin"];
 
 const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -31,7 +31,7 @@ const Header = () => {
               {navLinks.map((nav, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href="/admin"
                   className="relative text-dark-navy transition hover:text-tomato-red cursor-pointer after:mx-auto after:block after:h-[1px] after:w-0 after:bg-tomato-red after:transition-all hover:after:w-8 after:mt-2 after:absolute after:bottom-0 after:left-0 after:right-0 max-sm:pb-1 max-xl:text-sm"
                 >
                   {nav}
@@ -39,7 +39,6 @@ const Header = () => {
               ))}
             </div>
           </div>
-          <Button navbtn="Donate now" className="hidden lg:block" />
           <button
             type="button"
             className="lg:hidden"
