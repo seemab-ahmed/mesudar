@@ -5,128 +5,7 @@ import { ExportStep } from '../components/ExportStep';
 import { StepsProgress } from '../components/StepsProgress';
 import { WelcomeStep } from '../components/WelcomeStep';
 
-const mainCategory = {
-  "message": "All the categories",
-  "categories": [
-    {
-      "_id": "68219bc69a303e1be7c628bd",
-      "categoryTitle": "Test Category",
-      "subCategory": [
-      {
-      "subCategoryTitle": "test subcategory",
-      "tasks": [
-      {
-      "taskTitle": "task 1",
-      "_id": "68219bde9a303e1be7c628c9"
-      },
-      {
-      "taskTitle": "task 2",
-      "_id": "68219be89a303e1be7c628d1"
-      },
-      {
-      "taskTitle": "task 3",
-      "_id": "68219c1d9a303e1be7c628fc"
-      }
-      ],
-      "_id": "68219bd29a303e1be7c628c1"
-      }
-      ],
-      "__v": 2
-      },
-      {
-      "_id": "68219cb89a303e1be7c62912",
-      "categoryTitle": "Category 2",
-      "subCategory": [
-      {
-      "subCategoryTitle": "sub category 1",
-      "tasks": [
-      {
-      "taskTitle": "task 1",
-      "_id": "68219cf99a303e1be7c62951"
-      },
-      {
-      "taskTitle": "task 2",
-      "_id": "68219d009a303e1be7c62961"
-      },
-      {
-      "taskTitle": "task 3",
-      "_id": "68219d079a303e1be7c62973"
-      }
-      ],
-      "_id": "68219cdd9a303e1be7c62925"
-      },
-      {
-      "subCategoryTitle": "sub category 2",
-      "tasks": [
-      {
-      "taskTitle": "task 1",
-      "_id": "68219d279a303e1be7c6299d"
-      },
-      {
-      "taskTitle": "task 2",
-      "_id": "68219d2f9a303e1be7c629b3"
-      },
-      {
-      "taskTitle": "task 3",
-      "_id": "68219d3b9a303e1be7c629cb"
-      }
-      ],
-      "_id": "68219ce29a303e1be7c6292f"
-      },
-      {
-      "subCategoryTitle": "sub category 3",
-      "tasks": [
-      {
-      "taskTitle": "task 1",
-      "_id": "68219d519a303e1be7c62a0f"
-      }
-      ],
-      "_id": "68219ce99a303e1be7c6293b"
-      }
-      ],
-      "__v": 3
-      },
-      {
-      "_id": "68219cc19a303e1be7c62919",
-      "categoryTitle": "Category 3",
-      "subCategory": [
-      {
-      "subCategoryTitle": "Subcategory 1",
-      "tasks": [
-      {
-      "taskTitle": "task 1",
-      "_id": "68219db99a303e1be7c62a84"
-      }
-      ],
-      "_id": "68219da49a303e1be7c62a49"
-      },
-      {
-      "subCategoryTitle": "Subcategory 2",
-      "tasks": [
-      {
-      "taskTitle": "task 1",
-      "_id": "68219dca9a303e1be7c62ac0"
-      }
-      ],
-      "_id": "68219dac9a303e1be7c62a5d"
-      }
-      ],
-      "__v": 2
-      },
-      {
-      "_id": "6821fbaf9a303e1be7c62b13",
-      "categoryTitle": "Test 4",
-      "subCategory": [
-      {
-      "subCategoryTitle": "Test",
-      "tasks": [],
-      "_id": "6821fbcf9a303e1be7c62b61"
-      }
-      ],
-      "__v": 1
-      }
-  ]
-  }
+
 export const Category = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -137,25 +16,25 @@ export const Category = () => {
 
 
   useEffect(() => {
-    // const fetchCategories = async () => {
-    //   try {
-    //     const response = await fetch('https://206.189.225.119/api/user/event');
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('https://admin.mesudar.com/api/user/event');
         
-    //     if (!response.ok) {
-    //       throw new Error(`HTTP error! status: ${response.status}`);
-    //     }
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         
-    //     const data = await response.json();
-    //     setCategories(data.categories);
-    //     setLoading(false);
-    //   } catch (err) {
-    //     setError(err.message);
-    //     setLoading(false);
-    //   }
-    // };
+        const data = await response.json();
+        setCategories(data.categories);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
 
-    // fetchCategories();
-    setCategories(mainCategory.categories);
+    fetchCategories();
+    // setCategories(mainCategory.categories);
   }, [categories]);
 
   // Steps data
@@ -273,3 +152,126 @@ export const Category = () => {
   );
 };
 // border-2 border-teal-500   rounded-lg
+
+// const mainCategory = {
+//   "message": "All the categories",
+//   "categories": [
+//     {
+//       "_id": "68219bc69a303e1be7c628bd",
+//       "categoryTitle": "Test Category",
+//       "subCategory": [
+//       {
+//       "subCategoryTitle": "test subcategory",
+//       "tasks": [
+//       {
+//       "taskTitle": "task 1",
+//       "_id": "68219bde9a303e1be7c628c9"
+//       },
+//       {
+//       "taskTitle": "task 2",
+//       "_id": "68219be89a303e1be7c628d1"
+//       },
+//       {
+//       "taskTitle": "task 3",
+//       "_id": "68219c1d9a303e1be7c628fc"
+//       }
+//       ],
+//       "_id": "68219bd29a303e1be7c628c1"
+//       }
+//       ],
+//       "__v": 2
+//       },
+//       {
+//       "_id": "68219cb89a303e1be7c62912",
+//       "categoryTitle": "Category 2",
+//       "subCategory": [
+//       {
+//       "subCategoryTitle": "sub category 1",
+//       "tasks": [
+//       {
+//       "taskTitle": "task 1",
+//       "_id": "68219cf99a303e1be7c62951"
+//       },
+//       {
+//       "taskTitle": "task 2",
+//       "_id": "68219d009a303e1be7c62961"
+//       },
+//       {
+//       "taskTitle": "task 3",
+//       "_id": "68219d079a303e1be7c62973"
+//       }
+//       ],
+//       "_id": "68219cdd9a303e1be7c62925"
+//       },
+//       {
+//       "subCategoryTitle": "sub category 2",
+//       "tasks": [
+//       {
+//       "taskTitle": "task 1",
+//       "_id": "68219d279a303e1be7c6299d"
+//       },
+//       {
+//       "taskTitle": "task 2",
+//       "_id": "68219d2f9a303e1be7c629b3"
+//       },
+//       {
+//       "taskTitle": "task 3",
+//       "_id": "68219d3b9a303e1be7c629cb"
+//       }
+//       ],
+//       "_id": "68219ce29a303e1be7c6292f"
+//       },
+//       {
+//       "subCategoryTitle": "sub category 3",
+//       "tasks": [
+//       {
+//       "taskTitle": "task 1",
+//       "_id": "68219d519a303e1be7c62a0f"
+//       }
+//       ],
+//       "_id": "68219ce99a303e1be7c6293b"
+//       }
+//       ],
+//       "__v": 3
+//       },
+//       {
+//       "_id": "68219cc19a303e1be7c62919",
+//       "categoryTitle": "Category 3",
+//       "subCategory": [
+//       {
+//       "subCategoryTitle": "Subcategory 1",
+//       "tasks": [
+//       {
+//       "taskTitle": "task 1",
+//       "_id": "68219db99a303e1be7c62a84"
+//       }
+//       ],
+//       "_id": "68219da49a303e1be7c62a49"
+//       },
+//       {
+//       "subCategoryTitle": "Subcategory 2",
+//       "tasks": [
+//       {
+//       "taskTitle": "task 1",
+//       "_id": "68219dca9a303e1be7c62ac0"
+//       }
+//       ],
+//       "_id": "68219dac9a303e1be7c62a5d"
+//       }
+//       ],
+//       "__v": 2
+//       },
+//       {
+//       "_id": "6821fbaf9a303e1be7c62b13",
+//       "categoryTitle": "Test 4",
+//       "subCategory": [
+//       {
+//       "subCategoryTitle": "Test",
+//       "tasks": [],
+//       "_id": "6821fbcf9a303e1be7c62b61"
+//       }
+//       ],
+//       "__v": 1
+//       }
+//   ]
+//   }
