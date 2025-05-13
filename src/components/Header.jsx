@@ -1,25 +1,19 @@
 import React, { useState } from "react";
 import Button from "./ui/buttons/Button";
 import { burger, logo } from "../assets";
+import { Link } from "react-router-dom";
 
-const navLinks = ["Admin"];
+const navLinks = ["Admin", "About", "SignUp"  ];
 
 const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <header>
-      <div className="container">
+      <div className="max-w-[1080px] m-auto px-5 ">
         <nav className="w-full py-3 flex justify-between items-center relative">
-          <div className="logo text-[30px] font-bold">
-            {/* <a href="/">
-              <img
-                src={logo}
-                className="w-52 max-sm:w-36 md:w-48 xl:w-56 2xl:w-[250px]"
-                alt="logo img"
-              />
-            </a> */}
-            MESUDAR
+          <div className="logo text-[30px] font-bold text-[#14B8A6]">
+           <Link to="/"> MESUDAR</Link>
           </div>
           <div
             className={`grid transition-[grid-template-rows] duration-500 ease-in-out overflow-hidden max-lg:gap-4 max-lg:items-start max-lg:w-full max-lg:absolute max-lg:top-full max-lg:left-0 max-lg:bg-white max-lg:shadow-sm max-lg:flex-col z-10 2xl:mr-32

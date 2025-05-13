@@ -1,0 +1,31 @@
+// HeroSection.jsx
+import React from 'react';
+
+const Workstarting = () => {
+  return (
+    <div className=" max-w-[1080px] m-auto px-5 py-[60px] relative w-full bg-gradient-to-r from-purple-100 via-pink-100 to-blue-100 rounded-2xl flex flex-wrap justify-between  gap-4 items-center shadow-lg overflow-hidden">
+      {/* Background blurred shapes (optional) */}
+      <div className="absolute top-0 left-0 w-10 h-10 bg-purple-300 rounded-full blur-xl opacity-70 animate-pulse"></div>
+      <div className="absolute top-4 right-10 w-6 h-6 bg-purple-500 rounded-full blur-xl opacity-50"></div>
+
+      {/* Text content */}
+      <div className="max-w-xl z-10">
+        <h2 className="text-[30px] leading-[36px]  md:text-[45px]  md:leading-[51px] text-[#13AE8D] font-semibold  mb-6">
+          Get starting work <span className='text-[#000]'>with Starup today.</span>
+        </h2>
+        <p className="text-[16px] leading-[22px]  md:text-[20px] md:leading-[26px] text-[#000]">
+          A reviewer is not connected to the host company to prevent bias in the reviewing process.
+        </p>
+      </div>
+
+      {/* Button */}
+      <div className="mt-6 md:mt-0 z-10">
+        <button className="bg-[#13AE8D] hover:bg-[] text-white px-[25px] py-4  rounded-full text-sm font-medium shadow">
+          Create your profile
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Workstarting;

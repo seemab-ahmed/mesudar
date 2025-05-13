@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="col-span-4 max-lg:col-span-5 lg:mr-10">
           {/* <img src={logo} className="w-52 mb-5 max-sm:w-40" alt="logoimg" /> */}
            <div className="logo text-[30px] font-bold">
-            MESUDAR
+             MESUDAR
           </div>
           <p className="mb-4 leading-relaxed max-lg:text-sm">
             Mesudar detais will be here

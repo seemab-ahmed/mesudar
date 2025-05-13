@@ -1,58 +1,68 @@
-export const TaskSelection = ({ 
-  selectedCategory, 
-  tasksData, 
-  checkedItems, 
-  onCheckboxChange, 
-  onNext, 
-  onBack 
+export const TaskSelection = ({
+  selectedCategory,
+  tasksData,
+  checkedItems,
+  onCheckboxChange,
+  onNext,
+  onBack,
 }) => {
   return (
-    <div className="space-y-8 max-w-2xl mx-auto">
-      <div>
-        <h1 className="text-3xl font-bold text-teal-500">mesudar.com</h1>
-        <p className="text-base">making gabboim's lives easier</p>
+    <div className="py-8">
+      {/* Header */}
+      <div className="text-center mb-6">
+        <h1 className="text-4xl font-extrabold text-teal-500 mb-1">mesudar.com</h1>
+        <p className="text-lg text-gray-600">Making Gabboim's lives easier</p>
       </div>
-      
-      <div className="mt-4 text-center">
-        <div className="bg-teal-500 text-white rounded-full py-3 px-6 w-64 mx-auto mb-4">
-          <p className="text-center font-medium">{selectedCategory} Checklist</p>
+
+      {/* Category Badge */}
+      <div className="text-center mb-10">
+        <div className="bg-teal-500 text-white rounded-full py-3 px-8 inline-block shadow-md">
+          <p className="text-lg font-semibold">{selectedCategory} Checklist</p>
         </div>
-        <h2 className="text-xl mb-8">Select the tasks that apply to you</h2>
+        <h2 className="text-2xl font-semibold mt-6 text-gray-800">Select the tasks that apply to you</h2>
       </div>
-      
-      {selectedCategory && tasksData[selectedCategory] && 
+
+      {/* Tasks */}
+      {selectedCategory && tasksData[selectedCategory] &&
         Object.entries(tasksData[selectedCategory]).map(([subcategory, tasks], index) => (
-          <div key={index} className="mb-8">
-            <h3 className="font-bold text-lg mb-3">{subcategory}</h3>
-            <div className="space-y-3 ml-2">
+          <div key={index} className="bg-white border border-[#13AE8D] rounded-xl p-6 mb-8 shadow-sm hover:shadow-md transition-shadow">
+            <h3 className="text-xl font-bold text-[#13AE8D] mb-4 capitalize">{subcategory}</h3>
+            <div className="space-y-4">
               {tasks.map((task, taskIndex) => (
-                <div key={taskIndex} className="flex items-center">
-                  <input 
-                    type="checkbox" 
+                <label
+                  key={taskIndex}
+                  htmlFor={`${subcategory}-${taskIndex}`}
+                  className="flex items-center cursor-pointer group"
+                >
+                  <input
+                    type="checkbox"
                     id={`${subcategory}-${taskIndex}`}
-                    className="w-6 h-6 rounded-full border-2 mr-3"
+                    className="w-5 h-5 accent-[#13AE8D] mr-4 transition-all duration-200"
                     checked={checkedItems[`${subcategory}-${task}`] || false}
-                    onChange={(e) => onCheckboxChange(subcategory, task, e.target.checked)}
+                    onChange={(e) =>
+                      onCheckboxChange(subcategory, task, e.target.checked)
+                    }
                   />
-                  <label htmlFor={`${subcategory}-${taskIndex}`} className="text-base">
+                  <span className="text-gray-800 font-medium capitalize group-hover:text-[#13AE8D]">
                     {task}
-                  </label>
-                </div>
+                  </span>
+                </label>
               ))}
             </div>
           </div>
         ))}
-      
-      <div className="mt-6 flex justify-between">
-        <button 
+
+      {/* Buttons */}
+      <div className="mt-10 flex justify-between">
+        <button
           onClick={onBack}
-          className="border-2 border-teal-500 text-teal-500 rounded-full px-6 py-2 hover:bg-teal-50 transition-colors"
+          className="border-2 border-[#13AE8D] text-[#13AE8D] font-semibold rounded-full px-6 py-2 hover:bg-[#13AE8D] hover:text-[#fff] transition-colors"
         >
           Back
         </button>
-        <button 
+        <button
           onClick={onNext}
-          className="bg-teal-500 text-white rounded-full px-8 py-3 hover:bg-teal-600 transition-colors"
+          className="bg-[#13AE8D] text-white font-semibold rounded-full px-8 py-3 hover:bg-teal-600 shadow-md transition-all"
         >
           Continue
         </button>
