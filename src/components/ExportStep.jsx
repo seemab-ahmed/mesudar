@@ -171,7 +171,10 @@ export const ExportStep = ({
             <h3 className="text-teal-600 font-bold mb-2 text-md">{subcategory}</h3>
             {tasks.map((task, taskIndex) => (
               <div key={taskIndex} className="flex items-center gap-2 mb-2">
-                <div className="w-4 h-4 border-2 border-teal-400 rounded-sm"></div>
+          <div className="w-5 h-5 border-2 border-teal-400 rounded-sm bg-[#13AE8D] flex items-center justify-center text-xs text-black">
+          ✔
+</div>
+
                 <span className="text-gray-800 text-sm">{task}</span>
               </div>
             ))}

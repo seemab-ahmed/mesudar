@@ -3,14 +3,14 @@ import Button from "./ui/buttons/Button";
 import { burger, logo } from "../assets";
 import { Link } from "react-router-dom";
 
-const navLinks = ["Admin", "About", "SignUp"  ];
+const navLinks = ["Admin", "SignUp"  ];
 
 const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <header>
-      <div className="max-w-[1080px] m-auto px-5 ">
+      <div className="max-w-[1080px] 2xl:max-w-[1440px]   m-auto px-5 ">
         <nav className="w-full py-3 flex justify-between items-center relative">
           <div className="logo text-[30px] font-bold text-[#14B8A6]">
            <Link to="/"> MESUDAR</Link>
@@ -26,7 +26,7 @@ const Header = () => {
                 <a
                   key={index}
                   href="/admin"
-                  className="relative text-dark-navy transition hover:text-tomato-red cursor-pointer after:mx-auto after:block after:h-[1px] after:w-0 after:bg-tomato-red after:transition-all hover:after:w-8 after:mt-2 after:absolute after:bottom-0 after:left-0 after:right-0 max-sm:pb-1 max-xl:text-sm"
+                  className="relative font-semibold text-base text-dark-navy transition hover:text-[#13AE8D] cursor-pointer after:mx-auto after:block after:h-[1px] after:w-0 after:bg-[#13AE8D] after:transition-all hover:after:w-8 after:mt-2 after:absolute after:bottom-0 after:left-0 after:right-0 max-sm:pb-1 max-xl:text-sm"
                 >
                   {nav}
                 </a>

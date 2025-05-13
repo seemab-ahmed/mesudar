@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import bannerimage from "../Images/bannerright.webp";
 const Hero = () => {
   return (
-    <div className="bg-white pt-[40px]  pb-2 m-auto max-w-[1080px]  px-5">
-      <div className="flex md:flex-row flex-col gap-10  ">
+    <div className="bg-white pt-[40px]  pb-2 m-auto max-w-[1080px] 2xl:max-w-[1440px]  px-5">
+      <div className="flex md:flex-row flex-col gap-10 items-center ">
         {/* Text Section */}
-        <div className="space-y-6 w-full   max-w-[630px] relative z-10">
+        <div className="space-y-6 w-full   md:max-w-[50%] relative z-10">
           <h1 className=" lg:text-5xl text-4xl md:leading-[55px] leading-[45px] mb-3   text-[#000] font-bold ">
              Running a <span className="text-[#13AE8D]">shul comes</span>  with<span className="text-[#13AE8D]"> countless </span>responsibilities
           </h1>
@@ -19,7 +19,7 @@ const Hero = () => {
         </div>
 
         {/* Image/Icons Section */}
-        <div className="w-full max-w-[680px] rounded-lg overflow-hidden">
+        <div className="w-full md:max-w-[50%] rounded-lg overflow-hidden">
            <img src={bannerimage} alt="Banner" className="w-full h-auto " />
         </div>
       </div>
