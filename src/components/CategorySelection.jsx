@@ -1,6 +1,6 @@
 export const CategorySelection = ({ categories, categoryObjects, onSelect, onBack }) => {
   return (
-    <div className="py-10">
+    <div className="">
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-4xl font-extrabold text-[#13AE8D] mb-1">mesudar.com</h1>

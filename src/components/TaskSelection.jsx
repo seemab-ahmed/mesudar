@@ -35,9 +35,9 @@ export const TaskSelection = ({
                   className="flex items-center cursor-pointer group"
                 >
                   <input
-                    type="checkbox"
+                    type="radio"
                     id={`${subcategory}-${taskIndex}`}
-                    className="w-5 h-5 accent-[#13AE8D] mr-4 transition-all duration-200"
+                    className="w-5 h-5  mr-4 transition-all duration-200 accent-[#13AE8D]"
                     checked={checkedItems[`${subcategory}-${task}`] || false}
                     onChange={(e) =>
                       onCheckboxChange(subcategory, task, e.target.checked)

@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="flex md:flex-row flex-col gap-10 items-center ">
         {/* Text Section */}
         <div className="space-y-6 w-full   md:max-w-[50%] relative z-10">
-          <h1 className=" lg:text-5xl text-4xl md:leading-[55px] leading-[45px] mb-3   text-[#000] font-bold ">
+          <h1 className=" lg:text-5xl text-3xl lg:leading-[50px] leading-[45px] mb-3   text-[#000] font-bold ">
              Running a <span className="text-[#13AE8D]">shul comes</span>  with<span className="text-[#13AE8D]"> countless </span>responsibilities
           </h1>
           <p className=" max-w-full 2xl:max-w-full md:max-w-[498px] text-base leading-6 mb-3 font-normal   text-[#707070]">

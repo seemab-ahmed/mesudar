@@ -16,12 +16,12 @@ const Header = () => {
            <Link to="/"> MESUDAR</Link>
           </div>
           <div
-            className={`grid transition-[grid-template-rows] duration-500 ease-in-out overflow-hidden max-lg:gap-4 max-lg:items-start max-lg:w-full max-lg:absolute max-lg:top-full max-lg:left-0 max-lg:bg-white max-lg:shadow-sm max-lg:flex-col z-10 2xl:mr-32
+            className={`grid transition-[grid-template-rows] duration-500 ease-in-out overflow-hidden max-lg:gap-4 max-lg:items-start max-lg:w-full max-lg:absolute max-lg:top-full max-lg:left-0 max-lg:bg-white max-lg:shadow-sm max-lg:flex-col z-30 2xl:mr-32
             ${
               isExpanded ? "grid-rows-[1fr] max-lg:pb-2" : "grid-rows-[0fr]"
             } lg:grid-rows-[1fr]`}
           >
-            <div className="overflow-hidden flex flex-col lg:flex-row items-center gap-6 lg:gap-12 ">
+            <div className="overflow-hidden flex flex-col lg:flex-row items-center gap-6 lg:gap-12  ">
               {navLinks.map((nav, index) => (
                 <a
                   key={index}
@@ -35,10 +35,13 @@ const Header = () => {
           </div>
           <button
             type="button"
-            className="lg:hidden"
+            className="lg:hidden flex flex-col items-end"
             onClick={() => setIsExpanded(!isExpanded)}
           >
-            <img width={35} height={35} src={burger} alt="hamburger menu" />
+                <div className="w-7 h-1 bg-[#13AE8D] mb-1 rounded-lg"></div>
+                <div className="w-9 h-1 bg-[#13AE8D] mb-1 rounded-lg"></div>
+                <div className="w-7 h-1 bg-[#13AE8D] rounded-lg"></div>
+            {/* <img width={35} height={35} src={burger} alt="hamburger menu" /> */}
           </button>
         </nav>
       </div>
