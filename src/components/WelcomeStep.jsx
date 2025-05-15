@@ -64,12 +64,12 @@ export const WelcomeStep = ({ onNext }) => {
   return (
     <div className="">
       <div className="">
-        <h2 className="sm:text-[40px] text-[34px] text-center text-[#14B8A6] font-semibold mb-[30px]">How It Works:</h2>
+        <h2 className="sm:text-[40px] text-[34px] text-center text-[#14B8A6] font-semibold mb-[30px]"><span className="text-black">How It </span>Works</h2>
         <div className="grid md:grid-cols-3 gap-6 ">
           {steps.map((step) => (
             <div
               key={step.id}
-              className="flex gap-4  flex-col  group group-hover:text-[#fff] cursor-pointer border-2 border-[#14B8A6] rounded-xl py-10 px-5 hover:bg-[#14B8A6] hover:shadow-xl ease-in-out  transition-all duration-500"
+              className="flex gap-4  flex-col  group group-hover:text-[#fff] cursor-pointer border-2 border-gray-200 backdrop-blur-lg rounded-xl py-10 px-5 hover:bg-[#14B8A6] shadow-xl ease-in-out  transition-all duration-500"
             >
                <div className="text-[#14B8A6] group-hover:text-[#fff] transition-all ease-in-out duration-500"> {step.icon}</div>
               <h3 className="text-[20px] font-semibold  group-hover:text-[#fff] transition-all ease-in-out duration-500">{step.title}</h3>

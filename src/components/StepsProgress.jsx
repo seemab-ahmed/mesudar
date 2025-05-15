@@ -6,7 +6,7 @@
 
  export const StepsProgress = ({ steps, currentStep }) => {
   return (
-<div className="overflow-x-auto">
+<div className="overflow-x-auto flex justify-center">
   <div className="flex justify-start mb-8 min-w-max space-x-6 px-4">
     {steps.map((step, index) => (
       <div key={step.id} className="flex items-center whitespace-nowrap">

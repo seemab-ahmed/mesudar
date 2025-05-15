@@ -168,10 +168,10 @@ export const ExportStep = ({
 
         {Object.entries(checkedTasks).map(([subcategory, tasks], index) => (
           <div key={index} className="mb-6">
-            <h3 className="text-teal-600 font-bold mb-2 text-md">{subcategory}</h3>
+            <p className="text-teal-600 font-bold mb-2 text-lg">{subcategory}</p>
             {tasks.map((task, taskIndex) => (
               <div key={taskIndex} className="flex items-center gap-2 mb-2">
-              <div className="w-5 h-5 border-2 border-[#13AE8D] rounded-[50%]  flex items-center justify-center text-xs text-black"></div>
+              <div className="w-4 h-4 border-2 border-[#000] rounded-[50%]  flex items-center justify-center text-xs text-black"></div>
                 <span className="text-gray-800 text-sm">{task}</span>
               </div>
             ))}
@@ -217,9 +217,9 @@ export const ExportStep = ({
       </div>
 
       <div className="mt-10 flex justify-between">
-        <button
+      <button
           onClick={onBack}
-          className="text-[#13AE8D] border-2 border-[#13AE8D] py-2 px-6 rounded-full hover:bg-[#13AE8D] hover:text-[#fff] transition"
+          className="border-2 border-[#13AE8D] text-[#13AE8D] font-semibold rounded-full px-6 py-2 hover:bg-[#13AE8D] hover:text-[#fff] transition-colors"
         >
           Back
         </button>

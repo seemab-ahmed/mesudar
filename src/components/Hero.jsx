@@ -1,26 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import bannerimage from "../Images/bannerright.webp";
+import bannerimage from "../Images/bannerImage (2).png";
+
 const Hero = () => {
   return (
-    <div className="bg-white pt-[40px]  pb-2 m-auto max-w-[1080px] 2xl:max-w-[1440px]  px-5">
-      <div className="flex md:flex-row flex-col gap-10 items-center ">
+    <div className="bg-white pt-16 md:pb-12  px-5 m-auto max-w-[1080px] 2xl:max-w-[1440px]">
+      <div className="flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Text Section */}
-        <div className="space-y-6 w-full   md:max-w-[50%] relative z-10">
-          <h1 className=" lg:text-5xl text-3xl lg:leading-[50px] leading-[45px] mb-3   text-[#000] font-bold ">
-             Running a <span className="text-[#13AE8D]">shul comes</span>  with<span className="text-[#13AE8D]"> countless </span>responsibilities
+        <div className="md:w-1/2 w-full space-y-6 text-left">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+            Running a <span className="text-[#13AE8D]">shul comes</span> with
+            <span className="text-[#13AE8D]"> countless </span>responsibilities
           </h1>
-          <p className=" max-w-full 2xl:max-w-full md:max-w-[498px] text-base leading-6 mb-3 font-normal   text-[#707070]">
-          Mesudar.com is a free tool that makes it easy for Gabboim to create customized checklists for every task — from Shabbos prep and cleaning checklists to Yom Tov management.
+          <p className="text-gray-600 text-base leading-6 max-w-md">
+            Mesudar.com is a free tool that makes it easy for Gabboim to create
+            customized checklists for every task — from Shabbos prep and
+            cleaning checklists to Yom Tov management.
           </p>
-          <div className="flex gap-3 flex-wrap mb-9">
-            <Link to="/" className="  border border-[#13AE8D] text-sm leading-5 font-medium px-4 py-2 rounded-[8px] text-[#1E1E1E] hover:text-[#FFFFFF] hover:bg-[#13AE8D] transition-all ease-in-out duration-500">Start Today</Link>
+          <div className="flex gap-4 flex-wrap">
+            <Link
+              to="/"
+              className="bg-[#13AE8D] text-white text-sm px-6 py-3 rounded-full font-semibold shadow hover:bg-teal-400 transition-all duration-300"
+            >
+              Start Today
+            </Link>
           </div>
         </div>
 
-        {/* Image/Icons Section */}
-        <div className="w-full md:max-w-[50%] rounded-lg overflow-hidden">
-           <img src={bannerimage} alt="Banner" className="w-full h-auto " />
+        {/* Image Section */}
+        <div className="md:w-1/2 w-full rounded-br-[70px] rounded-t-[70px] rounded-tr-[20px] rounded-l-[20px] overflow-hidden">
+          <img
+            src={bannerimage}
+            alt="Hero Banner"
+            className="w-full h-auto rounded-xl shadow-md"
+          />
         </div>
       </div>
     </div>

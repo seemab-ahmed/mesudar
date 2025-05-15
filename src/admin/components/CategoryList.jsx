@@ -39,7 +39,7 @@ export const CategoryList = ({ onEdit, refreshTrigger  }) => {
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-6 flex-wrap gap-3">
         <h2 className="text-xl font-bold text-teal-700">Categories</h2>
         <Link 
           to="/admin/categories/new" 
@@ -51,9 +51,9 @@ export const CategoryList = ({ onEdit, refreshTrigger  }) => {
       
       <div className="space-y-2">
         {categories?.map(category => (
-          <div key={category._id} className="transition-all ease-in-out duration-500 hover:bg-[#13ae8d8c] group flex justify-between items-center p-4 border rounded-lg flex-col gap-3  sm:flex-row">
-            <div className='flex items-center sm:flex-row flex-col '>
-              <h3 className="font-medium">{category.categoryTitle}</h3>
+          <div key={category._id} className="transition-all ease-in-out duration-500 hover:bg-[#eee] group flex justify-between items-center p-6 border rounded-lg flex-col gap-3  sm:flex-row">
+            <div className='flex sm:items-start items-center flex-col '>
+              <p className="font-medium text-lg ">{category.categoryTitle}</p>
               <p className="text-sm text-gray-500">
                 {category.subCategory.length} subcategories
               </p>

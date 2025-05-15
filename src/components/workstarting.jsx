@@ -3,7 +3,7 @@ import React from 'react';
 
 const Workstarting = () => {
   return (
-    <div className=" max-w-[1080px] 2xl:max-w-[1440px]  m-auto px-5 py-[60px] relative w-full bg-gradient-to-r from-purple-100 via-pink-100 to-blue-100 rounded-2xl flex flex-wrap justify-between  gap-4 items-center shadow-lg overflow-hidden">
+    <div className=" max-w-[1040px] 2xl:max-w-[1400px]  m-auto px-5 py-[60px] relative w-full bg-gradient-to-r from-purple-100 via-pink-100 to-blue-100 rounded-br-[70px] rounded-t-[70px] rounded-tr-[20px] rounded-l-[20px] flex flex-wrap justify-between  gap-4 items-center shadow-lg overflow-hidden">
       {/* Background blurred shapes (optional) */}
       <div className="absolute top-0 left-0 w-10 h-10 bg-purple-300 rounded-full blur-xl opacity-70 animate-pulse"></div>
       <div className="absolute top-4 right-10 w-6 h-6 bg-purple-500 rounded-full blur-xl opacity-50"></div>

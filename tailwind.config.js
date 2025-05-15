@@ -34,9 +34,7 @@ export default {
         "container-xl": "1740px",
       },
       boxShadow: {
-        "10-10-24-0-0.12": "10px 10px 24px 0px rgba(0, 0, 0, 0.12)",
-        "4-6-24-0-0.08":
-          "-4px -6px 24px 0px rgba(0, 0, 0, 0.08), 8px 12px 24px 0px rgba(0, 0, 0, 0.08)",
+        'custom-xl': '5px 9px 14px 5px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
       },
     },
   },
