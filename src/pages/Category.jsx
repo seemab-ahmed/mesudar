@@ -56,7 +56,7 @@ export const Category = () => {
     
     category.subCategory.forEach(subCat => {
       tasksData[category.categoryTitle][subCat.subCategoryTitle] = 
-        subCat.tasks.map(task => task.taskTitle);
+        subCat?.tasks.map(task => task?.taskTitle);
     });
     
     return tasksData;
