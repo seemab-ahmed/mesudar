@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Hero from '../components/Hero'
 import Footer2 from '../components/Footer2'
 import Workstarting from '../components/workstarting'
-import Learnmore from '../components/learnMore'
+import LearnMore from '../components/LearnMore';
 // import Footer from '../components/Footer'
 import { Category } from './Category'
 export const Home = () => {
@@ -12,7 +12,7 @@ export const Home = () => {
         <Header />
         < Hero />
         <Category />
-        <Learnmore/>
+        <LearnMore/>
         <Workstarting />
         <Footer2 /> 
     </div>

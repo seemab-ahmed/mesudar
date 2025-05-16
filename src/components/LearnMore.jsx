@@ -5,7 +5,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import bannerimage from "../Images/learnmore.jpg";
 
-const Learnmore = () => {
+const LearnMore = () => {
   return (
     <div className="bg-white py-10 md:py-16 px-5 m-auto max-w-[1080px] xl:max-w-[1300px] overflow-hidden relative">
     <div className="flex flex-col md:flex-row items-center gap-12">
@@ -56,5 +56,5 @@ const Learnmore = () => {
   );
 };
 
-export default Learnmore;
+export default LearnMore;
 
