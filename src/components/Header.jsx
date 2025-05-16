@@ -9,9 +9,9 @@ const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <header>
-      <div className="max-w-[1080px] 2xl:max-w-[1440px]   m-auto px-5 ">
-        <nav className="w-full py-3 flex justify-between items-center relative">
+    <header className="fixed w-full top-0 bg-white z-50 py-5">
+      <div className="max-w-[1080px] xl:max-w-[1300px]   m-auto px-5 ">
+        <nav className="w-full  flex justify-between items-center relative">
           <div className="logo text-[30px] font-bold text-[#14B8A6]">
            <Link to="/"> MESUDAR</Link>
           </div>
