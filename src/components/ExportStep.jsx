@@ -1,3 +1,4 @@
+
 import { useRef } from 'react';
 import { saveAs } from 'file-saver';
 import { utils, writeFile } from 'xlsx';
@@ -15,9 +16,13 @@ export const ExportStep = ({
     const checkedTasksBySubcategory = {};
     if (selectedCategory && tasksData[selectedCategory]) {
       Object.entries(tasksData[selectedCategory]).forEach(([subcategory, tasks]) => {
-        checkedTasksBySubcategory[subcategory] = tasks.filter(task =>
+        const checkedTasks = tasks.filter(task =>
           checkedItems[`${subcategory}-${task}`]
         );
+        // Only include subcategories with at least one checked task
+        if (checkedTasks.length > 0) {
+          checkedTasksBySubcategory[subcategory] = checkedTasks;
+        }
       });
     }
     return checkedTasksBySubcategory;
@@ -26,6 +31,13 @@ export const ExportStep = ({
   const generatePDF = () => {
     const doc = new jsPDF();
     const checkedTasks = getCheckedTasks();
+    
+    // Return early if no tasks are selected
+    if (Object.keys(checkedTasks).length === 0) {
+      alert("No tasks selected to export");
+      return;
+    }
+
     let yPos = 30;
 
     doc.setFillColor(22, 160, 133);
@@ -37,23 +49,21 @@ export const ExportStep = ({
     yPos += 25;
 
     Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
-      if (tasks.length > 0) {
-        doc.setFontSize(12);
-        doc.setFont('helvetica', 'bold');
-        doc.setTextColor(0, 0, 0);
-        doc.text(subcategory, 20, yPos);
-        yPos += 10;
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(0, 0, 0);
+      doc.text(subcategory, 20, yPos);
+      yPos += 10;
 
-        tasks.forEach(task => {
-          doc.setDrawColor(0, 0, 0);
-          doc.rect(20, yPos - 4, 5, 5);
-          doc.setFont('helvetica', 'normal');
-          doc.text(task, 30, yPos);
-          yPos += 8;
-        });
-
+      tasks.forEach(task => {
+        doc.setDrawColor(0, 0, 0);
+        doc.rect(20, yPos - 4, 5, 5);
+        doc.setFont('helvetica', 'normal');
+        doc.text(task, 30, yPos);
         yPos += 8;
-      }
+      });
+
+      yPos += 8;
     });
 
     yPos += 15;
@@ -71,6 +81,13 @@ export const ExportStep = ({
 
   const generateExcel = () => {
     const checkedTasks = getCheckedTasks();
+    
+    // Return early if no tasks are selected
+    if (Object.keys(checkedTasks).length === 0) {
+      alert("No tasks selected to export");
+      return;
+    }
+
     const wb = utils.book_new();
     const wsData = [];
 
@@ -78,11 +95,9 @@ export const ExportStep = ({
     wsData.push(['']);
 
     Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
-      if (tasks.length > 0) {
-        wsData.push([subcategory]);
-        tasks.forEach(task => wsData.push([task]));
-        wsData.push(['']);
-      }
+      wsData.push([subcategory]);
+      tasks.forEach(task => wsData.push([task]));
+      wsData.push(['']);
     });
 
     wsData.push(['mesudar.com']);
@@ -96,6 +111,13 @@ export const ExportStep = ({
 
   const generateWord = async () => {
     const checkedTasks = getCheckedTasks();
+    
+    // Return early if no tasks are selected
+    if (Object.keys(checkedTasks).length === 0) {
+      alert("No tasks selected to export");
+      return;
+    }
+
     const paragraphs = [];
 
     paragraphs.push(new Paragraph({
@@ -107,25 +129,23 @@ export const ExportStep = ({
     }));
 
     Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
-      if (tasks.length > 0) {
+      paragraphs.push(new Paragraph({
+        text: subcategory,
+        heading: "Heading2",
+        spacing: { before: 400, after: 200 },
+        bold: true
+      }));
+
+      tasks.forEach(task => {
         paragraphs.push(new Paragraph({
-          text: subcategory,
-          heading: "Heading2",
-          spacing: { before: 400, after: 200 },
-          bold: true
+          text: task,
+          bullet: { level: 0 },
+          spacing: { after: 100 },
+          indent: { left: 720 }
         }));
+      });
 
-        tasks.forEach(task => {
-          paragraphs.push(new Paragraph({
-            text: task,
-            bullet: { level: 0 },
-            spacing: { after: 100 },
-            indent: { left: 720 }
-          }));
-        });
-
-        paragraphs.push(new Paragraph({ text: "", spacing: { after: 200 } }));
-      }
+      paragraphs.push(new Paragraph({ text: "", spacing: { after: 200 } }));
     });
 
     paragraphs.push(new Paragraph({
@@ -160,6 +180,16 @@ export const ExportStep = ({
 
   const renderPreview = () => {
     const checkedTasks = getCheckedTasks();
+    
+    // Return early if no tasks are selected
+    if (Object.keys(checkedTasks).length === 0) {
+      return (
+        <div className="border border-teal-400 shadow-md p-6 rounded-2xl bg-white text-center">
+          <p className="text-gray-600">No tasks selected to export</p>
+        </div>
+      );
+    }
+
     return (
       <div className="border border-teal-400 shadow-md p-6 rounded-2xl bg-white">
         <div className="bg-[#13AE8D] text-white font-semibold rounded-full py-2 px-6 mx-auto text-center w-fit mb-6 text-lg shadow-sm">
@@ -171,7 +201,7 @@ export const ExportStep = ({
             <p className="text-teal-600 font-bold mb-2 text-lg">{subcategory}</p>
             {tasks.map((task, taskIndex) => (
               <div key={taskIndex} className="flex items-center gap-2 mb-2">
-              <div className="w-4 h-4 border-2 border-[#000] rounded-[50%]  flex items-center justify-center text-xs text-black"></div>
+                <div className="w-4 h-4 border-2 border-[#000] rounded-[50%] flex items-center justify-center text-xs text-black"></div>
                 <span className="text-gray-800 text-sm">{task}</span>
               </div>
             ))}
@@ -199,25 +229,28 @@ export const ExportStep = ({
         <button
           onClick={generatePDF}
           className="bg-[#13AE8D] hover:bg-teal-600 text-white py-3 px-5 rounded-full shadow-md transition"
+          disabled={Object.keys(getCheckedTasks()).length === 0}
         >
           Export as PDF
         </button>
         <button
           onClick={generateExcel}
           className="bg-[#13AE8D] hover:bg-teal-600 text-white py-3 px-5 rounded-full shadow-md transition"
+          disabled={Object.keys(getCheckedTasks()).length === 0}
         >
           Export as Excel
         </button>
         <button
           onClick={generateWord}
           className="bg-[#13AE8D] hover:bg-teal-600 text-white py-3 px-5 rounded-full shadow-md transition"
+          disabled={Object.keys(getCheckedTasks()).length === 0}
         >
           Export as Word
         </button>
       </div>
 
       <div className="mt-10 flex justify-between">
-      <button
+        <button
           onClick={onBack}
           className="border-2 border-[#13AE8D] text-[#13AE8D] font-semibold rounded-full px-6 py-2 hover:bg-[#13AE8D] hover:text-[#fff] transition-colors"
         >
@@ -233,104 +266,3 @@ export const ExportStep = ({
     </div>
   );
 };
-
-
-// export const ExportStep = ({ 
-//   selectedCategory, 
-//   tasksData, 
-//   checkedItems, 
-//   onBack, 
-//   onStartOver 
-// }) => {
-//   const pdfRef = useRef();
-  
-//   const handlePrint = useReactToPrint({
-//     content: () => pdfRef.current,
-//   });
-
-//   const renderPDFContent = () => {
-//     const checkedTasksBySubcategory = {};
-    
-//     if (selectedCategory && tasksData[selectedCategory]) {
-//       Object.entries(tasksData[selectedCategory]).forEach(([subcategory, tasks]) => {
-//         checkedTasksBySubcategory[subcategory] = tasks.filter(task => 
-//           checkedItems[`${subcategory}-${task}`]
-//         );
-//       });
-//     }
-
-//     return (
-//       <div ref={pdfRef} className="border-2 border-[#13AE8D] p-4 rounded-lg relative">
-//         <div className="bg-[#13AE8D] text-white rounded-full py-2 px-8 mx-auto text-center w-48 mb-6">
-//           {selectedCategory} Checklist
-//         </div>
-        
-//         {Object.entries(checkedTasksBySubcategory).map(([subcategory, tasks], index) => (
-//           <div key={index} className="mb-6">
-//             <h3 className="font-bold mb-2">{subcategory}</h3>
-//             {tasks.map((task, taskIndex) => (
-//               <div key={taskIndex} className="flex items-center mb-1">
-//                 <div className="w-5 h-5 border border-gray-300 mr-2"></div>
-//                 <span>{task}</span>
-//               </div>
-//             ))}
-//           </div>
-//         ))}
-        
-//         <div className="text-center text-[#13AE8D] mt-8">
-//           <p>mesudar.com</p>
-//           <p className="text-sm">making gabboim's lives easier</p>
-//         </div>
-//       </div>
-//     );
-//   };
-
-//   return (
-//     <div className="space-y-8 max-w-2xl mx-auto">
-//       <div>
-//         <h1 className="text-3xl font-bold text-[#13AE8D]">mesudar.com</h1>
-//         <p className="text-base">making gabboim's lives easier</p>
-//       </div>
-      
-//       <div className="mt-4 mb-8">
-//         {renderPDFContent()}
-//       </div>
-      
-//       <div className="mt-4 space-y-3 flex flex-col">
-//         <button 
-//           onClick={handlePrint}
-//           className="bg-[#13AE8D] text-white rounded-full py-3 px-6 text-center hover:bg-teal-600 transition-colors"
-//         >
-//           Export as PDF
-//         </button>
-//         <button 
-//           onClick={() => alert('Word export would be implemented here')}
-//           className="bg-[#13AE8D] text-white rounded-full py-3 px-6 text-center hover:bg-teal-600 transition-colors"
-//         >
-//           Export as Word
-//         </button>
-//         <button 
-//           onClick={() => alert('Excel export would be implemented here')}
-//           className="bg-[#13AE8D] text-white rounded-full py-3 px-6 text-center hover:bg-teal-600 transition-colors"
-//         >
-//           Export as Excel
-//         </button>
-//       </div>
-      
-//       <div className="mt-6 flex justify-between">
-//         <button 
-//           onClick={onBack}
-//           className="border-2 border-[#13AE8D] text-[#13AE8D] rounded-full px-6 py-2 hover:bg-teal-50 transition-colors"
-//         >
-//           Back
-//         </button>
-//         <button 
-//           onClick={onStartOver}
-//           className="border-2 border-[#13AE8D] text-[#13AE8D] rounded-full px-6 py-2 hover:bg-teal-50 transition-colors"
-//         >
-//           Start Over
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
