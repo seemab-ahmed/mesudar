@@ -1,4 +1,5 @@
-const API_BASE = 'https://admin.mesudar.com/api/admin';
+// const API_BASE = 'https://admin.mesudar.com/api/admin';
+const API_BASE = 'http://localhost:3000/api/admin';
 
 export const fetchCategories = async () => {
   const response = await fetch(`${API_BASE}/categories`);
@@ -22,6 +23,17 @@ export const updateCategory = async (catId, title) => {
   });
   return await response.json();
 };
+
+export const arrangeCategories = async (catId, title) => {
+  const response = await fetch(`${API_BASE}/category/edit/${catId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ categoryTitle: title })
+  });
+  return await response.json();
+};
+
+
 
 export const deleteCategory = async (catId) => {
   const response = await fetch(`${API_BASE}/category/delete/${catId}`, {
@@ -48,6 +60,17 @@ export const updateSubCategory = async (catId, subCatId, title) => {
   return await response.json();
 };
 
+export const arrangeSubCategory = async (catId, subCategoryOrder) => {
+  const response = await fetch(`${API_BASE}/subcategory/${catId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ subCategoryOrder })
+  });
+  return await response.json();
+};
+
+
+
 export const deleteSubCategory = async (catId, subCatId) => {
   const response = await fetch(`${API_BASE}/subcategory/${catId}/${subCatId}`, {
     method: 'DELETE'
@@ -69,6 +92,16 @@ export const updateTask = async (catId, subCatId, taskId, title) => {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ taskTitle: title })
+  });
+  return await response.json();
+};
+
+export const arrangeTask = async (catId, subCatId, taskOrder) => {
+  console.log({taskOrder})
+  const response = await fetch(`${API_BASE}/task/${catId}/${subCatId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({taskOrder})
   });
   return await response.json();
 };
