@@ -12,7 +12,7 @@ export const Home = () => {
         <Header />
         < Hero />
         <Category />
-        < Learnmore/>
+        <Learnmore/>
         <Workstarting />
         <Footer2 /> 
     </div>
