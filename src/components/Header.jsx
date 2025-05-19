@@ -16,7 +16,7 @@ const Header = () => {
            <Link to="/"> MESUDAR</Link>
           </div>
           <div
-            className={`grid transition-[grid-template-rows] duration-500 ease-in-out overflow-hidden max-lg:gap-4 max-lg:items-start max-lg:w-full max-lg:absolute max-lg:top-full max-lg:left-0 max-lg:bg-white max-lg:shadow-sm max-lg:flex-col z-30 2xl:mr-32
+            className={`grid transition-[grid-template-rows] duration-500 ease-in-out overflow-hidden max-lg:gap-4 max-lg:items-start max-lg:w-full max-lg:absolute max-lg:top-full max-lg:left-0 max-lg:bg-white max-lg:shadow-sm max-lg:flex-col z-30 
             ${
               isExpanded ? "grid-rows-[1fr] max-lg:pb-2" : "grid-rows-[0fr]"
             } lg:grid-rows-[1fr]`}

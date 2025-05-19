@@ -19,7 +19,7 @@ const Workstarting = () => {
         <div className="relative group w-fit flex items-center overflow-hidden rounded-full">
             <div className="absolute top-0 left-0 w-0 h-full bg-black z-10 group-hover:w-full transition-all duration-500 ease-in-out"></div>
             <button
-              className="relative z-20 w-fit bg-gradient-to-br from-green-400 to-teal-400  group-hover:bg-none text-white rounded-full px-8 py-4 text-lg transition-all duration-500 ease-in-out"
+              className="relative z-20 w-fit bg-[#13AE8D] group-hover:bg-transparent text-white rounded-full px-8 py-4 text-lg transition-all duration-500 ease-in-out"
             >
               let's go
             </button>

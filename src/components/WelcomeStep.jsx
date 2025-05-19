@@ -94,7 +94,7 @@ export const WelcomeStep = ({ onNext }) => {
             <div className="absolute top-0 left-0 w-0 h-full bg-black z-10 group-hover:w-full transition-all duration-500 ease-in-out"></div>
             <button
               onClick={onNext}
-              className="relative z-20 w-fit bg-gradient-to-br from-green-400 to-teal-400  group-hover:bg-none text-white rounded-full px-8 py-4 text-lg transition-all duration-500 ease-in-out"
+              className="relative z-20 w-fit bg-[#14B8A6] group-hover:bg-none text-white rounded-full px-8 py-4 text-lg transition-all duration-500 ease-in-out"
             >
               let's go
             </button>
@@ -105,7 +105,7 @@ export const WelcomeStep = ({ onNext }) => {
           {steps.map((step) => (
             <div
               key={step.id}
-              className="flex gap-4  flex-col  group group-hover:text-[#fff] cursor-pointer border-2 border-gray-200 backdrop-blur-lg rounded-xl py-10 px-5 hover:bg-gradient-to-br from-green-400 to-teal-400  shadow-xl ease-in-out  transition-all duration-500"
+              className="flex gap-4  flex-col  group group-hover:text-[#fff] cursor-pointer border-2 border-gray-200 backdrop-blur-lg rounded-xl py-10 px-5 hover:bg-[#13AE8D]  shadow-xl ease-in-out  transition-all duration-500"
             >
                <div className="text-[#14B8A6] group-hover:text-[#fff] transition-all ease-in-out duration-300"> {step.icon}</div>
               <h3 className="text-[20px] font-semibold  group-hover:text-[#fff] transition-all ease-in-out duration-300">{step.title}</h3>

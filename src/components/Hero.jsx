@@ -11,7 +11,9 @@ const Hero = () => {
     <div className="flex flex-col md:flex-row items-center gap-12">
       {/* Left Content */}
       <div className="md:w-1/2 w-full flex flex-col gap-6 text-left z-20">
-        <p className="uppercase text-sm tracking-widest text-[#13AE8D] font-semibold">17 Years of Experience</p>
+        <p className="uppercase text-sm tracking-widest text-[#13AE8D] font-semibold">
+          Mesudar.com is a free tool
+        </p>
         <h1 className="text-[30px] leading-9 lg:text-6xl font-bold text-gray-900 lg:leading-[70px] pb-3">
           Running a <span className="text-[#13AE8D] ">shul comes</span> with
         <span className="text-[#13AE8D] "> countless </span>responsibilities
@@ -29,7 +31,7 @@ const Hero = () => {
         <div className="relative group w-fit flex items-center overflow-hidden rounded-full">
             <div className="absolute top-0 left-0 w-0 h-full bg-black z-10 group-hover:w-full transition-all duration-500 ease-in-out"></div>
             <button
-              className="relative z-20 w-fit bg-gradient-to-br from-green-400 to-teal-400  group-hover:bg-transparent text-white rounded-full px-8 py-4 text-lg transition-all duration-300"
+              className="relative z-20 w-fit bg-[#13AE8D] group-hover:bg-transparent text-white rounded-full px-8 py-4 text-lg transition-all duration-300"
             >
                 READ MORE
             </button>
