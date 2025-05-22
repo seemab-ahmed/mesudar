@@ -46,6 +46,7 @@ export const CategoriesPage = () => {
   const handleArrangeCategories = async () => {
     try {
       const categoryOrder = categories.map(cat => cat._id);
+      console.log(categoryOrder);
       await arrangeCategories(categoryOrder);
       setIsArrange(false);
       setRefreshTrigger(prev => !prev);

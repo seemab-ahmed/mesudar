@@ -1,5 +1,5 @@
-const API_BASE = 'https://admin.mesudar.com/api/admin';
-// const API_BASE = 'http://localhost:3000/api/admin';
+// const API_BASE = 'https://admin.mesudar.com/api/admin';
+const API_BASE = 'http://localhost:3000/api/admin';
 
 export const fetchCategories = async () => {
   const response = await fetch(`${API_BASE}/categories`);
@@ -24,11 +24,11 @@ export const updateCategory = async (catId, title) => {
   return await response.json();
 };
 
-export const arrangeCategories = async (catId, title) => {
-  const response = await fetch(`${API_BASE}/category/edit/${catId}`, {
+export const arrangeCategories = async (categoryOrder) => {
+  const response = await fetch(`${API_BASE}/category/reorder`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ categoryTitle: title })
+    body: JSON.stringify({categoryOrder}),
   });
   return await response.json();
 };

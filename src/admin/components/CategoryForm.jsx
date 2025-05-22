@@ -1,6 +1,6 @@
 // CategoryForm.jsx
 import { useState } from 'react';
-import { createCategory, updateCategory } from '../services/api';
+import { createCategory, updateCategory, arrangeCategories } from '../services/api';
 
 export const CategoryForm = ({ category, onSuccess }) => {
   const [title, setTitle] = useState(category?.categoryTitle || '');
