@@ -1,51 +1,52 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { CategorySelection } from '../components/CategorySelection';
 import { TaskSelection } from '../components/TaskSelection';
 import { ExportStep } from '../components/ExportStep';
 import { StepsProgress } from '../components/StepsProgress';
 import { WelcomeStep } from '../components/WelcomeStep';
 
-
 export const Category = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [checkedItems, setCheckedItems] = useState({});
   const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Initialize as true since we load on mount
   const [error, setError] = useState(null);
 
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        // const response = await fetch('https://admin.mesudar.com/api/user/event');
-        const response = await fetch('http://localhost:3000/api/user/event');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        setCategories(data.categories);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+  // Memoized fetch function to prevent recreation on every render
+  const fetchCategories = useCallback(async () => {
+    try {
+      setLoading(true);
+      // const response = await fetch('https://admin.mesudar.com/api/user/event');
+      const response = await fetch('http://localhost:3000/api/user/event');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    };
+      const data = await response.json();
+      setCategories(data.categories);
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+      // Optionally: retry logic could go here
+    } finally {
+      setLoading(false);
+    }
+  }, []); // Empty dependency array means this is created once
 
+  // Fetch categories on component mount only
+  useEffect(() => {
     fetchCategories();
-    // setCategories(mainCategory.categories);
-  }, [categories]);
+  }, [fetchCategories]); // Only runs when fetchCategories changes (which it won't)
 
-  // Steps data
+  // Steps data - moved outside component or memoized since it's static
   const steps = [
     { id: 1, title: "Choose a Category" },
     { id: 2, title: "Select the tasks that apply to you" },
     { id: 3, title: "Export your checklist" }
   ];
 
-  // Transform the API data into tasksData format
-  const getTasksData = () => {
+  // Memoized task data transformation
+  const getTasksData = useCallback(() => {
     if (!selectedCategory) return {};
     
     const category = categories.find(cat => cat._id === selectedCategory._id);
@@ -60,40 +61,39 @@ export const Category = () => {
     });
     
     return tasksData;
-  };
+  }, [categories, selectedCategory]);
 
   // Handle checkbox changes
-  const handleCheckboxChange = (subcategory, task, isChecked) => {
+  const handleCheckboxChange = useCallback((subcategory, task, isChecked) => {
     setCheckedItems(prevState => ({
       ...prevState,
       [`${subcategory}-${task}`]: isChecked
     }));
-  };
+  }, []);
 
-  // Function to proceed to next step
-  const nextStep = () => {
+  // Navigation functions
+  const nextStep = useCallback(() => {
     if (currentStep < steps.length) {
       setCurrentStep(currentStep + 1);
     }
-  };
+  }, [currentStep, steps.length]);
 
-  // Function to go back to previous step
-  const prevStep = () => {
+  const prevStep = useCallback(() => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
     }
-  };
+  }, [currentStep]);
 
   // Handle category selection
-  const handleCategorySelect = (category) => {
+  const handleCategorySelect = useCallback((category) => {
     setSelectedCategory(category);
     nextStep();
-  };
+  }, [nextStep]);
 
   // Render the appropriate step content
-  const renderStepContent = () => {
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
+  const renderStepContent = useCallback(() => {
+    if (loading) return <div className="text-center py-8">Loading categories...</div>;
+    if (error) return <div className="text-red-500 text-center py-8">Error: {error}</div>;
 
     switch (currentStep) {
       case 0:
@@ -138,11 +138,24 @@ export const Category = () => {
       default:
         return <div>Unknown step</div>;
     }
-  };
+  }, [
+    currentStep, 
+    loading, 
+    error, 
+    categories, 
+    selectedCategory, 
+    checkedItems, 
+    getTasksData, 
+    handleCheckboxChange, 
+    handleCategorySelect, 
+    nextStep, 
+    prevStep, 
+    steps
+  ]);
 
   return (
-    <div className=" bg-white">
-      <div className="max-w-[1080px] xl:max-w-[1300px]  px-5 m-auto py-[60px]  ">
+    <div className="bg-white">
+      <div className="max-w-[1080px] xl:max-w-[1300px] px-5 m-auto py-[60px]">
         {currentStep > 0 && currentStep <= steps.length && (
           <StepsProgress steps={steps} currentStep={currentStep - 1} />
         )}
@@ -151,127 +164,3 @@ export const Category = () => {
     </div>
   );
 };
-// border-2 border-teal-500   rounded-lg
-
-// const mainCategory = {
-//   "message": "All the categories",
-//   "categories": [
-//     {
-//       "_id": "68219bc69a303e1be7c628bd",
-//       "categoryTitle": "Test Category",
-//       "subCategory": [
-//       {
-//       "subCategoryTitle": "test subcategory",
-//       "tasks": [
-//       {
-//       "taskTitle": "task 1",
-//       "_id": "68219bde9a303e1be7c628c9"
-//       },
-//       {
-//       "taskTitle": "task 2",
-//       "_id": "68219be89a303e1be7c628d1"
-//       },
-//       {
-//       "taskTitle": "task 3",
-//       "_id": "68219c1d9a303e1be7c628fc"
-//       }
-//       ],
-//       "_id": "68219bd29a303e1be7c628c1"
-//       }
-//       ],
-//       "__v": 2
-//       },
-//       {
-//       "_id": "68219cb89a303e1be7c62912",
-//       "categoryTitle": "Category 2",
-//       "subCategory": [
-//       {
-//       "subCategoryTitle": "sub category 1",
-//       "tasks": [
-//       {
-//       "taskTitle": "task 1",
-//       "_id": "68219cf99a303e1be7c62951"
-//       },
-//       {
-//       "taskTitle": "task 2",
-//       "_id": "68219d009a303e1be7c62961"
-//       },
-//       {
-//       "taskTitle": "task 3",
-//       "_id": "68219d079a303e1be7c62973"
-//       }
-//       ],
-//       "_id": "68219cdd9a303e1be7c62925"
-//       },
-//       {
-//       "subCategoryTitle": "sub category 2",
-//       "tasks": [
-//       {
-//       "taskTitle": "task 1",
-//       "_id": "68219d279a303e1be7c6299d"
-//       },
-//       {
-//       "taskTitle": "task 2",
-//       "_id": "68219d2f9a303e1be7c629b3"
-//       },
-//       {
-//       "taskTitle": "task 3",
-//       "_id": "68219d3b9a303e1be7c629cb"
-//       }
-//       ],
-//       "_id": "68219ce29a303e1be7c6292f"
-//       },
-//       {
-//       "subCategoryTitle": "sub category 3",
-//       "tasks": [
-//       {
-//       "taskTitle": "task 1",
-//       "_id": "68219d519a303e1be7c62a0f"
-//       }
-//       ],
-//       "_id": "68219ce99a303e1be7c6293b"
-//       }
-//       ],
-//       "__v": 3
-//       },
-//       {
-//       "_id": "68219cc19a303e1be7c62919",
-//       "categoryTitle": "Category 3",
-//       "subCategory": [
-//       {
-//       "subCategoryTitle": "Subcategory 1",
-//       "tasks": [
-//       {
-//       "taskTitle": "task 1",
-//       "_id": "68219db99a303e1be7c62a84"
-//       }
-//       ],
-//       "_id": "68219da49a303e1be7c62a49"
-//       },
-//       {
-//       "subCategoryTitle": "Subcategory 2",
-//       "tasks": [
-//       {
-//       "taskTitle": "task 1",
-//       "_id": "68219dca9a303e1be7c62ac0"
-//       }
-//       ],
-//       "_id": "68219dac9a303e1be7c62a5d"
-//       }
-//       ],
-//       "__v": 2
-//       },
-//       {
-//       "_id": "6821fbaf9a303e1be7c62b13",
-//       "categoryTitle": "Test 4",
-//       "subCategory": [
-//       {
-//       "subCategoryTitle": "Test",
-//       "tasks": [],
-//       "_id": "6821fbcf9a303e1be7c62b61"
-//       }
-//       ],
-//       "__v": 1
-//       }
-//   ]
-//   }

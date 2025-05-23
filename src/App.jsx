@@ -5,6 +5,7 @@ import { AdminLayout } from './admin/components/AdminLayout';
 import { CategoriesPage } from './admin/pages/CategoriesPage';
 import { SubCategoriesPage } from './admin/pages/SubCategoriesPage';
 import { TasksPage } from './admin/pages/TasksPage';
+import SuggestionsList from "./admin/pages/SuggestionPage";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/category" element={<Category />} />
       <Route path="/admin" element={<AdminLayout />}>
+      <Route path="/admin/suggestion" element={<SuggestionsList />} />
           <Route index element={<CategoriesPage />} />
           <Route path="categories" element={<CategoriesPage />}>
             <Route path="new" element={<CategoriesPage />} />

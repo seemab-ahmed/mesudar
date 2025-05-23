@@ -42,6 +42,21 @@ export const deleteCategory = async (catId) => {
   return await response.json();
 };
 
+
+export const createSuggestion = async (suggestionData) => {
+  const response = await fetch(`${API_BASE}/suggestion/create`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(suggestionData)
+  });
+  
+  if (!response.ok) {
+    throw new Error('Failed to create suggestion');
+  }
+  
+  return await response.json();
+};
+
 export const createSubCategory = async (catId, title) => {
   const response = await fetch(`${API_BASE}/subcategory/${catId}`, {
     method: 'POST',

@@ -9,6 +9,7 @@ export const AdminLayout = () => {
           <nav>
             <ul className="flex space-x-6">
               <li><Link to="/" className="hover:underline">Home</Link></li>
+              <li><Link to="/admin/suggestion" className="hover:underline">Feedback</Link></li>
               {/* <li><Link to="/" className="hover:underline">Logout</Link></li> */}
             </ul>
           </nav>

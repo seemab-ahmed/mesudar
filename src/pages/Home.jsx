@@ -6,6 +6,7 @@ import Workstarting from '../components/workstarting'
 import LearnMore from '../components/LearnMore';
 // import Footer from '../components/Footer'
 import { Category } from './Category'
+import SuggestionForm from '../admin/pages/SuggestionForm'
 export const Home = () => {
   return (
     <div>
@@ -13,6 +14,7 @@ export const Home = () => {
         < Hero />
         <Category />
         <LearnMore/>
+        <SuggestionForm />
         <Workstarting />
         <Footer2 /> 
     </div>

@@ -6,16 +6,18 @@ export const TaskSelection = ({
   onNext,
   onBack,
 }) => {
+  const handleSelectAll = (subcategory, tasks) => {
+    const allCurrentlySelected = tasks.every(
+      task => checkedItems[`${subcategory}-${task}`]
+    );
+    
+    tasks.forEach(task => {
+      onCheckboxChange(subcategory, task, !allCurrentlySelected);
+    });
+  };
+
   return (
     <div className="py-12 px-5 max-w-4xl mx-auto">
-      {/* Header */}
-      {/* <div className="text-center mb-10">
-        <h1 className="text-4xl font-black text-[#000] mb-2">
-          mesudar.com
-        </h1>
-        <p className="text-lg text-gray-500 tracking-wide">Making Gabboim's lives easier</p>
-      </div> */}
-
       {/* Category Title */}
       <div className="text-center mb-12">
         <div className="inline-block bg-gradient-to-r from-[#13AE8D] to-[#1dd1a1] text-white rounded-full px-8 py-3 shadow-md shadow-teal-300/30 backdrop-blur-md">
@@ -28,45 +30,62 @@ export const TaskSelection = ({
 
       {/* Tasks */}
       {selectedCategory.length > 0 && tasksData[selectedCategory] &&
-        Object.entries(tasksData[selectedCategory]).map(([subcategory, tasks], index) => (
-          <div
-            key={index}
-            className="bg-white/80 border border-gray-200 rounded-2xl p-6 mb-8 "
-          >
-            <h3 className="text-xl font-bold text-[#13AE8D] mb-5 capitalize">{subcategory}</h3>
-            <div className="space-y-4">
-              {tasks.map((task, taskIndex) => (
-                <label
-                  key={taskIndex}
-                  htmlFor={`${subcategory}-${taskIndex}`}
-                  className="flex items-center gap-4 cursor-pointer group"
-                >
-                <input
-                  type="radio"
-                  id={`${subcategory}-${taskIndex}`}
-                  className="w-5 h-5 accent-black"
-                  checked={checkedItems[`${subcategory}-${task}`] || false}
-                  onClick={() => {
-                    const key = `${subcategory}-${task}`;
-                    const wasChecked = checkedItems[key];
-                    onCheckboxChange(subcategory, task, !wasChecked); // toggle manually
-                  }}
-                  readOnly
-                />
+        Object.entries(tasksData[selectedCategory]).map(([subcategory, tasks], index) => {
+          const allSelected = tasks.every(task => checkedItems[`${subcategory}-${task}`]);
+          const hasTasks = tasks.length > 0;
 
-
-                  <span className="text-gray-800 text-base font-medium group-hover:text-[#13AE8D] capitalize">
-                    {task}
-                  </span>
-                </label>
-              ))}
+          return (
+            <div
+              key={index}
+              className="bg-white/80 border border-gray-200 rounded-2xl p-6 mb-8"
+            >
+              <div className="flex justify-between items-center mb-5">
+                <h3 className="text-xl font-bold text-[#13AE8D] capitalize">{subcategory}</h3>
+                {hasTasks && (
+                  <button
+                    onClick={() => handleSelectAll(subcategory, tasks)}
+                    className={`px-4 py-1.5 text-sm font-semibold rounded-full transition-all duration-300 ${
+                      allSelected
+                        ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        : 'bg-[#13AE8D] text-white hover:bg-[#0f9d80]'
+                    }`}
+                  >
+                    {allSelected ? 'Deselect All' : 'Select All'}
+                  </button>
+                )}
+              </div>
+              <div className="space-y-4">
+                {tasks.map((task, taskIndex) => (
+                  <label
+                    key={taskIndex}
+                    htmlFor={`${subcategory}-${taskIndex}`}
+                    className="flex items-center gap-4 cursor-pointer group"
+                  >
+                    <input
+                      type="radio"
+                      id={`${subcategory}-${taskIndex}`}
+                      className="w-5 h-5 accent-black"
+                      checked={checkedItems[`${subcategory}-${task}`] || false}
+                      onClick={() => {
+                        const key = `${subcategory}-${task}`;
+                        const wasChecked = checkedItems[key];
+                        onCheckboxChange(subcategory, task, !wasChecked);
+                      }}
+                      readOnly
+                    />
+                    <span className="text-gray-800 text-base font-medium group-hover:text-[#13AE8D] capitalize">
+                      {task}
+                    </span>
+                  </label>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
 
       {/* Navigation Buttons */}
       <div className="mt-12 flex justify-between items-center">
-      <button
+        <button
           onClick={onBack}
           className="border-2 border-[#13AE8D] text-[#13AE8D] font-semibold rounded-full px-6 py-2 hover:bg-[#13AE8D] hover:text-[#fff] transition-colors"
         >
@@ -82,13 +101,3 @@ export const TaskSelection = ({
     </div>
   );
 };
-
-
-
-
-
-
-
-
-
-
