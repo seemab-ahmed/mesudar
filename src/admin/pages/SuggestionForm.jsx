@@ -76,13 +76,13 @@ const SuggestionForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Submit Your Suggestion</h2>
+    <div className="max-w-[550px] mx-auto bg-white rounded-lg border border-[#1f7333] p-6 my-[50px]">
+      <h2 className="text-2xl font-bold text-[#1f7333] mb-4">Submit Your Suggestion</h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-            Subject <span className="text-red-500">*</span>
+          <label htmlFor="subject" className="block text-[18px] font-semibold text-gray-700 mb-1">
+            Subject:
           </label>
           <input
             type="text"
@@ -90,8 +90,8 @@ const SuggestionForm = () => {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            className={`w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition ${
-              errors.subject ? 'border-red-500' : 'border-gray-300'
+            className={`w-full px-3 py-2 border rounded-md focus:ring-1  focus:ring-[#1f7333] focus:border-[#1f7333] outline-none transition ${
+              errors.subject ? 'border-red-500' : 'border-[#000]'
             }`}
             placeholder="What's your suggestion about?"
           />
@@ -99,8 +99,8 @@ const SuggestionForm = () => {
         </div>
         
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-            Message <span className="text-red-500">*</span>
+          <label htmlFor="message" className="block text-[18px] font-semibold text-gray-700 mb-1">
+             Message:
           </label>
           <textarea
             id="message"
@@ -108,8 +108,8 @@ const SuggestionForm = () => {
             value={formData.message}
             onChange={handleChange}
             rows={4}
-            className={`w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition ${
-              errors.message ? 'border-red-500' : 'border-gray-300'
+            className={`w-full px-3 py-2 border rounded-md focus:ring-1 border-[#000] focus:ring-[#1f7333] focus:border-[#1f7333] outline-none transition ${
+              errors.message ? 'border-red-500' : 'border-[#000]'
             }`}
             placeholder="Please describe your suggestion in detail..."
           />
@@ -118,8 +118,8 @@ const SuggestionForm = () => {
         
         <div className="grid grid-cols-1 gap-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-              Your Name <span className="text-red-500">*</span>
+            <label htmlFor="name" className="block text-[18px] font-semibold text-gray-700 mb-1">
+              Your name:
             </label>
             <input
               type="text"
@@ -127,8 +127,8 @@ const SuggestionForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className={`w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition ${
-                errors.name ? 'border-red-500' : 'border-gray-300'
+              className={`w-full px-3 py-2 border rounded-md focus:ring-1 border-[#000] focus:ring-[#1f7333] focus:border-[#1f7333] outline-none transition ${
+                errors.name ? 'border-red-500' : 'border-[#000]'
               }`}
               placeholder="Your full name"
             />
@@ -136,8 +136,8 @@ const SuggestionForm = () => {
           </div>
           
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Your Email <span className="text-red-500">*</span>
+            <label htmlFor="email" className="block text-[18px] font-semibold text-gray-700 mb-1">
+              Your email:
             </label>
             <input
               type="email"
@@ -145,8 +145,8 @@ const SuggestionForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition ${
-                errors.email ? 'border-red-500' : 'border-gray-300'
+              className={`w-full px-3 py-2 border rounded-md focus:ring-1 border-[#000] focus:ring-[#1f7333] focus:border-[#1f7333] outline-none transition ${
+                errors.email ? 'border-red-500' : 'border-[#000]'
               }`}
               placeholder="your@email.com"
             />
@@ -166,11 +166,11 @@ const SuggestionForm = () => {
           </div>
         )}
         
-        <div className="pt-2">
+        <div className="flex items-center">
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition ${
+            className={`w-fit m-auto py-3 px-6 bg-[#1f7333] hover:bg-[#89c497] text-white font-medium rounded-[50px] transition ${
               isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
             }`}
           >

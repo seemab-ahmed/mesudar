@@ -12,10 +12,11 @@ const Header = () => {
     <header className="fixed w-full top-0 bg-white z-50 py-5">
       <div className="max-w-[1080px] xl:max-w-[1300px]   m-auto px-5 ">
         <nav className="w-full  flex justify-between items-center relative">
-          <div className="logo text-[30px] font-bold text-[#14B8A6]">
-           <Link to="/"> MESUDAR</Link>
+          <div className="logo text-[30px] font-bold text-[#1f7333] m-auto">
+           <Link to="/" className="flex items-end gap-2 lg:text-[70px] text-[40px] lg:leading-[60px] leading-[40px] font-medium">
+             <span className="bg-[#1f7333] lg:w-[40px] w-[24px] lg:h-[40px] h-[24px] p-1 rounded-[4px] flex justify-center items-center text-white lg:text-2xl text-xl">✔</span> mesdur.com</Link>
           </div>
-          <div
+          {/* <div
             className={`grid transition-[grid-template-rows] duration-500 ease-in-out overflow-hidden max-lg:gap-4 max-lg:items-start max-lg:w-full max-lg:absolute max-lg:top-full max-lg:left-0 max-lg:bg-white max-lg:shadow-sm max-lg:flex-col z-30 
             ${
               isExpanded ? "grid-rows-[1fr] max-lg:pb-2" : "grid-rows-[0fr]"
@@ -41,8 +42,7 @@ const Header = () => {
                 <div className="w-7 h-1 bg-[#13AE8D] mb-1 rounded-lg"></div>
                 <div className="w-9 h-1 bg-[#13AE8D] mb-1 rounded-lg"></div>
                 <div className="w-7 h-1 bg-[#13AE8D] rounded-lg"></div>
-            {/* <img width={35} height={35} src={burger} alt="hamburger menu" /> */}
-          </button>
+          </button> */}
         </nav>
       </div>
     </header>

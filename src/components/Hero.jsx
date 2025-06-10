@@ -3,55 +3,52 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import bannerimage from "../Images/bannerImage.jpg";
+import bannerimage from "../Images/bannerimg.png";
 
 const Hero = () => {
   return (
-    <div className="bg-white md:pt-[150px] pt-[100px] md:pb-16 pb-10 px-5 m-auto max-w-[1080px] xl:max-w-[1300px] overflow-hidden relative">
-    <div className="flex flex-col md:flex-row items-center gap-12">
+    <div className="bg-white md:pt-[150px] pt-[100px] md:pb-16 pb-10 overflow-hidden relative ">
+    <div className="flex flex-col lg:flex-row  gap-12 clip-shape">
       {/* Left Content */}
-      <div className="md:w-1/2 w-full flex flex-col gap-6 text-left z-20">
-        <p className="uppercase text-sm tracking-widest text-[#13AE8D] font-semibold">
-          Mesudar.com is a free tool
-        </p>
-        <h1 className="text-[30px] leading-9 lg:text-6xl font-bold text-gray-900 lg:leading-[70px] pb-3">
-          Running a <span className="text-[#13AE8D] ">shul comes</span> with
-        <span className="text-[#13AE8D] "> countless </span>responsibilities
+      <div className="lg:w-[70%] lg:rounded-r-[100px]  md:rounded-r-[50px] rounded-r-[30px]  bg-[#fcf1e6] w-full flex flex-col gap-3 text-left z-20 2xl:pl-[200px] md:pl-[100px] pl-[20px] md:py-[60px] py-[40px] lg:pr-[50px] pr-[24px]">
+        <h1 className="2xl:text-[80px]   xl:text-[70px] text-[40px] 2xl:leading-[90px]  xl:leading-[80px]  leading-[60px] lg:text-6xl font-bold text-[#1f7333]  pb-3 2xl:max-w-[900px] max-w-[730px] ">
+          Making Gaboim’s lives easier
         </h1>
 
-        <div> 
+        {/* <div> 
           <div className="max-w-28 h-2 rounded-full bg-[#13AE8D]"></div>
-        </div>
+        </div> */}
 
-        <p className="text-gray-600 text-base leading-6 max-w-md">
-             Mesudar.com is a free tool that makes it easy for Gabboim to create
-            customized checklists for every task — from Shabbos prep and
-            cleaning checklists to Yom Tov management.
+        <p className="text-gray-600 2xl:text-[50px] text-[20px] md:text-[35px] 2xl:leading-[60px] md:leading-[40px] leading-6 ">
+            Running a shul comes with countless responsibilities. 
+            Mesudar.com is a <span className="text-[#1f7333]">free tool</span> that makes it easy for Gabboim
+            to create customised checklists for every task - from Shabbos 
+            prep and cleaning to Yom Tov management. 
         </p>
-        <div className="relative group w-fit flex items-center overflow-hidden rounded-full">
+        {/* <div className="relative group w-fit flex items-center overflow-hidden rounded-full">
             <div className="absolute top-0 left-0 w-0 h-full bg-black z-10 group-hover:w-full transition-all duration-500 ease-in-out"></div>
             <button
               className="relative z-20 w-fit bg-[#13AE8D] group-hover:bg-transparent text-white rounded-full px-8 py-4 text-lg transition-all duration-300"
             >
                 READ MORE
             </button>
-          </div>
+          </div> */}
     
       </div>
   
       {/* Right Image */}
-      <div className= "w-[85%] md:w-1/2  md:m-0 ml-auto relative z-10">
-        <div className="relative w-full h-full flex items-center justify-center">
-          <div className=" bg-gray-200 md:p-7 p-3 rounded-[999px]  overflow-hidden z-20">
+      <div className= "w-full lg:w-[30%] px-5">
+        <div className="relative w-full h-full flex items-center ">
+          <div className="  overflow-hidden">
             <img
               src={bannerimage}
               alt="Hero"
-              className="w-full h-full object-cover rounded-full"
+              className="w-full h-full object-cover "
             />
           </div>
-          {/* Decorative Background Shape */}
+          {/* Decorative Background Shape
           <div className="absolute top-[50px] md:left-[-130px] left-[-50px] w-full md:max-w-[350px] max-w-[200px] md:h-[40px] h-[30px]  bg-gray-200 rounded-full z-0"></div>
-          <div className="absolute md:top-[110px] top-[100px] md:left-[-50px] left-[-30px]  w-full md:max-w-[150px]  max-w-[120px]  md:h-[40px] h-[30px]  bg-gray-200 rounded-full z-0"></div>
+          <div className="absolute md:top-[110px] top-[100px] md:left-[-50px] left-[-30px]  w-full md:max-w-[150px]  max-w-[120px]  md:h-[40px] h-[30px]  bg-gray-200 rounded-full z-0"></div> */}
         </div>
       </div>
     </div>
