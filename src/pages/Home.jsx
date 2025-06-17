@@ -13,9 +13,9 @@ export const Home = () => {
         <Header />
         < Hero />
         <Category />
-        <LearnMore/>
+      
         <SuggestionForm />
-        <Workstarting />
+       
         <Footer2 /> 
     </div>
   )

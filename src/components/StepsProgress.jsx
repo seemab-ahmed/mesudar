@@ -12,7 +12,7 @@
       <div key={step.id} className="flex items-center whitespace-nowrap">
         <div
           className={`w-10 h-10 rounded-full flex items-center justify-center 
-            ${index <= currentStep ? 'bg-[#13AE8D] text-white' : 'bg-gray-200 text-gray-600'}`}
+            ${index <= currentStep ? 'bg-[#1f7333] text-white' : 'bg-gray-200 text-gray-600'}`}
         >
           {step.id}
         </div>

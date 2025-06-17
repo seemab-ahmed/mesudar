@@ -7,11 +7,11 @@ import bannerimage from "../Images/bannerimg.png";
 
 const Hero = () => {
   return (
-    <div className="bg-white md:pt-[150px] pt-[100px] md:pb-16 pb-10 overflow-hidden relative ">
+    <div className="bg-white md:pt-[150px] pt-[120px]  md:pb-16 pb-10 overflow-hidden relative ">
     <div className="flex flex-col lg:flex-row  gap-12 clip-shape">
       {/* Left Content */}
       <div className="lg:w-[70%] lg:rounded-r-[100px]  md:rounded-r-[50px] rounded-r-[30px]  bg-[#fcf1e6] w-full flex flex-col gap-3 text-left z-20 2xl:pl-[200px] md:pl-[100px] pl-[20px] md:py-[60px] py-[40px] lg:pr-[50px] pr-[24px]">
-        <h1 className="2xl:text-[80px]   xl:text-[70px] text-[40px] 2xl:leading-[90px]  xl:leading-[80px]  leading-[60px] lg:text-6xl font-bold text-[#1f7333]  pb-3 2xl:max-w-[900px] max-w-[730px] ">
+        <h1 className="2xl:text-[80px]   xl:text-[70px] text-[35px] 2xl:leading-[90px]  xl:leading-[80px]  leading-[45px] lg:text-6xl font-bold text-[#1f7333]  pb-3 2xl:max-w-[900px] max-w-[730px] ">
           Making Gaboim’s lives easier
         </h1>
 
@@ -19,7 +19,7 @@ const Hero = () => {
           <div className="max-w-28 h-2 rounded-full bg-[#13AE8D]"></div>
         </div> */}
 
-        <p className="text-gray-600 2xl:text-[50px] text-[20px] md:text-[35px] 2xl:leading-[60px] md:leading-[40px] leading-6 ">
+        <p className="text-gray-600  lg:text-[28px] text-[20px] md:text-[35px] md:leading-[40px] leading-6 ">
             Running a shul comes with countless responsibilities. 
             Mesudar.com is a <span className="text-[#1f7333]">free tool</span> that makes it easy for Gabboim
             to create customised checklists for every task - from Shabbos 

@@ -17,13 +17,13 @@ export const TaskSelection = ({
   };
 
   return (
-    <div className="py-12 px-5 max-w-4xl mx-auto">
+    <div className="py-12 px-5 max-w-5xl mx-auto">
       {/* Category Title */}
-      <div className="text-center mb-12">
-        <div className="inline-block bg-gradient-to-r from-[#13AE8D] to-[#1dd1a1] text-white rounded-full px-8 py-3 shadow-md shadow-teal-300/30 backdrop-blur-md">
+      <div className="text-center mb-10">
+        {/* <div className="inline-block bg-gradient-to-r from-[#1f7333] to-[#1dd1a1] text-white rounded-full px-8 py-3 shadow-md shadow-teal-300/30 backdrop-blur-md">
           <p className="text-base md:text-lg font-semibold">{selectedCategory} Checklist</p>
-        </div>
-        <h2 className="text-2xl font-semibold mt-6 text-gray-800">
+        </div> */}
+        <h2 className="text-[45px] font-semibold  text-[#535252]">
           Select the tasks that apply to you
         </h2>
       </div>
@@ -37,48 +37,52 @@ export const TaskSelection = ({
           return (
             <div
               key={index}
-              className="bg-white/80 border border-gray-200 rounded-2xl p-6 mb-8"
+              className="bg-white/80 border-2 border-[#1f7333] rounded-2xl p-6 mb-8"
             >
               <div className="flex justify-between items-center mb-5">
-                <h3 className="text-xl font-bold text-[#13AE8D] capitalize">{subcategory}</h3>
+                <h3 className="text-[24px] font-bold text-[#1f7333] capitalize">{subcategory}</h3>
                 {hasTasks && (
                   <button
                     onClick={() => handleSelectAll(subcategory, tasks)}
                     className={`px-4 py-1.5 text-sm font-semibold rounded-full transition-all duration-300 ${
                       allSelected
                         ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                        : 'bg-[#13AE8D] text-white hover:bg-[#0f9d80]'
+                        : 'bg-[#1f7333] text-white hover:bg-[#1f7333]'
                     }`}
                   >
                     {allSelected ? 'Deselect All' : 'Select All'}
                   </button>
                 )}
               </div>
-              <div className="space-y-4">
-                {tasks.map((task, taskIndex) => (
-                  <label
-                    key={taskIndex}
-                    htmlFor={`${subcategory}-${taskIndex}`}
-                    className="flex items-center gap-4 cursor-pointer group"
-                  >
-                    <input
-                      type="radio"
-                      id={`${subcategory}-${taskIndex}`}
-                      className="w-5 h-5 accent-black"
-                      checked={checkedItems[`${subcategory}-${task}`] || false}
-                      onClick={() => {
-                        const key = `${subcategory}-${task}`;
-                        const wasChecked = checkedItems[key];
-                        onCheckboxChange(subcategory, task, !wasChecked);
-                      }}
-                      readOnly
-                    />
-                    <span className="text-gray-800 text-base font-medium group-hover:text-[#13AE8D] capitalize">
-                      {task}
-                    </span>
-                  </label>
-                ))}
-              </div>
+            <div className="space-y-4">
+              {tasks.map((task, taskIndex) => (
+                <label
+                  key={taskIndex}
+                  htmlFor={`${subcategory}-${taskIndex}`}
+                  className="flex items-center gap-4 cursor-pointer group"
+                >
+                  <input
+                    type="radio"
+                    id={`${subcategory}-${taskIndex}`}
+                    className="peer hidden"
+                    checked={checkedItems[`${subcategory}-${task}`] || false}
+                    onClick={() => {
+                      const key = `${subcategory}-${task}`;
+                      const wasChecked = checkedItems[key];
+                      onCheckboxChange(subcategory, task, !wasChecked);
+                    }}
+                    readOnly
+                  />
+                  <div
+                    className="w-6 h-6 rounded-full border-2 border-[#1f7333] flex items-center justify-center transition-all duration-300 peer-checked:bg-[#1f7333]"
+                  ></div>
+                  <span className="text-gray-800 text-[20px] font-medium group-hover:text-[#1f7333] capitalize">
+                    {task}
+                  </span>
+                </label>
+              ))}
+            </div>
+
             </div>
           );
         })}
@@ -87,13 +91,13 @@ export const TaskSelection = ({
       <div className="mt-12 flex justify-between items-center">
         <button
           onClick={onBack}
-          className="border-2 border-[#13AE8D] text-[#13AE8D] font-semibold rounded-full px-6 py-2 hover:bg-[#13AE8D] hover:text-[#fff] transition-colors"
+          className="border-2 border-[#1f7333] text-[#1f7333] font-semibold rounded-full px-6 py-2 hover:bg-[#1f7333] hover:text-[#fff] transition-colors"
         >
           Back
         </button>
         <button
           onClick={onNext}
-          className="px-8 py-3 bg-[#13AE8D] text-white font-semibold rounded-full hover:shadow-lg hover:bg-[#0f9d80] transition-all duration-300"
+          className="px-8 py-3 bg-[#1f7333] text-white font-semibold rounded-full hover:shadow-lg hover:bg-[#0f9d80] transition-all duration-300"
         >
           Continue
         </button>

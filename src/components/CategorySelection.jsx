@@ -62,27 +62,26 @@
 
 export const CategorySelection = ({ categories, categoryObjects, onSelect, onBack }) => {
   return (
-    <div className="">
+    <div className="bg-[#fcf1e6] rounded-xl px-6 py-10">
       {/* Header */}
       {/* <div className="text-center mb-8">
          <h1 className="text-4xl font-extrabold text-[#000] mb-1">mesudar.com</h1> 
         <p className="text-lg text-gray-600">Making Gabboim's lives easier</p>
       </div> */}
 
-      {/* Category Title */}
-      <div className="text-center mb-12">
-        <div className="text-[#13AE8D] ">
-          <p className="text-xl font-semibold">Choose a category</p>
+      <div className="text-center mb-10">
+        <div className="text-[#535252] ">
+          <p className="sm:text-[40px] text-[34px] font-bold">Choose a category</p>
         </div>
       </div>
 
       {/* Category Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:max-w-[85%] m-auto">
         {categoryObjects.map((category) => (
           <button
             key={category._id}
             onClick={() => onSelect(category)}
-            className="bg-white  group rounded-xl py-6 px-4 text-center shadow-custom-xl hover:bg-[#13AE8D] hover:text-[#000] transition-all duration-200"
+            className="bg-white  group  py-6 px-4 text-center border-2 border-[#1f7333] rounded-xl hover:bg-[#1f7333] hover:text-[#fff] transition-all duration-200"
           >
             <span className="text-lg  text-[#000] group-hover:text-[#fff] transition-all ease-in-out duration-500" >{category.categoryTitle}</span>
           </button>
@@ -90,14 +89,14 @@ export const CategorySelection = ({ categories, categoryObjects, onSelect, onBac
       </div>
 
       {/* Back Button */}
-      <div className="mt-10 flex justify-start">
+      <div className="mt-10 flex justify-start lg:max-w-[85%] m-auto">
         <button
           onClick={onBack}
-          className="border-2 border-[#13AE8D] text-[#13AE8D] font-semibold rounded-full px-6 py-2 hover:bg-[#13AE8D] hover:text-[#fff] transition-colors"
+          className="border-2 border-[#1f7333] text-[#1f7333] font-semibold rounded-full px-6 py-2 hover:bg-[#1f7333] hover:text-[#fff] transition-colors"
         >
           Back
         </button>
       </div>
     </div>
   );
-};
+}; 

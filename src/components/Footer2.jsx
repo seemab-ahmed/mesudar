@@ -32,10 +32,10 @@ const Footer2 = () => {
       ];
   return (
      <div className="mt-10">
-       <div className="bg-slate-700">
+       {/* <div className="bg-slate-700">
         <div className="max-w-[1080px] 2xl:max-w-[1440px] m-auto px-5 ">
                 <div className="flex-col justify-center flex md:flex-row items-center gap-6  pt-[66px] pb-[44px]">
-                    {/* Left Column */}
+                   
                     <div className="md:max-w-[500px] w-full flex flex-col items-center">
                         <div className="flex max-w-[228px] mb-[24px] logo text-[30px] font-bold text-[#fff]">
                         <Link to="/"> MESUDAR</Link>
@@ -91,7 +91,7 @@ const Footer2 = () => {
                     
                     </div>
 
-                    {/* Right Column - Links
+                    Right Column - Links
                     <div className="md:max-w-[532px] w-full justify-between flex md:flex-nowrap flex-wrap gap-4 text-sm text-gray-700">
                         {footerLinks.map((column, index) => (
                         <div key={index}>
@@ -112,12 +112,12 @@ const Footer2 = () => {
                             </ul>
                         </div>
                         ))}
-                    </div> */}
+                    </div> 
                 </div>
         </div>
 
-      </div>
-       <div className="copy-right py-5 border-t bg-[#13AE8D] px-4">
+      </div> */}
+       <div className="copy-right py-5 border-t bg-[#1f7333] px-4">
                 <span className="w-full block text-center text-[14px]  leading-6 text-[#fff] font-normal">Copyright 2025. All Rights Reserved.</span>
             </div>
     </div>
