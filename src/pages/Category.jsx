@@ -17,8 +17,8 @@ export const Category = () => {
   const fetchCategories = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://admin.mesudar.com/api/user/event');
-      // const response = await fetch('http://localhost:3000/api/user/event');
+      // const response = await fetch('https://admin.mesudar.com/api/user/event');
+      const response = await fetch('http://localhost:3000/api/user/event');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

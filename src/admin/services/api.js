@@ -1,5 +1,5 @@
-const API_BASE = 'https://admin.mesudar.com/api/admin';
-// const API_BASE = 'http://localhost:3000/api/admin';
+// const API_BASE = 'https://admin.mesudar.com/api/admin';
+const API_BASE = 'http://localhost:3000/api/admin';
 
 export const fetchCategories = async () => {
   const response = await fetch(`${API_BASE}/categories`);
