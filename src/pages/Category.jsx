@@ -14,24 +14,45 @@ export const Category = () => {
   const [error, setError] = useState(null);
 
   // Memoized fetch function to prevent recreation on every render
+  // const fetchCategories = useCallback(async () => {
+  //   try {
+  //     setLoading(true);
+  //     // const response = await fetch('https://admin.mesudar.com/api/user/event');
+  //     const response = await fetch('http://localhost:3000/api/user/event');
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+  //     const data = await response.json();
+  //     setCategories(data.categories);
+  //     setError(null);
+  //   } catch (err) {
+  //     setError(err.message);
+  //     // Optionally: retry logic could go here
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }, []); // Empty dependency array means this is created once
+
+
   const fetchCategories = useCallback(async () => {
-    try {
-      setLoading(true);
-      // const response = await fetch('https://admin.mesudar.com/api/user/event');
-      const response = await fetch('http://localhost:3000/api/user/event');
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      setCategories(data.categories);
-      setError(null);
-    } catch (err) {
-      setError(err.message);
-      // Optionally: retry logic could go here
-    } finally {
-      setLoading(false);
+  try {
+    setLoading(true);
+    const response = await fetch('http://localhost:3000/categories');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  }, []); // Empty dependency array means this is created once
+    const data = await response.json();
+    setCategories(data); // JSON Server returns array directly
+    setError(null);
+  } catch (err) {
+    setError(err.message);
+    console.error("Fetch error:", err);
+    // Fallback to local data if needed
+    // setCategories(localFallbackCategories);
+  } finally {
+    setLoading(false);
+  }
+}, []);
 
   // Fetch categories on component mount only
   useEffect(() => {
