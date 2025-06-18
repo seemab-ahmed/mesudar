@@ -7,7 +7,7 @@ import bannerimage from "../Images/bannerimg.png";
 
 const Hero = () => {
   return (
-    <div className="bg-white md:pt-[150px] pt-[120px]  md:pb-16 pb-10 overflow-hidden relative ">
+    <div className="bg-white pt-[50px]  md:pb-16 pb-10 overflow-hidden relative ">
     <div className="flex flex-col lg:flex-row  gap-12 clip-shape">
       {/* Left Content */}
       <div className="lg:w-[70%] lg:rounded-r-[100px]  md:rounded-r-[50px] rounded-r-[30px]  bg-[#fcf1e6] w-full flex flex-col gap-3 text-left z-20 2xl:pl-[200px] md:pl-[100px] pl-[20px] md:py-[60px] py-[40px] lg:pr-[50px] pr-[24px]">

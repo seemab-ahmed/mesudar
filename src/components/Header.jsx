@@ -9,7 +9,7 @@ const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <header className="fixed w-full top-0 bg-white z-50 md:py-5">
+    <header className=" w-full  bg-white border-b border-[#535252] md:py-5">
       <div className="max-w-[1080px] xl:max-w-[1300px]   m-auto px-5 ">
         <nav className="w-full  flex justify-between items-center relative">
           <div className="logo text-[30px] font-bold text-[#1f7333] m-auto">

@@ -191,58 +191,58 @@ export const ExportStep = ({
     }
 
     return (
-      <div className="border border-teal-400 shadow-md p-6 rounded-2xl bg-white">
-        <div className="bg-[#13AE8D] text-white font-semibold rounded-full py-2 px-6 mx-auto text-center w-fit mb-6 text-lg shadow-sm">
+      <div className="border border-[#1f7333] shadow-md p-6 rounded-2xl bg-white md:max-w-[80%] w-full m-auto">
+        <div className="bg-[#1f7333] text-white font-semibold rounded-full py-2 px-6 mx-auto text-center w-fit mb-6 text-lg shadow-sm">
           {selectedCategory} Checklist
         </div>
 
         {Object.entries(checkedTasks).map(([subcategory, tasks], index) => (
           <div key={index} className="mb-6">
-            <p className="text-teal-600 font-bold mb-2 text-lg">{subcategory}</p>
+            <p className="text-[#1f7333] font-bold mb-2 text-lg">{subcategory}</p>
             {tasks.map((task, taskIndex) => (
               <div key={taskIndex} className="flex items-center gap-2 mb-2">
-                <div className="w-4 h-4 border-2 border-[#000] rounded-[50%] flex items-center justify-center text-xs text-black"></div>
+                <div className="w-4 h-4 border-2 border-[#1f7333] rounded-[5px] flex items-center justify-center text-xs text-black"></div>
                 <span className="text-gray-800 text-sm">{task}</span>
               </div>
             ))}
           </div>
         ))}
 
-        <div className="text-center text-teal-600 mt-8">
+        {/* <div className="text-center text-teal-600 mt-8">
           <p className="font-semibold">mesudar.com</p>
           <p className="text-sm">making gabboim's lives easier</p>
-        </div>
+        </div> */}
       </div>
     );
   };
 
   return (
-    <div className="">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-[#13AE8D]">mesudar.com</h1>
+    <div className="bg-[#fcf1e6] py-10 md:px-10 px-3 rounded-xl">
+      {/* <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold text-[#1f7333]">mesudar.com</h1>
         <p className="text-sm text-gray-600">making gabboim's lives easier</p>
-      </div>
-
+      </div> */}
+      <h1 className="text-center mb-10 sm:text-[30px] text-[25px] font-semibold  text-[#535252]">Your Checklist is ready!</h1>
       {renderPreview()}
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
         <button
           onClick={generatePDF}
-          className="bg-[#13AE8D] hover:bg-teal-600 text-white py-3 px-5 rounded-full shadow-md transition"
+          className="bg-[#1f7333] hover:bg-[#1f733399] text-white py-3 px-5 rounded-full shadow-md transition"
           disabled={Object.keys(getCheckedTasks()).length === 0}
         >
           Export as PDF
         </button>
         <button
           onClick={generateExcel}
-          className="bg-[#13AE8D] hover:bg-teal-600 text-white py-3 px-5 rounded-full shadow-md transition"
+          className="bg-[#1f7333] hover:bg-[#1f733399] text-white py-3 px-5 rounded-full shadow-md transition"
           disabled={Object.keys(getCheckedTasks()).length === 0}
         >
           Export as Excel
         </button>
         <button
           onClick={generateWord}
-          className="bg-[#13AE8D] hover:bg-teal-600 text-white py-3 px-5 rounded-full shadow-md transition"
+          className="bg-[#1f7333] hover:bg-[#1f733399] text-white py-3 px-5 rounded-full shadow-md transition"
           disabled={Object.keys(getCheckedTasks()).length === 0}
         >
           Export as Word
@@ -252,13 +252,13 @@ export const ExportStep = ({
       <div className="mt-10 flex justify-between">
         <button
           onClick={onBack}
-          className="border-2 border-[#13AE8D] text-[#13AE8D] font-semibold rounded-full px-6 py-2 hover:bg-[#13AE8D] hover:text-[#fff] transition-colors"
+          className="border-2 border-[#1f7333] text-[#1f7333] font-semibold rounded-full px-6 py-2 hover:bg-[#1f7333] hover:text-[#fff] transition-colors"
         >
           Back
         </button>
         <button
           onClick={onStartOver}
-          className="text-[#13AE8D] border-2 border-[#13AE8D] py-2 px-6 rounded-full hover:bg-[#13AE8D] hover:text-[#fff] transition"
+          className="text-[#1f7333] border-2 border-[#1f7333] py-2 px-6 rounded-full hover:bg-[#1f7333] hover:text-[#fff] transition"
         >
           Start Over
         </button>

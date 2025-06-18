@@ -176,7 +176,7 @@ export const Category = () => {
 
   return (
     <div className="bg-white">
-      <div className="max-w-[1080px] xl:max-w-[1300px] px-5 m-auto py-[60px]">
+      <div className="max-w-5xl px-5 m-auto py-[60px]">
         {currentStep > 0 && currentStep <= steps.length && (
           <StepsProgress steps={steps} currentStep={currentStep - 1} />
         )}
