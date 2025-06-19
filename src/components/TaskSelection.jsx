@@ -97,7 +97,7 @@ export const TaskSelection = ({
         </button>
         <button
           onClick={onNext}
-          className="px-8 py-3 bg-[#1f7333] text-white font-semibold rounded-full hover:shadow-lg hover:bg-[#0f9d80] transition-all duration-300"
+          className="px-8 py-3 bg-[#1f7333] text-white font-semibold rounded-full hover:shadow-lg hover:bg-[#1f733399] transition-all duration-300"
         >
           Continue
         </button>
