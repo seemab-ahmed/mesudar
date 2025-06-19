@@ -6,14 +6,14 @@ import { CategoriesPage } from './admin/pages/CategoriesPage';
 import { SubCategoriesPage } from './admin/pages/SubCategoriesPage';
 import { TasksPage } from './admin/pages/TasksPage';
 import SuggestionsList from "./admin/pages/SuggestionPage";
-// import PasswordGate from "./components/PasswordGate";
+import PasswordGate from "./components/PasswordGate";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 
 export default function App() {
   return (
   <>
     <GoogleAnalytics />
-    {/* <PasswordGate> */}
+    <PasswordGate>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/category" element={<Category />} />
@@ -35,7 +35,7 @@ export default function App() {
           </Route>
         </Route>
     </Routes>
-    {/* </PasswordGate> */}
+    </PasswordGate>
   </>
   );
 }
