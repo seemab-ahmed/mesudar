@@ -51,7 +51,7 @@ export const SubCategoriesPage = () => {
   // Save the new subcategory order
   const handleArrangeSubCategory = async () => {
     try {
-      const subCategoryOrder = category.subCategory.map(sub => sub._id);
+      const subCategoryOrder = category.subCategory?.map(sub => sub._id);
       console.log(subCategoryOrder);
       await arrangeSubCategory(catId, subCategoryOrder);
       setIsArrange(false);

@@ -58,7 +58,7 @@ export const TasksPage = () => {
   // Save the new task order
   const handleArrangeTask = async () => {
     try {
-      const taskOrder = subCategory.tasks.map(task => task._id);
+      const taskOrder = subCategory.tasks?.map(task => task._id);
       await arrangeTask(catId, subCatId, taskOrder);
       setIsArrange(false);
       setRefreshTrigger(prev => !prev);
