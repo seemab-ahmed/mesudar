@@ -127,7 +127,7 @@
 //           </button>
 //           <Link
 //             to={`/admin/subcategories/${category._id}`}
-//             className="text-teal-500 hover:text-teal-700 px-2 py-1 rounded hover:bg-teal-50 cursor-pointer"
+//             className="text-[#1f7333] hover:text-teal-700 px-2 py-1 rounded hover:bg-teal-50 cursor-pointer"
 //           >
 //             Sub Category
 //           </Link>
@@ -163,7 +163,7 @@
 //                 placeholder={editingCategory ? 'Edit Category' : 'Add New Category'}
 //                 value={categoryTitle}
 //                 onChange={(e) => setCategoryTitle(e.target.value)}
-//                 className="flex-1 rounded-md border-gray-300 shadow-sm border p-4 focus:ring-teal-500 focus:border-teal-500"
+//                 className="flex-1 rounded-md border-gray-300 shadow-sm border p-4 focus:ring-[#1f7333] focus:border-[#1f7333]"
 //                 required
 //               />
               
@@ -171,7 +171,7 @@
 //                 <button
 //                   type="submit"
 //                   disabled={loading}
-//                   className="bg-teal-500 text-white rounded-md px-4 py-4 hover:bg-teal-600 disabled:opacity-50"
+//                   className="bg-[#1f7333] text-white rounded-md px-4 py-4 hover:bg-[#1f7333] disabled:opacity-50"
 //                 >
 //                   {loading ? 'Saving...' : editingCategory ? 'Update Category' : 'Add Category'}
 //                 </button>
@@ -213,7 +213,7 @@
 //             <div className="flex justify-end">
 //               <button 
 //                 onClick={handleArrangeCategories}
-//                 className="bg-teal-500 text-white rounded-md px-4 py-2 hover:bg-teal-600"
+//                 className="bg-[#1f7333] text-white rounded-md px-4 py-2 hover:bg-[#1f7333]"
 //               >
 //                 Save New Order
 //               </button>
@@ -340,13 +340,13 @@ export const CategoriesPage = () => {
     return (
       <div 
         className={`flex justify-between items-center p-4 border rounded-lg mb-2 cursor-move 
-          ${itemSelected ? 'bg-blue-50 border-blue-200 shadow-md' : 'bg-white border-gray-200'}`} 
+          ${itemSelected ? 'bg-blue-50 border-[#535252] shadow-md' : 'bg-white border-[#535252]'}`} 
         {...dragHandleProps}
       >
         <div className="font-medium flex items-center">
           <span className="mr-2">☰</span>
           {category.categoryTitle}
-          <span className="text-sm text-gray-500 ml-2">({category.subCategory?.length || 0} Items)</span>
+          <span className="text-sm text-[#535252] ml-2">({category.subCategory?.length || 0} Items)</span>
         </div>
         <div className="flex space-x-2">
           <button 
@@ -370,7 +370,7 @@ export const CategoriesPage = () => {
 
           <Link
             to={`/admin/subcategories/${category._id}`}
-            className="text-teal-500 hover:text-teal-700 px-2 py-1 rounded hover:bg-teal-50 cursor-pointer"
+            className="text-[#1f7333] hover:text-teal-700 px-2 py-1 rounded hover:bg-teal-50 cursor-pointer"
           >
             Sub Category
           </Link>
@@ -386,9 +386,9 @@ export const CategoriesPage = () => {
 
   return (
     <div className="p-6 space-y-6 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold text-teal-700">Categories</h2>
+      <h2 className="text-2xl font-bold text-[#1f7333]">Categories</h2>
 
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-white rounded-lg shadow p-6 border-[#1f7333] border">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex gap-4">
             <input
@@ -396,7 +396,7 @@ export const CategoriesPage = () => {
               placeholder={editingCategory ? 'Edit Category' : 'Add New Category'}
               value={categoryTitle}
               onChange={(e) => setCategoryTitle(e.target.value)}
-              className="flex-1 rounded-md border-gray-300 shadow-sm border p-4 focus:ring-teal-500 focus:border-teal-500"
+              className="flex-1 rounded-md border-[#535252] shadow-sm border p-4 focus:ring-[#1f7333] focus:border-[#1f7333]"
               required
             />
 
@@ -404,7 +404,7 @@ export const CategoriesPage = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-teal-500 text-white rounded-md px-4 py-4 hover:bg-teal-600 disabled:opacity-50"
+                className="bg-[#1f7333] text-white rounded-md px-4 py-4 hover:bg-[#1f7333] disabled:opacity-50"
               >
                 {loading ? 'Saving...' : editingCategory ? 'Update Category' : 'Add Category'}
               </button>
@@ -415,7 +415,7 @@ export const CategoriesPage = () => {
                     setEditingCategory(null);
                     setCategoryTitle('');
                   }}
-                  className="bg-gray-200 text-gray-700 rounded-md px-4 py-2 hover:bg-gray-300"
+                  className="bg-gray-200 text-[#535252] rounded-md px-4 py-2 hover:bg-gray-300"
                 >
                   Cancel
                 </button>
@@ -458,7 +458,7 @@ export const CategoriesPage = () => {
           <div className="flex justify-end mt-4">
             <button 
               onClick={handleArrangeCategories}
-              className="bg-teal-500 text-white rounded-md px-4 py-2 hover:bg-teal-600"
+              className="bg-[#1f7333] text-white rounded-md px-4 py-2 hover:bg-[#1f7333]"
             >
               Save New Order
             </button>

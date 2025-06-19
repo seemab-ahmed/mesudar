@@ -39,11 +39,11 @@ export const CategoryList = ({ onEdit, refreshTrigger  }) => {
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between items-center mb-6 flex-wrap gap-3">
-        <h2 className="text-xl font-bold text-teal-700">Categories</h2>
+      <div className="flex justify-between items-center mb-6 flex-wrap gap-3 bg-[#1f7333]">
+        <h2 className="text-xl font-bold text-[#1f7333] text-center">Categories</h2>
         <Link 
           to="/admin/categories/new" 
-          className="bg-teal-500 text-white rounded-full px-4 py-2 hover:bg-teal-600"
+          className="bg-[#1f7333] text-white rounded-full px-4 py-2 hover:bg-[#1f7333] "
         >
           Add Category
         </Link>
@@ -54,7 +54,7 @@ export const CategoryList = ({ onEdit, refreshTrigger  }) => {
           <div key={category._id} className="transition-all ease-in-out duration-500 hover:bg-[#eee] group flex justify-between items-center p-6 border rounded-lg flex-col gap-3  sm:flex-row">
             <div className='flex sm:items-start items-center flex-col '>
               <p className="font-medium text-lg ">{category.categoryTitle}</p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[#535252]">
                 {category.subCategory.length} subcategories
               </p>
             </div>
@@ -82,7 +82,7 @@ export const CategoryList = ({ onEdit, refreshTrigger  }) => {
               </button>
               <Link 
                 to={`/admin/subcategories/${category._id}`}
-                className="text-teal-500 hover:text-teal-700"
+                className="text-[#1f7333] hover:text-[#1f7333]"
               >
                 Subcategories
               </Link>

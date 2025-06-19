@@ -27,7 +27,7 @@ export const SubCategoryForm = ({ categoryId, subCategory, onSuccess }) => {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-bold text-teal-700">
+      <h2 className="text-xl font-bold text-[#1f7333]">
         {subCategory ? 'Edit Subcategory' : 'Add New Subcategory'}
       </h2>
       
@@ -43,7 +43,7 @@ export const SubCategoryForm = ({ categoryId, subCategory, onSuccess }) => {
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2"
+            className="mt-1 block w-full rounded-md border-[#535252] shadow-sm border p-2"
             required
           />
         </div>
@@ -52,7 +52,7 @@ export const SubCategoryForm = ({ categoryId, subCategory, onSuccess }) => {
           <button
             type="submit"
             disabled={loading}
-            className="bg-teal-500 text-white rounded-full px-4 py-2 hover:bg-teal-600 disabled:opacity-50"
+            className="bg-[#1f7333] text-white rounded-full px-4 py-2 hover:bg-[#1f7333] disabled:opacity-50"
           >
             {loading ? 'Saving...' : 'Save'}
           </button>

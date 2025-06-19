@@ -81,7 +81,7 @@ const SuggestionForm = () => {
       
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="subject" className="block text-[18px] font-semibold text-gray-700 mb-1">
+          <label htmlFor="subject" className="block text-[18px] font-semibold text-[#535252] mb-1">
             Subject:
           </label>
           <input
@@ -99,7 +99,7 @@ const SuggestionForm = () => {
         </div>
         
         <div>
-          <label htmlFor="message" className="block text-[18px] font-semibold text-gray-700 mb-1">
+          <label htmlFor="message" className="block text-[18px] font-semibold text-[#535252] mb-1">
              Message:
           </label>
           <textarea
@@ -118,7 +118,7 @@ const SuggestionForm = () => {
         
         <div className="grid grid-cols-1 gap-4">
           <div>
-            <label htmlFor="name" className="block text-[18px] font-semibold text-gray-700 mb-1">
+            <label htmlFor="name" className="block text-[18px] font-semibold text-[#535252] mb-1">
               Your name:
             </label>
             <input
@@ -136,7 +136,7 @@ const SuggestionForm = () => {
           </div>
           
           <div>
-            <label htmlFor="email" className="block text-[18px] font-semibold text-gray-700 mb-1">
+            <label htmlFor="email" className="block text-[18px] font-semibold text-[#535252] mb-1">
               Your email:
             </label>
             <input
@@ -155,7 +155,7 @@ const SuggestionForm = () => {
         </div>
 
         {submitSuccess && (
-          <div className="p-3 bg-green-100 border border-green-400 text-green-700 rounded-md">
+          <div className="p-3 bg-green-100 border border-[#1f7333] text-[#1f7333] rounded-md">
             <p>Thank you! Your suggestion has been submitted successfully.</p>
           </div>
         )}

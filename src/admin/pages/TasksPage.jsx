@@ -153,7 +153,7 @@ export const TasksPage = () => {
 
   return (
     <div className="p-6 space-y-6 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold text-teal-700">
+      <h2 className="text-2xl font-bold text-[#1f7333]">
         Tasks for {subCategory.subCategoryTitle}
       </h2>
       
@@ -170,7 +170,7 @@ export const TasksPage = () => {
                 placeholder={editingTask ? 'Edit Task' : 'Add New Task'}
                 value={taskTitle}
                 onChange={(e) => setTaskTitle(e.target.value)}
-                className="flex-1 rounded-md border-gray-300 shadow-sm border p-4 focus:ring-teal-500 focus:border-teal-500"
+                className="flex-1 rounded-md border-[#535252] shadow-sm border p-4 focus:ring-[#1f7333] focus:border-[#1f7333]"
                 required
               />
               
@@ -178,7 +178,7 @@ export const TasksPage = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-teal-500 text-white rounded-md px-4 py-4 hover:bg-teal-600 disabled:opacity-50"
+                  className="bg-[#1f7333] text-white rounded-md px-4 py-4 hover:bg-[#1f7333] disabled:opacity-50"
                 >
                   {loading ? 'Saving...' : editingTask ? 'Update Task' : 'Add Task'}
                 </button>
@@ -189,7 +189,7 @@ export const TasksPage = () => {
                       setEditingTask(null);
                       setTaskTitle('');
                     }}
-                    className="bg-gray-200 text-gray-700 rounded-md px-4 py-2 hover:bg-gray-300"
+                    className="bg-gray-200 text-gray-700 rounded-md px-4 py-2 hover:bg-[#535252]"
                   >
                     Cancel
                   </button>
@@ -220,7 +220,7 @@ export const TasksPage = () => {
             <div className="flex justify-end">
               <button 
                 onClick={handleArrangeTask}
-                className="bg-teal-500 text-white rounded-md px-4 py-2 hover:bg-teal-600"
+                className="bg-[#1f7333] text-white rounded-md px-4 py-2 hover:bg-[#1f7333]"
               >
                 Save New Order
               </button>
