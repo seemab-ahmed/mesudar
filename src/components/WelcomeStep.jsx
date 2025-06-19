@@ -196,7 +196,7 @@ export const WelcomeStep = ({ onNext }) => {
           {steps.map((step) => (
             <div
               key={step.id}
-              className="flex gap-4 relative flex-col items-center cursor-pointer backdrop-blur-lg rounded-xl pb-10 pt-[80px] lg:px-10 xl:px-[72px] px-5 bg-[#fcf1e6] hover:opacity-[0.7] hover:shadow-xl ease-in-out transition-all duration-500"
+              className="flex gap-4 relative flex-col items-center cursor-pointer backdrop-blur-lg rounded-xl pb-10 pt-[80px] lg:px-10 xl:px-[30px] px-5 bg-[#fcf1e6] hover:opacity-[0.7] hover:shadow-xl ease-in-out transition-all duration-500"
             >
               <p className="text-3xl font-semibold text-[#fff] w-full max-w-[70px] xl:max-w-[100px] h-[70px] xl:h-[100px] flex items-center justify-center rounded-full bg-[#1f7333] absolute xl:top-[-45px] top-[-25px] left-0 right-0 m-auto ">
                 {step.description}

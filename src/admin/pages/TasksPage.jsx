@@ -108,7 +108,7 @@ export const TasksPage = () => {
     const task = item;
     return (
       <div className={`flex justify-between items-center p-4 border rounded-lg mb-2 cursor-move
-        ${itemSelected ? 'bg-blue-50 border-blue-200 shadow-md' : 'bg-white border-gray-200'}`}
+        ${itemSelected ? 'bg-blue-50 border-[#535252] shadow-md' : 'bg-white border-[#535252]'}`}
       {...dragHandleProps}>
         <div className="font-medium flex items-center ">
           <span className="mr-2">
@@ -157,7 +157,7 @@ export const TasksPage = () => {
         Tasks for {subCategory.subCategoryTitle}
       </h2>
       
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-white rounded-lg shadow p-6 border border-[#1f7333]">
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <h3 className="text-xl font-medium">Manage Tasks</h3>
@@ -189,7 +189,7 @@ export const TasksPage = () => {
                       setEditingTask(null);
                       setTaskTitle('');
                     }}
-                    className="bg-gray-200 text-gray-700 rounded-md px-4 py-2 hover:bg-[#535252]"
+                    className="bg-[#1f7333] text-white rounded-md px-4 py-2 hover:bg-[#1f7333]"
                   >
                     Cancel
                   </button>
@@ -201,7 +201,7 @@ export const TasksPage = () => {
           
          {!loading ? <div className="space-y-2">
             {subCategory.tasks.length === 0 ? (
-              <div className="text-center py-4 text-gray-500">
+              <div className="text-center py-4 text-[#535252]">
                 No tasks yet. Add your first task above.
               </div>
             ) : (

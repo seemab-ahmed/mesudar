@@ -187,7 +187,7 @@ export const SubCategoriesPage = () => {
                       setEditingSubCategory(null);
                       setSubCategoryTitle('');
                     }}
-                    className="bg-gray-200 text-[#535252] rounded-md px-4 py-2 hover:bg-gray-300"
+                    className="bg-[#1f7333] text-white rounded-md px-4 py-2 hover:bg-[#1f7333]"
                   >
                     Cancel
                   </button>

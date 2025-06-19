@@ -76,7 +76,7 @@ const SuggestionForm = () => {
   };
 
   return (
-    <div className="max-w-[550px] mx-auto bg-white rounded-lg border border-[#1f7333] p-6 my-[50px]">
+    <div className="sm:max-w-[550px] sm:mx-auto bg-white rounded-lg border border-[#1f7333] p-6 my-[50px] mx-4">
       <h2 className="text-2xl font-bold text-[#1f7333] mb-4">Submit Your Suggestion</h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
