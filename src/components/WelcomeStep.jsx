@@ -172,7 +172,7 @@ export const WelcomeStep = ({ onNext }) => {
     },
     {
       id: 3,
-      title: "Download your customised checklist",
+      title: "Download your customized checklist",
       description: "3",
       icon: (
         <img 
@@ -214,7 +214,7 @@ export const WelcomeStep = ({ onNext }) => {
       <div className="mt-6 flex justify-center">
         <button
           onClick={onNext}
-          className="bg-[#1f7333] text-white rounded-[10px] px-10 py-3 text-lg hover:bg-[#89c497] transition-colors"
+          className="bg-[#1f7333] text-white font-semibold rounded-[10px] px-14 py-4 text-[26px] hover:bg-[#89c497] transition-colors"
         >
           Start now
         </button>

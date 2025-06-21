@@ -23,6 +23,8 @@ export default {
     extend: {
       fontFamily: {
         poppins: ["Poppins"],
+        dunbar: ['"Dunbar Tall"'],
+        causten: ['"Causten Regular"'],
       },
       colors: {
         "dark-navy": "#2A283E",

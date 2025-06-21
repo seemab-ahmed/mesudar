@@ -11,8 +11,8 @@ const Hero = () => {
     <div className="flex flex-col lg:flex-row  gap-12 clip-shape">
       {/* Left Content */}
       <div className="lg:w-[70%] lg:rounded-r-[100px]  md:rounded-r-[50px] rounded-r-[30px]  bg-[#fcf1e6] w-full flex flex-col gap-3 text-left z-20 2xl:pl-[200px] md:pl-[100px] pl-[20px] md:py-[60px] py-[40px] lg:pr-[50px] pr-[24px]">
-        <h1 className="2xl:text-[80px]   xl:text-[70px] text-[35px] 2xl:leading-[90px]  xl:leading-[80px]  leading-[45px] lg:text-6xl font-bold text-[#1f7333]  pb-3 2xl:max-w-[900px] max-w-[730px] ">
-          Making Gaboim’s lives easier
+        <h1 className="  xl:text-[55px] text-[35px]  xl:leading-[70px]  leading-[45px] lg:text-6xl font-bold text-[#1f7333]  pb-3 2xl:max-w-[900px] max-w-[700px] ">
+          The Yiddishe Life Checklist Generator
         </h1>
 
         {/* <div> 
@@ -20,10 +20,9 @@ const Hero = () => {
         </div> */}
 
         <p className="text-gray-600  lg:text-[28px] text-[20px] md:text-[35px] md:leading-[40px] leading-6 ">
-            Running a shul comes with countless responsibilities. 
-            Mesudar.com is a <span className="text-[#1f7333]">free tool</span> that makes it easy for Gabboim
-            to create customised checklists for every task - from Shabbos 
-            prep and cleaning to Yom Tov management. 
+           A <span className="text-[#1f7333]">free tool</span> to help you stay organized with ready-to-use, 
+           customizable checklists for every part of the Yiddishe life — from Shabbos and Yom Tov to simchas, 
+           shul management, and beyond.
         </p>
         {/* <div className="relative group w-fit flex items-center overflow-hidden rounded-full">
             <div className="absolute top-0 left-0 w-0 h-full bg-black z-10 group-hover:w-full transition-all duration-500 ease-in-out"></div>
