@@ -189,8 +189,8 @@ export const WelcomeStep = ({ onNext }) => {
   return (
     <div className="">
       <div className="">
-        <h2 className="lg:text-[55px] sm:text-[45px] text-[34px] text-center text-[#535252]  font-bold xl:mb-[70px] mb-[50px]">
-          How it works:
+        <h2 className="font-dunbar lg:text-[55px] sm:text-[45px] text-[34px] text-center text-[#535252]  font-bold xl:mb-[70px] mb-[50px]">
+          How it works
         </h2>
 
         <div className="grid md:grid-cols-3 md:gap-6 gap-14 ">
