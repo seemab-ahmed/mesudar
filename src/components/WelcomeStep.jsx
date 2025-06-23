@@ -138,6 +138,7 @@
 
 
 
+import SuggestionForm from '../admin/pages/SuggestionForm';
 import icon1 from '../Images/icon1.png';
 import icon2 from '../Images/icon2.png';
 import icon3 from '../Images/icon3.png';
@@ -218,6 +219,9 @@ export const WelcomeStep = ({ onNext }) => {
         >
           Start now
         </button>
+      </div>
+      <div className='mt-10'>
+        <SuggestionForm />
       </div>
     </div>
   );

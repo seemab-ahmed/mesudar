@@ -52,8 +52,8 @@ const SuggestionForm = () => {
     setIsSubmitting(true);
     
     try {
-      await axios.post('https://admin.mesudar.com/api/suggestion/create', formData);
-      // await axios.post('http://localhost:3000/api/suggestion/create', formData);
+      // await axios.post('https://admin.mesudar.com/api/suggestion/create', formData);
+      await axios.post('http://localhost:3000/api/suggestion/create', formData);
       setSubmitSuccess(true);
       // Reset form
       setFormData({

@@ -13,7 +13,6 @@ export const Home = () => {
         <Header />
         < Hero />
         <Category />
-        <SuggestionForm />
         <Footer2 /> 
     </div>
   )

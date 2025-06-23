@@ -29,56 +29,226 @@ export const ExportStep = ({
     return checkedTasksBySubcategory;
   };
 
-  const generatePDF = () => {
-    const doc = new jsPDF();
-    const checkedTasks = getCheckedTasks();
+// const generatePDF = () => {
+//   const doc = new jsPDF({
+//     orientation: "portrait",
+//     unit: "mm",
+//     format: "a4"
+//   });
+  
+//   const checkedTasks = getCheckedTasks();
+  
+//   if (Object.keys(checkedTasks).length === 0) {
+//     alert("No tasks selected to export");
+//     return;
+//   }
+
+//   const pageWidth = doc.internal.pageSize.getWidth();
+//   const pageHeight = doc.internal.pageSize.getHeight();
+//   const margin = 15;
+//   let yPos = 30; // Start position for first page
+//   let isFirstPage = true;
+
+//   // Add logo to current page (automatically handles positioning)
+//   const addLogoToPage = () => {
+//     if (!Logo) return;
     
-    // Return early if no tasks are selected
-    if (Object.keys(checkedTasks).length === 0) {
-      alert("No tasks selected to export");
-      return;
+//     try {
+//       const imgWidth = 40;
+//       const imgHeight = 10;
+//       const logoY = pageHeight - margin - 15; // 15mm from bottom
+      
+//       doc.addImage(Logo, 'PNG', (pageWidth - imgWidth) / 2, logoY, imgWidth, imgHeight);
+//     } catch (error) {
+//       console.error("Error adding logo:", error);
+//       doc.setFontSize(10);
+//       doc.setTextColor(31, 115, 51);
+//       doc.text('mesudar.com', pageWidth / 2, pageHeight - margin - 10, { align: 'center' });
+//     }
+//   };
+
+//   // Create new page with proper formatting
+//   const addNewPage = () => {
+//     doc.addPage("a4", "portrait");
+//     isFirstPage = false;
+//     yPos = margin + 30; // Extra space at top of new pages
+    
+//     // Add border
+//     doc.setDrawColor(31, 115, 51);
+//     doc.rect(margin, margin, pageWidth - 2 * margin, pageHeight - 2 * margin);
+    
+//     // Add logo immediately to new page
+//     addLogoToPage();
+//   };
+
+//   // ===== FIRST PAGE HEADER =====
+//   doc.setFillColor(31, 115, 51);
+//   doc.setDrawColor(31, 115, 51);
+//   const headerWidth = 110;
+//   doc.roundedRect((pageWidth - headerWidth) / 2, yPos - 10, headerWidth, 15, 7.5, 7.5, 'FD');
+//   doc.setFontSize(14);
+//   doc.setTextColor(255, 255, 255);
+//   doc.text(`${selectedCategory} Checklist`, pageWidth / 2, yPos, { align: 'center' });
+//   yPos += 25;
+
+//   // ===== CONTENT RENDERING =====
+//   Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
+//     // Check page space before subcategory
+//     if (yPos > pageHeight - 50) {
+//       addNewPage();
+//     }
+
+//     // Subcategory title
+//     doc.setFontSize(12);
+//     doc.setFont('helvetica', 'bold');
+//     doc.setTextColor(31, 115, 51);
+//     doc.text(subcategory, margin + 5, yPos);
+//     yPos += 10;
+
+//     // Tasks
+//     tasks.forEach(task => {
+//       if (yPos > pageHeight - 20) {
+//         addNewPage();
+//       }
+
+//       // Checkbox
+//       doc.setDrawColor(31, 115, 51);
+//       doc.rect(margin + 5, yPos - 4, 5, 5);
+      
+//       // Task text
+//       doc.setFont('helvetica', 'normal');
+//       doc.setTextColor(0, 0, 0);
+//       doc.text(task, margin + 15, yPos);
+//       yPos += 8;
+//     });
+
+//     yPos += 8; // Extra space after subcategory
+//   });
+
+//   // ===== FINAL PAGE HANDLING =====
+//   // Add logo to current page (whether first or subsequent)
+//   addLogoToPage();
+  
+//   // If we're at the bottom after adding logo, 
+//   // create new page to prevent cutoff
+//   if (yPos > pageHeight - 30) {
+//     addNewPage();
+//   }
+
+//   // Add border to first page (if not already added)
+//   if (isFirstPage) {
+//     doc.setDrawColor(31, 115, 51);
+//     doc.rect(margin, margin, pageWidth - 2 * margin, pageHeight - 2 * margin);
+//   }
+  
+//   doc.save(`${selectedCategory}_Checklist.pdf`);
+// };
+
+const generatePDF = () => {
+  const doc = new jsPDF({
+    orientation: "portrait",
+    unit: "mm",
+    format: "a4"
+  });
+  
+  const checkedTasks = getCheckedTasks();
+  
+  if (Object.keys(checkedTasks).length === 0) {
+    alert("No tasks selected to export");
+    return;
+  }
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 15;
+  let yPos = 30;
+  let isFirstPage = true;
+
+  // ===== BORDER FUNCTION =====
+  const addPageBorder = () => {
+    doc.setDrawColor(31, 115, 51); // Green color
+    doc.rect(margin, margin, pageWidth - 2 * margin, pageHeight - 2 * margin);
+  };
+
+  // ===== LOGO FUNCTION =====
+  const addLogoToPage = () => {
+    if (!Logo) return;
+    try {
+      const imgWidth = 40;
+      const imgHeight = 10;
+      doc.addImage(Logo, 'PNG', 
+        (pageWidth - imgWidth) / 2, 
+        pageHeight - margin - 15, 
+        imgWidth, 
+        imgHeight
+      );
+    } catch (error) {
+      doc.setFontSize(10);
+      doc.setTextColor(31, 115, 51);
+      doc.text('mesudar.com', pageWidth / 2, pageHeight - margin - 10, { align: 'center' });
     }
+  };
 
-    let yPos = 30;
+  // ===== NEW PAGE FUNCTION =====
+  const addNewPage = () => {
+    doc.addPage("a4", "portrait");
+    isFirstPage = false;
+    yPos = margin + 30;
+    addPageBorder(); // Border for new pages
+    addLogoToPage(); // Logo for new pages
+  };
 
-    doc.setFillColor(22, 160, 133);
-    doc.setDrawColor(22, 160, 133);
-    doc.roundedRect(30, yPos - 10, 150, 15, 7.5, 7.5, 'FD');
-    doc.setFontSize(14);
-    doc.setTextColor(255, 255, 255);
-    doc.text(`${selectedCategory} Checklist`, 105, yPos, { align: 'center' });
-    yPos += 25;
+  // ===== INITIAL PAGE SETUP =====
+  addPageBorder(); // Border for first page
+  addLogoToPage(); // Logo for first page
 
-    Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'bold');
-      doc.setTextColor(0, 0, 0);
-      doc.text(subcategory, 20, yPos);
-      yPos += 10;
+  // ===== HEADER =====
+  doc.setFillColor(31, 115, 51);
+  doc.roundedRect(
+    (pageWidth - 110) / 2, 
+    yPos - 10, 
+    110, 
+    15, 
+    7.5, 
+    7.5, 
+    'FD'
+  );
+  doc.setFontSize(14);
+  doc.setTextColor(255, 255, 255);
+  doc.text(`${selectedCategory} Checklist`, pageWidth / 2, yPos, { align: 'center' });
+  yPos += 25;
 
-      tasks.forEach(task => {
-        doc.setDrawColor(0, 0, 0);
-        doc.rect(20, yPos - 4, 5, 5);
-        doc.setFont('helvetica', 'normal');
-        doc.text(task, 30, yPos);
-        yPos += 8;
-      });
+  // ===== CONTENT =====
+  Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
+    if (yPos > pageHeight - 50) addNewPage();
 
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(31, 115, 51);
+    doc.text(subcategory, margin + 5, yPos);
+    yPos += 10;
+
+    tasks.forEach(task => {
+      if (yPos > pageHeight - 20) addNewPage();
+
+      doc.setDrawColor(31, 115, 51);
+      doc.rect(margin + 5, yPos - 4, 5, 5);
+      doc.setFont('helvetica', 'normal');
+      doc.text(task, margin + 15, yPos);
       yPos += 8;
     });
 
-    yPos += 15;
-    doc.setFontSize(10);
-    doc.setTextColor(22, 160, 133);
-    doc.text('mesudar.com', 105, yPos, { align: 'center' });
-    yPos += 5;
-    doc.setFontSize(8);
-    doc.text('making gabboim\'s lives easier', 105, yPos, { align: 'center' });
+    yPos += 8;
+  });
 
-    doc.setDrawColor(22, 160, 133);
-    doc.rect(15, 15, 180, yPos + 5);
-    doc.save(`${selectedCategory}_Checklist.pdf`);
-  };
+  // ===== FINAL CHECK =====
+  if (yPos > pageHeight - 30) {
+    addNewPage();
+  }
+  
+  doc.save(`${selectedCategory}_Checklist.pdf`);
+};
+
 
   const generateExcel = () => {
     const checkedTasks = getCheckedTasks();
@@ -196,9 +366,6 @@ export const ExportStep = ({
         <div className="bg-[#1f7333] text-white font-semibold rounded-full py-2 px-6 mx-auto text-center w-fit mb-2 text-lg shadow-sm">
           {selectedCategory} Checklist
         </div>
-           <div className="flex justify-center mb-6">
-            <img src={Logo} alt="Mesudar Logo" className="h-12 w-auto" />
-          </div>
         {Object.entries(checkedTasks).map(([subcategory, tasks], index) => (
           <div key={index} className="mb-6">
             <p className="text-[#1f7333] font-bold mb-2 text-lg">{subcategory}</p>
@@ -210,7 +377,9 @@ export const ExportStep = ({
             ))}
           </div>
         ))}
-
+        <div className="flex justify-center mt-6">
+            <img src={Logo} alt="Mesudar Logo" className="h-12 w-auto" />
+          </div>
         {/* <div className="text-center text-teal-600 mt-8">
           <p className="font-semibold">mesudar.com</p>
           <p className="text-sm">making gabboim's lives easier</p>
