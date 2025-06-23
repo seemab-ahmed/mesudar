@@ -31,7 +31,7 @@ const Footer2 = () => {
         }
       ];
   return (
-     <div className="mt-10">
+     <div className="mt-2">
        {/* <div className="bg-slate-700">
         <div className="max-w-[1080px] 2xl:max-w-[1440px] m-auto px-5 ">
                 <div className="flex-col justify-center flex md:flex-row items-center gap-6  pt-[66px] pb-[44px]">

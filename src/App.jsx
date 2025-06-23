@@ -8,15 +8,17 @@ import { TasksPage } from './admin/pages/TasksPage';
 import SuggestionsList from "./admin/pages/SuggestionPage";
 import PasswordGate from "./components/PasswordGate";
 import GoogleAnalytics from "./components/GoogleAnalytics";
+import { Feedback } from "./pages/Feedback";
 
 export default function App() {
   return (
   <>
     <GoogleAnalytics />
-    <PasswordGate>
+    {/* <PasswordGate> */}
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/category" element={<Category />} />
+      <Route path="/feedback" element={<Feedback />} />
       <Route path="/admin" element={<AdminLayout />}>
       <Route path="/admin/suggestion" element={<SuggestionsList />} />
           <Route index element={<CategoriesPage />} />
@@ -35,7 +37,7 @@ export default function App() {
           </Route>
         </Route>
     </Routes>
-    </PasswordGate>
+    {/* </PasswordGate> */}
   </>
   );
 }

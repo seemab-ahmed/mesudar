@@ -146,19 +146,6 @@ import icon3 from '../Images/icon3.png';
 export const WelcomeStep = ({ onNext }) => {
   const steps = [
     {
-      id: 1,
-      title: "Choose a Category",
-      description: "1",
-      icon: (
-        <img 
-         src={icon1}
-          alt="Choose Category" 
-          width="55" 
-          height="46"
-        />
-      ),
-    },
-    {
       id: 2,
       title: "Select only the tasks that apply",
       description: "2",
@@ -189,20 +176,46 @@ export const WelcomeStep = ({ onNext }) => {
   return (
     <div className="">
       <div className="">
-        <h2 className="font-dunbar lg:text-[55px] sm:text-[45px] text-[34px] text-center text-[#535252]  font-bold xl:mb-[70px] mb-[50px]">
+        <h2 className=" lg:text-[55px] sm:text-[45px] text-[34px] text-center text-[#535252]  font-bold xl:mb-[70px] mb-[50px]">
           How it works
         </h2>
 
         <div className="grid md:grid-cols-3 md:gap-6 gap-14 ">
+
+
+
+          <div
+              
+              className="flex gap-4 justify-between relative flex-col items-center cursor-pointer backdrop-blur-lg rounded-xl pb-10 pt-[80px] lg:px-10 xl:px-[30px] px-5 bg-[#fcf1e6] hover:opacity-[0.7] hover:shadow-xl ease-in-out transition-all duration-500"
+            >
+              <p className="text-3xl font-semibold text-[#fff] w-full max-w-[70px] xl:max-w-[100px] h-[70px] xl:h-[100px] flex items-center justify-center rounded-full bg-[#1f7333] absolute xl:top-[-45px] top-[-25px] left-0 right-0 m-auto ">
+                1
+              </p>
+              <h3 className="lg:text-[24px] text-[20px] text-center  font-normal text-[#535252]">
+                Choose a <br/> Category
+              </h3>
+
+              <div className="text-[#535252]">
+                 <img 
+         src={icon1}
+          alt="Choose Category" 
+          width="55" 
+          height="46"
+        />
+              </div>
+
+            </div>
+
+
           {steps.map((step) => (
             <div
               key={step.id}
-              className="flex gap-4 relative flex-col items-center cursor-pointer backdrop-blur-lg rounded-xl pb-10 pt-[80px] lg:px-10 xl:px-[30px] px-5 bg-[#fcf1e6] hover:opacity-[0.7] hover:shadow-xl ease-in-out transition-all duration-500"
+              className="flex gap-4 justify-between relative flex-col items-center cursor-pointer backdrop-blur-lg rounded-xl pb-10 pt-[80px] lg:px-10 xl:px-[30px] px-5 bg-[#fcf1e6] hover:opacity-[0.7] hover:shadow-xl ease-in-out transition-all duration-500"
             >
               <p className="text-3xl font-semibold text-[#fff] w-full max-w-[70px] xl:max-w-[100px] h-[70px] xl:h-[100px] flex items-center justify-center rounded-full bg-[#1f7333] absolute xl:top-[-45px] top-[-25px] left-0 right-0 m-auto ">
                 {step.description}
               </p>
-              <h3 className="lg:text-[24px] text-[20px] text-center font-normal text-[#535252]">
+              <h3 className="lg:text-[24px] text-[20px] text-center  font-normal text-[#535252]">
                 {step.title}
               </h3>
 
@@ -219,9 +232,6 @@ export const WelcomeStep = ({ onNext }) => {
         >
           Start now
         </button>
-      </div>
-      <div className='mt-10'>
-        <SuggestionForm />
       </div>
     </div>
   );

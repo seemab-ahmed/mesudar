@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const SuggestionForm = () => {
   const [formData, setFormData] = useState({
-    subject: '',
     message: '',
     name: '',
     email: ''
@@ -30,8 +30,7 @@ const SuggestionForm = () => {
 
   const validate = () => {
     const newErrors = {};
-    
-    if (!formData.subject.trim()) newErrors.subject = 'Subject is required';
+  
     if (!formData.message.trim()) newErrors.message = 'Message is required';
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) {
@@ -52,12 +51,11 @@ const SuggestionForm = () => {
     setIsSubmitting(true);
     
     try {
-      await axios.post('https://admin.mesudar.com/api/suggestion/create', formData);
-      // await axios.post('http://localhost:3000/api/suggestion/create', formData);
+      // await axios.post('https://admin.mesudar.com/api/suggestion/create', formData);
+      await axios.post('http://localhost:3000/api/suggestion/create', formData);
       setSubmitSuccess(true);
       // Reset form
       setFormData({
-        subject: '',
         message: '',
         name: '',
         email: ''
@@ -77,44 +75,11 @@ const SuggestionForm = () => {
 
   return (
     <div className="sm:max-w-[550px] sm:mx-auto bg-white rounded-lg border border-[#1f7333] p-6 my-[50px] mx-4">
-      <h2 className="text-2xl font-bold text-[#1f7333] mb-4">Submit Your Suggestion</h2>
+      <h2 className="text-2xl font-bold text-[#1f7333] mb-4">Submit Your Feedback or Suggestion</h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="subject" className="block text-[18px] font-semibold text-[#535252] mb-1">
-            Subject:
-          </label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            className={`w-full px-3 py-2 border rounded-md focus:ring-1  focus:ring-[#1f7333] focus:border-[#1f7333] outline-none transition ${
-              errors.subject ? 'border-red-500' : 'border-[#000]'
-            }`}
-            placeholder="What's your suggestion about?"
-          />
-          {errors.subject && <p className="mt-1 text-sm text-red-600">{errors.subject}</p>}
-        </div>
         
-        <div>
-          <label htmlFor="message" className="block text-[18px] font-semibold text-[#535252] mb-1">
-             Message:
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            rows={4}
-            className={`w-full px-3 py-2 border rounded-md focus:ring-1 border-[#000] focus:ring-[#1f7333] focus:border-[#1f7333] outline-none transition ${
-              errors.message ? 'border-red-500' : 'border-[#000]'
-            }`}
-            placeholder="Please describe your suggestion in detail..."
-          />
-          {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
-        </div>
+       
         
         <div className="grid grid-cols-1 gap-4">
           <div>
@@ -154,6 +119,24 @@ const SuggestionForm = () => {
           </div>
         </div>
 
+         <div>
+          <label htmlFor="message" className="block text-[18px] font-semibold text-[#535252] mb-1">
+             Message:
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            rows={4}
+            className={`w-full px-3 py-2 border rounded-md focus:ring-1 border-[#000] focus:ring-[#1f7333] focus:border-[#1f7333] outline-none transition ${
+              errors.message ? 'border-red-500' : 'border-[#000]'
+            }`}
+            placeholder="Please enter your feedback or suggestion"
+          />
+          {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
+        </div>
+
         {submitSuccess && (
           <div className="p-3 bg-green-100 border border-[#1f7333] text-[#1f7333] rounded-md">
             <p>Thank you! Your suggestion has been submitted successfully.</p>
@@ -166,15 +149,20 @@ const SuggestionForm = () => {
           </div>
         )}
         
-        <div className="flex items-center">
+        <div className="flex justify-between items-center">
+          <Link to="/"
+            className="w-fit py-3 px-6 bg-[#535252] hover:bg-[#89c497] text-white font-medium rounded-[50px] transition"
+          >
+            Back
+          </Link>
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-fit m-auto py-3 px-6 bg-[#1f7333] hover:bg-[#89c497] text-white font-medium rounded-[50px] transition ${
+            className={`w-fit py-3 px-6 bg-[#1f7333] hover:bg-[#89c497] text-white font-medium rounded-[50px] transition ${
               isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
             }`}
           >
-            {isSubmitting ? 'Submitting...' : 'Submit Suggestion'}
+            {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
         </div>
       </form>

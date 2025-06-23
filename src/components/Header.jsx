@@ -15,7 +15,7 @@ const Header = () => {
           <div className="logo text-[30px] font-bold text-[#1f7333] m-auto">
            <Link to="/admin" className="flex items-center">
              {/* <span className="bg-[#1f7333] lg:w-[40px] w-[24px] lg:h-[40px] h-[24px] p-1 rounded-[4px] flex justify-center items-center text-white lg:text-2xl text-xl">✔</span> mesdur.com */}
-             <img src={Logo} alt="logo" className="h-[70px] sm:h-[80px]  m-auto" />
+             <img src={Logo} alt="logo" className="h-[80px] md:h-[120px]  m-auto" />
              </Link>
           </div>
           {/* <div

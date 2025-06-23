@@ -11,15 +11,15 @@ const Hero = () => {
     <div className="flex flex-col lg:flex-row  gap-12 clip-shape">
       {/* Left Content */}
       <div className="lg:w-[70%] lg:rounded-r-[100px]  md:rounded-r-[50px] rounded-r-[30px]  bg-[#fcf1e6] w-full flex flex-col gap-3 text-left z-20 2xl:pl-[200px] md:pl-[100px] pl-[20px] md:py-[60px] py-[40px] lg:pr-[50px] pr-[24px]">
-        <h1 className=" font-dunbar xl:text-[50px] text-[35px]  xl:leading-[70px]  leading-[45px] lg:text-5xl font-semibold text-[#1f7333]  pb-3 2xl:max-w-[900px] max-w-[700px] ">
-          The Yiddishe Life Checklist Generator
+        <h1 className=" xl:text-[50px] text-[35px]  xl:leading-[55px]  leading-[45px] lg:text-5xl font-semibold text-[#1f7333]  pb-3 2xl:max-w-[900px] max-w-[700px] ">
+          The Yiddishe Life <br /> Checklist Generator
         </h1>
 
         {/* <div> 
           <div className="max-w-28 h-2 rounded-full bg-[#13AE8D]"></div>
         </div> */}
 
-        <p className="font-causten text-gray-600  lg:text-[28px] text-[20px] md:text-[35px] md:leading-[40px] leading-6 ">
+        <p className=" text-gray-600  lg:text-[28px] text-[20px] md:text-[35px] md:leading-[40px] leading-6 ">
            A <span className="text-[#1f7333]">free tool</span> to help you stay organized with ready-to-use, 
            customizable checklists for every part of the Yiddishe life — from Shabbos and Yom Tov to simchas, 
            shul management, and beyond.

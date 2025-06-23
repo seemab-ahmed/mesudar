@@ -271,8 +271,7 @@ const generatePDF = () => {
       wsData.push(['']);
     });
 
-    wsData.push(['mesudar.com']);
-    wsData.push(['making gabboim\'s lives easier']);
+    wsData.push(['Brought to you by mesudar.com']);
 
     const ws = utils.aoa_to_sheet(wsData);
     ws['!cols'] = [{ wch: 60 }];
@@ -326,15 +325,10 @@ const generatePDF = () => {
       color: "16A085",
       size: 22
     }));
-    paragraphs.push(new Paragraph({
-      text: "making gabboim's lives easier",
-      alignment: "center",
-      color: "16A085",
-      size: 18
-    }));
+    
 
     const doc = new Document({
-      creator: "mesudar.com",
+      creator: " Brought to you by mesudar.com",
       title: `${selectedCategory} Checklist`,
       description: "Generated checklist for shul tasks",
       sections: [{ properties: {}, children: paragraphs }]
