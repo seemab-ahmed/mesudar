@@ -68,7 +68,7 @@ const SuggestionsList = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">{suggestion.title}</h3>
-                  {/* <p className="text-sm text-gray-600">{suggestion?.userName}</p> */}
+                  <p className="text-sm text-gray-600">{suggestion?.userName}</p>
                   <p className="text-sm text-gray-600"> {suggestion?.email}</p>
                 </div>
               </div>
