@@ -9,34 +9,20 @@ const Hero = () => {
   return (
     <div className="bg-white pt-[50px]  md:pb-16 pb-10 overflow-hidden relative ">
     <div className="flex flex-col lg:flex-row  gap-12 clip-shape">
-      {/* Left Content */}
       <div className="lg:w-[70%] lg:rounded-r-[100px]  md:rounded-r-[50px] rounded-r-[30px]  bg-[#fcf1e6] w-full flex flex-col gap-3 text-left z-20 2xl:pl-[200px] md:pl-[100px] pl-[20px] md:py-[60px] py-[40px] lg:pr-[50px] pr-[24px]">
         <h1 className=" xl:text-[50px] text-[35px]  xl:leading-[55px]  leading-[45px] lg:text-5xl font-semibold text-[#1f7333]  pb-3 2xl:max-w-[900px] max-w-[700px] ">
           The Yiddishe Life <br /> Checklist Generator
         </h1>
-
-        {/* <div> 
-          <div className="max-w-28 h-2 rounded-full bg-[#13AE8D]"></div>
-        </div> */}
-
         <p className=" text-gray-600  lg:text-[28px] text-[20px] md:text-[35px] md:leading-[40px] leading-6 ">
            A <span className="text-[#1f7333]">free tool</span> to help you stay organized with ready-to-use, 
            customizable checklists for every part of the Yiddishe life — from Shabbos and Yom Tov to simchas, 
            shul management, and beyond.
         </p>
-        {/* <div className="relative group w-fit flex items-center overflow-hidden rounded-full">
-            <div className="absolute top-0 left-0 w-0 h-full bg-black z-10 group-hover:w-full transition-all duration-500 ease-in-out"></div>
-            <button
-              className="relative z-20 w-fit bg-[#13AE8D] group-hover:bg-transparent text-white rounded-full px-8 py-4 text-lg transition-all duration-300"
-            >
-                READ MORE
-            </button>
-          </div> */}
     
       </div>
   
       {/* Right Image */}
-      <div className= "w-full lg:w-[30%] px-5">
+      <div className= "w-full hidden lg:block lg:w-[30%] px-5">
         <div className="relative w-full h-full flex items-center ">
           <div className="  overflow-hidden">
             <img

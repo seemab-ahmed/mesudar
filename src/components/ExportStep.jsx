@@ -144,7 +144,113 @@ export const ExportStep = ({
 //   doc.save(`${selectedCategory}_Checklist.pdf`);
 // };
 
-const generatePDF = () => {
+// const generatePDF = () => {
+//   const doc = new jsPDF({
+//     orientation: "portrait",
+//     unit: "mm",
+//     format: "a4"
+//   });
+  
+//   const checkedTasks = getCheckedTasks();
+  
+//   if (Object.keys(checkedTasks).length === 0) {
+//     alert("No tasks selected to export");
+//     return;
+//   }
+
+//   const pageWidth = doc.internal.pageSize.getWidth();
+//   const pageHeight = doc.internal.pageSize.getHeight();
+//   const margin = 15;
+//   let yPos = 30;
+//   let isFirstPage = true;
+
+//   // ===== BORDER FUNCTION =====
+//   const addPageBorder = () => {
+//     doc.setDrawColor(31, 115, 51); // Green color
+//     doc.rect(margin, margin, pageWidth - 2 * margin, pageHeight - 2 * margin);
+//   };
+
+//   // ===== LOGO FUNCTION =====
+//   const addLogoToPage = () => {
+//     if (!Logo) return;
+//     try {
+//       const imgWidth = 40;
+//       const imgHeight = 10;
+//       doc.addImage(Logo, 'PNG', 
+//         (pageWidth - imgWidth) / 2, 
+//         pageHeight - margin - 15, 
+//         imgWidth, 
+//         imgHeight
+//       );
+//     } catch (error) {
+//       doc.setFontSize(10);
+//       doc.setTextColor(31, 115, 51);
+//       doc.text('mesudar.com', pageWidth / 2, pageHeight - margin - 10, { align: 'center' });
+//     }
+//   };
+
+//   // ===== NEW PAGE FUNCTION =====
+//   const addNewPage = () => {
+//     doc.addPage("a4", "portrait");
+//     isFirstPage = false;
+//     yPos = margin + 30;
+//     addPageBorder(); // Border for new pages
+//     addLogoToPage(); // Logo for new pages
+//   };
+
+//   // ===== INITIAL PAGE SETUP =====
+//   addPageBorder(); // Border for first page
+//   addLogoToPage(); // Logo for first page
+
+//   // ===== HEADER =====
+//   doc.setFillColor(31, 115, 51);
+//   doc.roundedRect(
+//     (pageWidth - 110) / 2, 
+//     yPos - 10, 
+//     110, 
+//     15, 
+//     7.5, 
+//     7.5, 
+//     'FD'
+//   );
+//   doc.setFontSize(14);
+//   doc.setTextColor(255, 255, 255);
+//   doc.text(`${selectedCategory} Checklist`, pageWidth / 2, yPos, { align: 'center' });
+//   yPos += 25;
+
+//   // ===== CONTENT =====
+//   Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
+//     if (yPos > pageHeight - 50) addNewPage();
+
+//     doc.setFontSize(12);
+//     doc.setFont('helvetica', 'bold');
+//     doc.setTextColor(31, 115, 51);
+//     doc.text(subcategory, margin + 5, yPos);
+//     yPos += 10;
+
+//     tasks.forEach(task => {
+//       if (yPos > pageHeight - 20) addNewPage();
+
+//       doc.setDrawColor(31, 115, 51);
+//       doc.rect(margin + 5, yPos - 4, 5, 5);
+//       doc.setFont('helvetica', 'normal');
+//       doc.text(task, margin + 15, yPos);
+//       yPos += 8;
+//     });
+
+//     yPos += 8;
+//   });
+
+//   // ===== FINAL CHECK =====
+//   if (yPos > pageHeight - 30) {
+//     addNewPage();
+//   }
+  
+//   doc.save(`${selectedCategory}_Checklist.pdf`);
+// };
+
+const generatePDF = async () => {
+
   const doc = new jsPDF({
     orientation: "portrait",
     unit: "mm",
@@ -158,56 +264,41 @@ const generatePDF = () => {
     return;
   }
 
+  // Set font - change to a serif font available in jsPDF
+  doc.setFont("helvetica", "normal"); // Using helvetica as serif font
+
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
   const margin = 15;
   let yPos = 30;
-  let isFirstPage = true;
+  const mainColor = "#1f7333"; // Green color
+  const textColor = "#535252"; // Gray color
 
-  // ===== BORDER FUNCTION =====
-  const addPageBorder = () => {
-    doc.setDrawColor(31, 115, 51); // Green color
-    doc.rect(margin, margin, pageWidth - 2 * margin, pageHeight - 2 * margin);
-  };
-
-  // ===== LOGO FUNCTION =====
-  const addLogoToPage = () => {
-    if (!Logo) return;
-    try {
-      const imgWidth = 40;
-      const imgHeight = 10;
-      doc.addImage(Logo, 'PNG', 
-        (pageWidth - imgWidth) / 2, 
-        pageHeight - margin - 15, 
-        imgWidth, 
-        imgHeight
-      );
-    } catch (error) {
-      doc.setFontSize(10);
-      doc.setTextColor(31, 115, 51);
-      doc.text('mesudar.com', pageWidth / 2, pageHeight - margin - 10, { align: 'center' });
-    }
-  };
-
-  // ===== NEW PAGE FUNCTION =====
-  const addNewPage = () => {
-    doc.addPage("a4", "portrait");
-    isFirstPage = false;
-    yPos = margin + 30;
-    addPageBorder(); // Border for new pages
-    addLogoToPage(); // Logo for new pages
-  };
-
-  // ===== INITIAL PAGE SETUP =====
-  addPageBorder(); // Border for first page
-  addLogoToPage(); // Logo for first page
-
-  // ===== HEADER =====
-  doc.setFillColor(31, 115, 51);
+  // Add background color (outer color)
+  doc.setFillColor(252, 241, 230); // #fcf1e6
+  doc.rect(0, 0, pageWidth, pageHeight, 'F');
+  
+  // Add white content area with rounded border
+  doc.setFillColor(255, 255, 255); // WHITE for inside border
+  doc.setDrawColor(31, 115, 51); // #1f7333 border color
   doc.roundedRect(
-    (pageWidth - 110) / 2, 
-    yPos - 10, 
-    110, 
+    margin, 
+    margin, 
+    pageWidth - 2 * margin, 
+    pageHeight - 2 * margin, 
+    5, 
+    5, 
+    'FD'
+  );
+
+  // ===== TITLE =====
+  doc.setFillColor(mainColor);
+  doc.setDrawColor(mainColor);
+  const titleWidth = doc.getStringUnitWidth(`${selectedCategory} Checklist`) * 25 / doc.internal.scaleFactor;
+  doc.roundedRect(
+    (pageWidth - titleWidth - 20) / 2, 
+    yPos, 
+    titleWidth + 20, 
     15, 
     7.5, 
     7.5, 
@@ -215,41 +306,101 @@ const generatePDF = () => {
   );
   doc.setFontSize(14);
   doc.setTextColor(255, 255, 255);
-  doc.text(`${selectedCategory} Checklist`, pageWidth / 2, yPos, { align: 'center' });
-  yPos += 25;
+  doc.text(`${selectedCategory} Checklist`, pageWidth / 2, yPos + 10, { align: 'center' });
+  yPos += 33;
 
   // ===== CONTENT =====
   Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
-    if (yPos > pageHeight - 50) addNewPage();
+    // Check page space before adding content
+    if (yPos > pageHeight - 50) {
+      doc.addPage();
+      yPos = margin + 30;
+      // Add border and background to new page
+      // doc.setFillColor(252, 241, 230);
+      // doc.rect(0, 0, pageWidth, pageHeight, 'F');
+      // doc.setDrawColor(mainColor);
+      // doc.roundedRect(margin, margin, pageWidth - 2 * margin, pageHeight - 2 * margin, 5, 5, 'FD');
+      doc.setFillColor(252, 241, 230); // #fcf1e6
+  doc.rect(0, 0, pageWidth, pageHeight, 'F');
+  
+  // Add white content area with rounded border
+  doc.setFillColor(255, 255, 255); // WHITE for inside border
+  doc.setDrawColor(31, 115, 51); // #1f7333 border color
+  doc.roundedRect(
+    margin, 
+    margin, 
+    pageWidth - 2 * margin, 
+    pageHeight - 2 * margin, 
+    5, 
+    5, 
+    'FD'
+  );
+    }
 
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(31, 115, 51);
-    doc.text(subcategory, margin + 5, yPos);
-    yPos += 10;
+    // Subcategory title - larger and bold
+    doc.setFontSize(18);
+    doc.setTextColor(mainColor);
+    doc.setFont("helvetica", "bold");
+    doc.text(subcategory, margin + 10, yPos);
+    yPos += 12; // More space after section title
+
+    // Tasks
+    doc.setFontSize(14);
+    doc.setTextColor(0, 0, 0); // Black
+    doc.setFont("helvetica", "normal");
 
     tasks.forEach(task => {
-      if (yPos > pageHeight - 20) addNewPage();
+      if (yPos > pageHeight - 20) {
+        doc.addPage();
+        yPos = margin + 30;
+        // Add border and background to new page
+        doc.setFillColor(252, 241, 230);
+        doc.rect(0, 0, pageWidth, pageHeight, 'F');
+        doc.setDrawColor(mainColor);
+        doc.roundedRect(margin, margin, pageWidth - 2 * margin, pageHeight - 2 * margin, 5, 5, 'FD');
+      }
 
-      doc.setDrawColor(31, 115, 51);
-      doc.rect(margin + 5, yPos - 4, 5, 5);
-      doc.setFont('helvetica', 'normal');
-      doc.text(task, margin + 15, yPos);
+      // Checkbox with rounded corners
+      doc.setDrawColor(mainColor);
+      doc.roundedRect(
+        margin + 10,
+        yPos - 3,
+        4,
+        4,
+        1,
+        1,
+        'S'
+      );
+      
+      // Task text
+      doc.text(task, margin + 20, yPos);
       yPos += 8;
     });
 
-    yPos += 8;
+    // Add divider line between sections (like the --- in your markdown)
+    // if (yPos < pageHeight - 20) {
+    //   doc.setDrawColor(200, 200, 200); // Light gray line
+    //   doc.line(margin + 10, yPos + 5, pageWidth - margin - 10, yPos + 5);
+    //   yPos += 15; // Extra space after divider
+    // } else {
+      yPos += 5; // Minimal space if we're at page end
+    // }
   });
 
-  // ===== FINAL CHECK =====
-  if (yPos > pageHeight - 30) {
-    addNewPage();
+  // ===== FOOTER =====
+  try {
+    const imgWidth = 40;
+    const imgHeight = 10;
+    const logoY = pageHeight - margin - 15;
+    doc.addImage(Logo, 'PNG', (pageWidth - imgWidth) / 2, logoY, imgWidth, imgHeight);
+  } catch (error) {
+    doc.setFontSize(10);
+    doc.setTextColor(mainColor);
+    doc.text('mesudar.com', pageWidth / 2, pageHeight - margin - 10, { align: 'center' });
   }
-  
+
   doc.save(`${selectedCategory}_Checklist.pdf`);
 };
-
-
   const generateExcel = () => {
     const checkedTasks = getCheckedTasks();
     
@@ -279,70 +430,208 @@ const generatePDF = () => {
     writeFile(wb, `${selectedCategory}_Checklist.xlsx`);
   };
 
-  const generateWord = async () => {
-    const checkedTasks = getCheckedTasks();
+  // const generateWord = async () => {
+  //   const checkedTasks = getCheckedTasks();
     
-    // Return early if no tasks are selected
-    if (Object.keys(checkedTasks).length === 0) {
-      alert("No tasks selected to export");
-      return;
+  //   // Return early if no tasks are selected
+  //   if (Object.keys(checkedTasks).length === 0) {
+  //     alert("No tasks selected to export");
+  //     return;
+  //   }
+
+  //   const paragraphs = [];
+
+  //   paragraphs.push(new Paragraph({
+  //     text: `${selectedCategory} Checklist`,
+  //     heading: "Heading1",
+  //     alignment: "center",
+  //     spacing: { after: 400 },
+  //     border: { bottom: { color: "16A085", space: 10, value: "single", size: 8 } }
+  //   }));
+
+  //   Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
+  //     paragraphs.push(new Paragraph({
+  //       text: subcategory,
+  //       heading: "Heading2",
+  //       spacing: { before: 400, after: 200 },
+  //       bold: true
+  //     }));
+
+  //     tasks.forEach(task => {
+  //       paragraphs.push(new Paragraph({
+  //         text: task,
+  //         bullet: { level: 0 },
+  //         spacing: { after: 100 },
+  //         indent: { left: 720 }
+  //       }));
+  //     });
+
+  //     paragraphs.push(new Paragraph({ text: "", spacing: { after: 200 } }));
+  //   });
+
+  //   paragraphs.push(new Paragraph({
+  //     text: "mesudar.com",
+  //     alignment: "center",
+  //     spacing: { before: 600 },
+  //     color: "16A085",
+  //     size: 22
+  //   }));
+    
+
+  //   const doc = new Document({
+  //     creator: " Brought to you by mesudar.com",
+  //     title: `${selectedCategory} Checklist`,
+  //     description: "Generated checklist for shul tasks",
+  //     sections: [{ properties: {}, children: paragraphs }]
+  //   });
+
+  //   try {
+  //     const blob = await Packer.toBlob(doc);
+  //     saveAs(blob, `${selectedCategory}_Checklist.docx`);
+  //   } catch (error) {
+  //     console.error("Word export error:", error);
+  //     alert("Failed to generate Word document. Please try again.");
+  //   }
+  // };
+
+
+  const generateWord = async () => {
+  const checkedTasks = getCheckedTasks();
+  
+  if (Object.keys(checkedTasks).length === 0) {
+    alert("No tasks selected to export");
+    return;
+  }
+
+  const paragraphs = [];
+
+  // Title with green bottom border
+  paragraphs.push(new Paragraph({
+    text: `${selectedCategory} Checklist`,
+    heading: "Heading1",
+    alignment: "center",
+    spacing: { after: 400 },
+    border: { 
+      bottom: { 
+        color: "1F7333", // Your green color (#1f7333)
+        space: 10, 
+        value: "single", 
+        size: 8 
+      } 
     }
+  }));
 
-    const paragraphs = [];
-
+  // Content sections
+  Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
+    // Subcategory heading
     paragraphs.push(new Paragraph({
-      text: `${selectedCategory} Checklist`,
-      heading: "Heading1",
-      alignment: "center",
-      spacing: { after: 400 },
-      border: { bottom: { color: "16A085", space: 10, value: "single", size: 8 } }
+      text: subcategory,
+      heading: "Heading2",
+      spacing: { before: 400, after: 200 },
+      bold: true,
+      color: "1F7333" // Green color
     }));
 
-    Object.entries(checkedTasks).forEach(([subcategory, tasks]) => {
+    // Tasks with bullet points
+    tasks.forEach(task => {
       paragraphs.push(new Paragraph({
-        text: subcategory,
-        heading: "Heading2",
-        spacing: { before: 400, after: 200 },
-        bold: true
+        text: task,
+        bullet: { level: 0 },
+        spacing: { after: 100 },
+        indent: { left: 720 }
       }));
-
-      tasks.forEach(task => {
-        paragraphs.push(new Paragraph({
-          text: task,
-          bullet: { level: 0 },
-          spacing: { after: 100 },
-          indent: { left: 720 }
-        }));
-      });
-
-      paragraphs.push(new Paragraph({ text: "", spacing: { after: 200 } }));
     });
+
+    // Space between sections
+    paragraphs.push(new Paragraph({ 
+      text: "", 
+      spacing: { after: 200 } 
+    }));
+  });
+
+  // Logo and footer
+  try {
+    // Convert your logo to base64 if not already
+    const logoResponse = await fetch(Logo);
+    const logoBlob = await logoResponse.blob();
+    const logoBase64 = await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.readAsDataURL(logoBlob);
+    });
+
+    paragraphs.push(new Paragraph({
+      children: [
+        new ImageRun({
+          data: logoBase64,
+          transformation: {
+            width: 150, // Adjust as needed
+            height: 40  // Adjust as needed
+          },
+          floating: {
+            horizontalPosition: {
+              relative: HorizontalPositionRelativeFrom.PAGE,
+              align: HorizontalPositionAlign.CENTER
+            }
+          }
+        })
+      ],
+      alignment: "center",
+      spacing: { before: 600 }
+    }));
 
     paragraphs.push(new Paragraph({
       text: "mesudar.com",
       alignment: "center",
-      spacing: { before: 600 },
-      color: "16A085",
+      spacing: { before: 20 },
+      color: "1F7333", // Green color
       size: 22
     }));
-    
+  } catch (error) {
+    console.error("Logo loading error:", error);
+    // Fallback to text if logo fails
+    paragraphs.push(new Paragraph({
+      text: "mesudar.com",
+      alignment: "center",
+      spacing: { before: 600 },
+      color: "1F7333", // Green color
+      size: 22
+    }));
+  }
 
-    const doc = new Document({
-      creator: " Brought to you by mesudar.com",
-      title: `${selectedCategory} Checklist`,
-      description: "Generated checklist for shul tasks",
-      sections: [{ properties: {}, children: paragraphs }]
-    });
+  // Create document
+  const doc = new Document({
+    creator: "Brought to you by mesudar.com",
+    title: `${selectedCategory} Checklist`,
+    description: "Generated checklist for shul tasks",
+    styles: {
+      paragraphStyles: [
+        {
+          id: "Normal",
+          name: "Normal",
+          run: {
+            font: "Helvetica Neue" // Or your preferred font
+          },
+          paragraph: {
+            spacing: { line: 276 } // 1.15 line spacing
+          }
+        }
+      ]
+    },
+    sections: [{ 
+      properties: {}, 
+      children: paragraphs 
+    }]
+  });
 
-    try {
-      const blob = await Packer.toBlob(doc);
-      saveAs(blob, `${selectedCategory}_Checklist.docx`);
-    } catch (error) {
-      console.error("Word export error:", error);
-      alert("Failed to generate Word document. Please try again.");
-    }
-  };
-
+  try {
+    const blob = await Packer.toBlob(doc);
+    saveAs(blob, `${selectedCategory}_Checklist.docx`);
+  } catch (error) {
+    console.error("Word export error:", error);
+    alert("Failed to generate Word document. Please try again.");
+  }
+};
   const renderPreview = () => {
     const checkedTasks = getCheckedTasks();
     
@@ -398,28 +687,31 @@ const generatePDF = () => {
       {renderPreview()}
       
 
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="mt-8 flex flex-col gap-4 max-w-[600px] m-auto">
         <button
           onClick={generatePDF}
-          className="bg-[#1f7333] hover:bg-[#1f733399] text-white py-3 px-5 rounded-full shadow-md transition"
+          className="bg-[#1f7333] hover:bg-[#1f733399] text-white py-3 px-5 rounded-full shadow-md transition w-full"
           disabled={Object.keys(getCheckedTasks()).length === 0}
         >
-          Export as PDF
+          Download PDF
+        </button>
+       <div className="flex gap-4 w-full">
+        <button
+          onClick={generateWord}
+          className="bg-[#1f7333] hover:bg-[#1f733399] text-white py-3 px-5 rounded-full shadow-md transition w-full"
+          disabled={Object.keys(getCheckedTasks()).length === 0}
+        >
+          Download Word File
         </button>
         <button
           onClick={generateExcel}
-          className="bg-[#1f7333] hover:bg-[#1f733399] text-white py-3 px-5 rounded-full shadow-md transition"
+          className="bg-[#1f7333] hover:bg-[#1f733399] text-white py-3 px-5 rounded-full shadow-md transition w-full"
           disabled={Object.keys(getCheckedTasks()).length === 0}
         >
-          Export as Excel
+          
+          Download Excel File
         </button>
-        <button
-          onClick={generateWord}
-          className="bg-[#1f7333] hover:bg-[#1f733399] text-white py-3 px-5 rounded-full shadow-md transition"
-          disabled={Object.keys(getCheckedTasks()).length === 0}
-        >
-          Export as Word
-        </button>
+       </div>
       </div>
      
 

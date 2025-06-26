@@ -23,7 +23,7 @@ export const TaskSelection = ({
         {/* <div className="inline-block bg-gradient-to-r from-[#1f7333] to-[#1dd1a1] text-white rounded-full px-8 py-3 shadow-md shadow-teal-300/30 backdrop-blur-md">
           <p className="text-base md:text-lg font-semibold">{selectedCategory} Checklist</p>
         </div> */}
-        <h2 className="text-[45px] font-semibold  text-[#535252]">
+        <h2 className="text-[45px] font-semibold text-[#535252]">
           Select the tasks that apply to you
         </h2>
       </div>

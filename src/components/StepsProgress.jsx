@@ -16,7 +16,7 @@
         >
           {step.id}
         </div>
-        <div className={`ml-2 ${index === currentStep ? 'font-bold' : ''}`}>
+        <div className={`ml-2 hidden sm:block ${index === currentStep ? 'font-bold' : ''}`}>
           {step.title}
         </div>
         {index < steps.length - 1 && (

@@ -62,7 +62,7 @@
 
 export const CategorySelection = ({ categories, categoryObjects, onSelect, onBack }) => {
   return (
-    <div className="bg-[#fcf1e6] rounded-xl px-6 py-10">
+    <div className="bg-[#fcf1e6] rounded-xl px-3 sm:px-6 py-10">
       {/* Header */}
       {/* <div className="text-center mb-8">
          <h1 className="text-4xl font-extrabold text-[#000] mb-1">mesudar.com</h1> 
@@ -76,12 +76,12 @@ export const CategorySelection = ({ categories, categoryObjects, onSelect, onBac
       </div>
 
       {/* Category Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:max-w-[85%] m-auto">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 w-full lg:max-w-[85%] m-auto">
         {categoryObjects.map((category) => (
           <button
             key={category._id}
             onClick={() => onSelect(category)}
-            className="bg-white  group  py-6 px-4 text-center border-2 border-[#1f7333] rounded-xl hover:bg-[#1f7333] hover:text-[#fff] transition-all duration-200"
+            className="bg-white  group py-4 px-2 sm:py-6 sm:px-4 text-center border-2 border-[#1f7333] rounded-xl hover:bg-[#1f7333] hover:text-[#fff] transition-all duration-200"
           >
             <span className="text-lg  text-[#000] group-hover:text-[#fff] transition-all ease-in-out duration-500" >{category.categoryTitle}</span>
           </button>

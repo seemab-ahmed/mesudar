@@ -14,9 +14,9 @@ export const Home = () => {
         <Header />
         < Hero />
         <Category />
-        <div  className="px-5 mb-4">
+        <div  className="px-5 mt-16 mb-4">
           <Link to="/feedback" 
-          className="bg-[#535252] text-white font-semibold rounded-[10px] px-14 py-4 text-[26px] hover:bg-[#89c497] transition-colors">Feedback and Suggestions</Link>
+          className="bg-[#535252] text-white font-semibold rounded-[10px] px-14 py-4 text-[16px]  md:text-[26px] hover:bg-[#89c497] transition-colors">Feedback and Suggestions</Link>
         </div>
         <Footer2 /> 
     </div>

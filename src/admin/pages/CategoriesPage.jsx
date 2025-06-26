@@ -310,9 +310,9 @@ export const CategoriesPage = () => {
 
     try {
       if (editingCategory) {
-        await updateCategory(editingCategory._id, { categoryTitle });
+        await updateCategory(editingCategory._id,  categoryTitle );
       } else {
-        await createCategory({ categoryTitle });
+        await createCategory(categoryTitle );
       }
       setEditingCategory(null);
       setCategoryTitle('');
