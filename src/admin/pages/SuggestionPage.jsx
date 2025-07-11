@@ -10,8 +10,8 @@ const SuggestionsList = () => {
     const fetchSuggestions = async () => {
       try {
         
-        // const response = await axios.get('https://admin.mesudar.com/api/admin/suggestions');
-        const response = await axios.get('http://localhost:3000/api/admin/suggestions');
+        const response = await axios.get('https://admin.mesudar.com/api/admin/suggestions');
+        // const response = await axios.get('http://localhost:3000/api/admin/suggestions');
         setSuggestions(response.data.suggestions);
         // setSuggestions(sugg.suggestions);
       } catch (err) {
