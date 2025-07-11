@@ -24,7 +24,7 @@ export const TaskSelection = ({
           <p className="text-base md:text-lg font-semibold">{selectedCategory} Checklist</p>
         </div> */}
         <h2 className="text-[45px] font-semibold text-[#535252]">
-          Select the tasks that apply to you
+          Select the tasks
         </h2>
       </div>
 

@@ -4,6 +4,7 @@ import { TaskSelection } from '../components/TaskSelection';
 import { ExportStep } from '../components/ExportStep';
 import { StepsProgress } from '../components/StepsProgress';
 import { WelcomeStep } from '../components/WelcomeStep';
+import { EditTasksStep } from '../components/EditTasksStep';
 
 export const Category = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -12,13 +13,14 @@ export const Category = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true); // Initialize as true since we load on mount
   const [error, setError] = useState(null);
+  const [editedTasksData, setEditedTasksData] = useState({});
 
   // Memoized fetch function to prevent recreation on every render
   const fetchCategories = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://admin.mesudar.com/api/user/event');
-      // const response = await fetch('http://localhost:3000/api/user/event');
+      // const response = await fetch('https://admin.mesudar.com/api/user/event');
+      const response = await fetch('http://localhost:3000/api/user/event');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -62,8 +64,9 @@ export const Category = () => {
   // Steps data - moved outside component or memoized since it's static
   const steps = [
     { id: 1, title: "Choose a Category" },
-    { id: 2, title: "Select the tasks that apply to you" },
-    { id: 3, title: "Export your checklist" }
+    { id: 2, title: "Select the tasks" },
+    { id: 3, title: "Customize your checklist" },
+    { id: 4, title: "Export your checklist" }
   ];
 
   // Memoized task data transformation
@@ -141,19 +144,35 @@ export const Category = () => {
             onBack={prevStep}
           />
         );
-      
       case 3:
+      return (
+        <EditTasksStep
+          selectedCategory={selectedCategory}
+          tasksData={getTasksData()}
+          checkedItems={checkedItems}
+          setCheckedItems={setCheckedItems}
+          onAddSubCategory={() => {}}
+          onAddTask={() => {}}
+          onSave={data => {
+          setEditedTasksData(data); // Save edits to parent state
+          nextStep();
+      }}
+          onBack={prevStep}
+        />
+      );
+      case 4:
         return (
-          <ExportStep 
-            selectedCategory={selectedCategory?.categoryTitle || ''}
-            tasksData={getTasksData()}
-            checkedItems={checkedItems}
-            onBack={prevStep}
-            onStartOver={() => {
-              setCurrentStep(0);
-              setCheckedItems({});
-            }}
-          />
+        <ExportStep 
+      selectedCategory={selectedCategory?.categoryTitle || ''}
+      tasksData={Object.keys(editedTasksData).length ? editedTasksData : getTasksData()}
+      checkedItems={checkedItems}
+      onBack={prevStep}
+      onStartOver={() => {
+        setCurrentStep(0);
+        setCheckedItems({});
+        setEditedTasksData({});
+      }}
+    />
         );
         
       default:

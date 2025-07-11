@@ -553,7 +553,7 @@ doc.addFont('/fonts/Raleway-SemiBold.ttf', 'Raleway', 'bold');
     return (
       <div className="border border-[#1f7333] shadow-md p-6 rounded-2xl bg-white md:max-w-[80%] w-full m-auto">
         <div className="bg-[#1f7333] text-white font-semibold rounded-full py-2 px-6 mx-auto text-center w-fit mb-2 text-lg shadow-sm">
-          {selectedCategory} Checklist
+          {selectedCategory}
         </div>
         {Object.entries(checkedTasks).map(([subcategory, tasks], index) => (
           <div key={index} className="mb-6">
@@ -563,7 +563,7 @@ doc.addFont('/fonts/Raleway-SemiBold.ttf', 'Raleway', 'bold');
             {tasks.map((task, taskIndex) => (
               <div key={taskIndex} className="flex items-center gap-2 mb-2">
                 <div className="w-4 h-4 border-2 border-[#1f7333] rounded-[5px] flex items-center justify-center text-xs text-black"></div>
-                <span className="text-gray-800 text-sm">{task}</span>
+                <span className="text-black text-sm">{task}</span>
               </div>
             ))}
           </div>
@@ -603,7 +603,7 @@ doc.addFont('/fonts/Raleway-SemiBold.ttf', 'Raleway', 'bold');
         >
           Download PDF
         </button>
-        <div className="flex gap-4 w-full">
+        {/* <div className="flex gap-4 w-full">
           <button
             onClick={generateWord}
             className="bg-[#1f7333] hover:bg-[#1f733399] text-white py-3 px-5 rounded-full shadow-md transition w-full"
@@ -618,7 +618,7 @@ doc.addFont('/fonts/Raleway-SemiBold.ttf', 'Raleway', 'bold');
           >
             Download Excel File
           </button>
-        </div>
+        </div> */}
       </div>
 
       <div className="mt-10 flex justify-between">
