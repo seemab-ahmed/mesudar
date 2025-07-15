@@ -71,7 +71,7 @@ export const CategorySelection = ({ categories, categoryObjects, onSelect, onBac
 
       <div className="text-center mb-10">
         <div className="text-[#535252] ">
-          <p className="sm:text-[40px] text-[34px] font-bold">Choose a category</p>
+          <p className="sm:text-[40px] text-[34px] font-bold">Select a Checklist</p>
         </div>
       </div>
 

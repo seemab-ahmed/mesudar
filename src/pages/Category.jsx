@@ -63,10 +63,10 @@ export const Category = () => {
 
   // Steps data - moved outside component or memoized since it's static
   const steps = [
-    { id: 1, title: "Choose a Category" },
-    { id: 2, title: "Select the tasks" },
+    { id: 1, title: "Select a checklist" },
+    { id: 2, title: "Select relevant tasks" },
     { id: 3, title: "Customize your checklist" },
-    { id: 4, title: "Export your checklist" }
+    { id: 4, title: "Download checklist" }
   ];
 
   // Memoized task data transformation
@@ -114,6 +114,22 @@ export const Category = () => {
     nextStep();
   }, [nextStep]);
 
+  const getSelectedTasksData = useCallback(() => {
+  if (!selectedCategory) return {};
+  const category = categories.find(cat => cat._id === selectedCategory._id);
+  if (!category) return {};
+  const data = {};
+  data[category.categoryTitle] = {};
+  category.subCategory.forEach(subCat => {
+    const filteredTasks = subCat.tasks
+      .map(task => task.taskTitle)
+      .filter(taskTitle => checkedItems[`${subCat.subCategoryTitle}-${taskTitle}`]);
+    if (filteredTasks.length > 0) {
+      data[category.categoryTitle][subCat.subCategoryTitle] = filteredTasks;
+    }
+  });
+  return data;
+}, [categories, selectedCategory, checkedItems]);
   // Render the appropriate step content
   const renderStepContent = useCallback(() => {
     if (loading) return <div className="text-center py-8">Loading categories...</div>;
@@ -147,18 +163,16 @@ export const Category = () => {
       case 3:
       return (
         <EditTasksStep
-          selectedCategory={selectedCategory}
-          tasksData={getTasksData()}
-          checkedItems={checkedItems}
-          setCheckedItems={setCheckedItems}
-          onAddSubCategory={() => {}}
-          onAddTask={() => {}}
-          onSave={data => {
-          setEditedTasksData(data); // Save edits to parent state
-          nextStep();
+      selectedCategory={selectedCategory}
+      tasksData={Object.keys(editedTasksData).length ? editedTasksData : getSelectedTasksData()}
+      checkedItems={checkedItems}
+      setCheckedItems={setCheckedItems}
+      onSave={data => {
+        setEditedTasksData(data);
+        nextStep();
       }}
-          onBack={prevStep}
-        />
+      onBack={prevStep}
+    />
       );
       case 4:
         return (
@@ -193,9 +207,10 @@ export const Category = () => {
     steps
   ]);
 
+
   return (
     <div className="bg-white">
-      <div className="max-w-5xl px-5 m-auto py-[60px]">
+      <div className="max-w-6xl px-5 m-auto py-[60px]">
         {currentStep > 0 && currentStep <= steps.length && (
           <StepsProgress steps={steps} currentStep={currentStep - 1} />
         )}

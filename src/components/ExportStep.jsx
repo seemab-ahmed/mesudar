@@ -277,7 +277,7 @@ doc.addFont('/fonts/Raleway-SemiBold.ttf', 'Raleway', 'bold');
   doc.setFillColor(mainColor);
   doc.setDrawColor(mainColor);
   const titleWidth =
-    (doc.getStringUnitWidth(`${selectedCategory} Checklist`) * 25) /
+    (doc.getStringUnitWidth(`${selectedCategory}`) * 25) /
     doc.internal.scaleFactor;
   doc.roundedRect(
     (pageWidth - titleWidth - 20) / 2,
@@ -291,7 +291,7 @@ doc.addFont('/fonts/Raleway-SemiBold.ttf', 'Raleway', 'bold');
   doc.setFontSize(16);
   doc.setTextColor(255, 255, 255);
   doc.setFont("Raleway", "bold");
-  doc.text(`${selectedCategory} Checklist`, pageWidth / 2, yPos + 10, {
+  doc.text(`${selectedCategory}`, pageWidth / 2, yPos + 10, {
     align: "center",
   });
   yPos += 30;
@@ -353,7 +353,7 @@ doc.addFont('/fonts/Raleway-SemiBold.ttf', 'Raleway', 'bold');
     addFooter();
   }
 
-  doc.save(`${selectedCategory}_Checklist.pdf`);
+  doc.save(`${selectedCategory}.pdf`);
 };
 
   const generateExcel = () => {

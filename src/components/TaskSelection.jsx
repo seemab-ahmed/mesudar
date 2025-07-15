@@ -17,14 +17,14 @@ export const TaskSelection = ({
   };
 
   return (
-    <div className="py-12 px-5 max-w-5xl mx-auto">
+    <div className="bg-[#fcf1e6] py-10 md:px-10 px-3 rounded-xl">
       {/* Category Title */}
       <div className="text-center mb-10">
         {/* <div className="inline-block bg-gradient-to-r from-[#1f7333] to-[#1dd1a1] text-white rounded-full px-8 py-3 shadow-md shadow-teal-300/30 backdrop-blur-md">
           <p className="text-base md:text-lg font-semibold">{selectedCategory} Checklist</p>
         </div> */}
         <h2 className="text-[45px] font-semibold text-[#535252]">
-          Select the tasks
+          Select Relevant tasks
         </h2>
       </div>
 
