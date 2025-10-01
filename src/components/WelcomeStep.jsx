@@ -16,7 +16,7 @@ export const WelcomeStep = ({ onNext }) => {
       title: "Customize your checklist",
       description: "3",
       icon: (
-        <img src={icon3} alt="Customize Checklist" width="40" height="40" />
+        <img src={icon3} alt="Customize Checklist" width="50" height="50" />
       ),
     },
     {
@@ -40,7 +40,7 @@ export const WelcomeStep = ({ onNext }) => {
               <img src={icon1} alt="Choose Category" width="40" height="40" />
             </p>
             <h3 className="lg:text-[24px] text-[20px] text-center  font-normal text-[#535252]">
-              Select a <br /> Checlist <br /> Template
+              Select a <br /> Checklist <br /> Template
             </h3>
           </div>
 
@@ -65,7 +65,7 @@ export const WelcomeStep = ({ onNext }) => {
           onClick={onNext}
           className="bg-[#1f7333] text-white font-semibold rounded-[10px] px-14 py-4 text-[26px] hover:bg-[#89c497] transition-colors"
         >
-          Start now
+         Create Your Checklist
         </button>
       </div>
     </div>
