@@ -1,0 +1,311 @@
+{
+    "message": "These are categories",
+    "categories": [
+        {
+            "_id": "68234bff35b6f5a66e99c98a",
+            "categoryTitle": "Yom Kippur",
+            "subCategory": [],
+            "__v": 0
+        },
+        {
+            "_id": "68219bc69a303e1be7c628bd",
+            "categoryTitle": "Cleaning Checklist",
+            "subCategory": [
+                {
+                    "subCategoryTitle": "Main Bathroom",
+                    "tasks": [
+                        {
+                            "taskTitle": "Polish ﬁxtures",
+                            "_id": "682d06653f36bacd4da86a09"
+                        },
+                        {
+                            "taskTitle": "Clean counters, sink & cabinets ",
+                            "_id": "682d06503f36bacd4da8691c"
+                        },
+                        {
+                            "taskTitle": "Clean Mirror & light bar",
+                            "_id": "682d06553f36bacd4da86969"
+                        },
+                        {
+                            "taskTitle": "Clean shower and/or bathtub ",
+                            "_id": "682d065d3f36bacd4da869b8"
+                        },
+                        {
+                            "taskTitle": "Clean toilet inside & out",
+                            "_id": "682d066a3f36bacd4da86a5c"
+                        },
+                        {
+                            "taskTitle": "Straighten or replace towels ",
+                            "_id": "682d06703f36bacd4da86ab1"
+                        },
+                        {
+                            "taskTitle": "Check exhaust fan",
+                            "_id": "682d06763f36bacd4da86b08"
+                        },
+                        {
+                            "taskTitle": "Clean walls & baseboards",
+                            "_id": "682d067b3f36bacd4da86b61"
+                        },
+                        {
+                            "taskTitle": "a",
+                            "_id": "6849b7c76c5d1beeca0ba0bc"
+                        },
+                        {
+                            "taskTitle": "Empty & replace garbage ",
+                            "_id": "682d06823f36bacd4da86bbc"
+                        }
+                    ],
+                    "_id": "682d059b3f36bacd4da863ff"
+                },
+                {
+                    "subCategoryTitle": "Kitchen and Dining",
+                    "tasks": [
+                        {
+                            "taskTitle": "Wipe counters & cabinet doors",
+                            "_id": "682d05f53f36bacd4da865eb"
+                        },
+                        {
+                            "taskTitle": "Clean backsplash ",
+                            "_id": "682d05fa3f36bacd4da86622"
+                        },
+                        {
+                            "taskTitle": "Shine appliances & sink ",
+                            "_id": "682d06023f36bacd4da8665b"
+                        },
+                        {
+                            "taskTitle": "Clean hood-range",
+                            "_id": "682d06093f36bacd4da86696"
+                        },
+                        {
+                            "taskTitle": "Clean microwave inside/out ",
+                            "_id": "682d06103f36bacd4da866d3"
+                        },
+                        {
+                            "taskTitle": "Dust on top of fridge & light ﬁxtures",
+                            "_id": "682d06183f36bacd4da86712"
+                        },
+                        {
+                            "taskTitle": "Clean table & chairs",
+                            "_id": "682d06203f36bacd4da86753"
+                        },
+                        {
+                            "taskTitle": "Furniture felts ",
+                            "_id": "682d06263f36bacd4da86796"
+                        },
+                        {
+                            "taskTitle": "Dust & spot clean glass ",
+                            "_id": "682d062c3f36bacd4da867db"
+                        },
+                        {
+                            "taskTitle": "Empty & replace garbage ",
+                            "_id": "682d06323f36bacd4da86822"
+                        },
+                        {
+                            "taskTitle": "Vacuum & Mop",
+                            "_id": "682d06383f36bacd4da8686b"
+                        }
+                    ],
+                    "_id": "682d05933f36bacd4da863dc"
+                },
+                {
+                    "subCategoryTitle": "Staircase & Hallways",
+                    "tasks": [],
+                    "_id": "682d05b23f36bacd4da86474"
+                },
+                {
+                    "subCategoryTitle": "Master Bedroom",
+                    "tasks": [],
+                    "_id": "682d05d63f36bacd4da8658e"
+                },
+                {
+                    "subCategoryTitle": "Half Bathroom",
+                    "tasks": [],
+                    "_id": "682d05a83f36bacd4da8644b"
+                },
+                {
+                    "subCategoryTitle": "Bedroom 1",
+                    "tasks": [],
+                    "_id": "682d05bb3f36bacd4da8649f"
+                },
+                {
+                    "subCategoryTitle": "Bedroom 2",
+                    "tasks": [],
+                    "_id": "682d05bd3f36bacd4da864cc"
+                },
+                {
+                    "subCategoryTitle": "Family Room",
+                    "tasks": [],
+                    "_id": "682d05ca3f36bacd4da8652a"
+                },
+                {
+                    "subCategoryTitle": "Laundry",
+                    "tasks": [],
+                    "_id": "682d05cf3f36bacd4da8655b"
+                }
+            ],
+            "__v": 67
+        },
+        {
+            "_id": "68238590bc2373e5968119fe",
+            "categoryTitle": "Sukkos",
+            "subCategory": [
+                {
+                    "subCategoryTitle": "Test sub categories",
+                    "tasks": [
+                        {
+                            "taskTitle": "TEsst",
+                            "_id": "682385a9bc2373e5968122d5"
+                        }
+                    ],
+                    "_id": "682385a2bc2373e596812033"
+                }
+            ],
+            "__v": 1
+        },
+        {
+            "_id": "68219cc19a303e1be7c62919",
+            "categoryTitle": "Shavuos",
+            "subCategory": [
+                {
+                    "subCategoryTitle": "Subcategory 1",
+                    "tasks": [
+                        {
+                            "taskTitle": "task 1",
+                            "_id": "68219db99a303e1be7c62a84"
+                        }
+                    ],
+                    "_id": "68219da49a303e1be7c62a49"
+                },
+                {
+                    "subCategoryTitle": "Subcategory 2",
+                    "tasks": [
+                        {
+                            "taskTitle": "task 1",
+                            "_id": "68219dca9a303e1be7c62ac0"
+                        }
+                    ],
+                    "_id": "68219dac9a303e1be7c62a5d"
+                }
+            ],
+            "__v": 2
+        },
+        {
+            "_id": "68233dc0bc2373e5967bda6a",
+            "categoryTitle": "Rosh Hashana",
+            "subCategory": [
+                {
+                    "subCategoryTitle": "Test 5",
+                    "tasks": [
+                        {
+                            "taskTitle": "Bring in ",
+                            "_id": "682376e5bc2373e5967f1a1c"
+                        },
+                        {
+                            "taskTitle": "Speak to ",
+                            "_id": "682376f0bc2373e5967f1a37"
+                        }
+                    ],
+                    "_id": "682376b0bc2373e5967f184a"
+                }
+            ],
+            "__v": 1
+        },
+        {
+            "_id": "6821fbaf9a303e1be7c62b13",
+            "categoryTitle": "Tisha B'ov",
+            "subCategory": [
+                {
+                    "subCategoryTitle": "Test",
+                    "tasks": [],
+                    "_id": "6821fbcf9a303e1be7c62b61"
+                }
+            ],
+            "__v": 1
+        },
+        {
+            "_id": "68219cb89a303e1be7c62912",
+            "categoryTitle": "Lag Ba'omer",
+            "subCategory": [
+                {
+                    "subCategoryTitle": "sub category 2",
+                    "tasks": [
+                        {
+                            "taskTitle": "task 1",
+                            "_id": "68219d279a303e1be7c6299d"
+                        },
+                        {
+                            "taskTitle": "task 2",
+                            "_id": "68219d2f9a303e1be7c629b3"
+                        },
+                        {
+                            "taskTitle": "task 3",
+                            "_id": "68219d3b9a303e1be7c629cb"
+                        }
+                    ],
+                    "_id": "68219ce29a303e1be7c6292f"
+                },
+                {
+                    "subCategoryTitle": "sub category 3",
+                    "tasks": [
+                        {
+                            "taskTitle": "task 1",
+                            "_id": "68219d519a303e1be7c62a0f"
+                        }
+                    ],
+                    "_id": "68219ce99a303e1be7c6293b"
+                },
+                {
+                    "subCategoryTitle": "sub category 1",
+                    "tasks": [
+                        {
+                            "taskTitle": "Task two",
+                            "_id": "6823900cbc2373e59688254d"
+                        },
+                        {
+                            "taskTitle": "task 3",
+                            "_id": "68219d079a303e1be7c62973"
+                        },
+                        {
+                            "taskTitle": "task 2",
+                            "_id": "68219d009a303e1be7c62961"
+                        },
+                        {
+                            "taskTitle": "task 1",
+                            "_id": "68219cf99a303e1be7c62951"
+                        },
+                        {
+                            "taskTitle": "task 4",
+                            "_id": "682594c8bc2373e596c3bcd2"
+                        }
+                    ],
+                    "_id": "68219cdd9a303e1be7c62925"
+                }
+            ],
+            "__v": 6
+        },
+        {
+            "_id": "6823978bbc2373e59689fdd1",
+            "categoryTitle": "Chanukah",
+            "subCategory": [],
+            "__v": 0
+        },
+        {
+            "_id": "68239bf1bc2373e5968bfa9e",
+            "categoryTitle": "Campaign",
+            "subCategory": [],
+            "__v": 0
+        },
+        {
+            "_id": "68239bf5bc2373e5968bfcd6",
+            "categoryTitle": "Hachnasas Sefer Torah",
+            "subCategory": [],
+            "__v": 0
+        },
+        {
+            "_id": "6823a082bc2373e5968e1989",
+            "categoryTitle": "Shul Cleaning",
+            "subCategory": [],
+            "__v": 0
+        }
+    ]
+}
