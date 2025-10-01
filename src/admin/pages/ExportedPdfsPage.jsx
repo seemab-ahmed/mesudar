@@ -9,8 +9,8 @@ const ExportedPdfsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pagination, setPagination] = useState(null);
   const [showStats, setShowStats] = useState(true);
-
-  const API_BASE = 'http://localhost:3000/api/export';
+  const API_BASE = 'https://admin.mesudar.com/api/export';
+  // const API_BASE = 'http://localhost:3000/api/export';
 
   useEffect(() => {
     fetchExports();

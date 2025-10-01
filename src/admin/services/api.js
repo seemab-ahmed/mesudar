@@ -1,5 +1,5 @@
-// const API_BASE = 'https://admin.mesudar.com/api/admin';
-const API_BASE = 'http://localhost:3000/api/admin';
+const API_BASE = 'https://admin.mesudar.com/api/admin';
+// const API_BASE = 'http://localhost:3000/api/admin';
 // const API_BASE = 'http://localhost:3000';
 
 export const fetchCategories = async () => {
@@ -131,7 +131,8 @@ export const deleteTask = async (catId, subCatId, taskId) => {
 
 // Export-related functions
 export const storePdfExport = async (pdfData) => {
-  const response = await fetch('http://localhost:3000/api/export/pdf', {
+  // const response = await fetch('http://localhost:3000/api/export/pdf', {
+  const response = await fetch('https://admin.mesudar.com/api/export/pdf', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(pdfData)
@@ -140,22 +141,27 @@ export const storePdfExport = async (pdfData) => {
 };
 
 export const getExportedPdfs = async (page = 1, limit = 20) => {
-  const response = await fetch(`http://localhost:3000/api/export/admin/pdfs?page=${page}&limit=${limit}`);
+  
+  // const response = await fetch(`http://localhost:3000/api/export/admin/pdfs?page=${page}&limit=${limit}`);
+  const response = await fetch(`https://admin.mesudar.com/api/export/admin/pdfs?page=${page}&limit=${limit}`);
   return await response.json();
 };
 
 export const getExportStats = async () => {
-  const response = await fetch('http://localhost:3000/api/export/admin/stats');
+  // const response = await fetch('http://localhost:3000/api/export/admin/stats');
+  const response = await fetch('https://admin.mesudar.com/api/export/admin/stats');
   return await response.json();
 };
 
 export const downloadPdf = async (id) => {
-  const response = await fetch(`http://localhost:3000/api/export/admin/pdf/${id}`);
+  // const response = await fetch(`http://localhost:3000/api/export/admin/pdf/${id}`);
+  const response = await fetch(`https://admin.mesudar.com/api/export/admin/pdf/${id}`);
   return response.blob();
 };
 
 export const deletePdfExport = async (id) => {
-  const response = await fetch(`http://localhost:3000/api/export/admin/pdf/${id}`, {
+  //  const response = await fetch(`http://localhost:3000/api/export/admin/pdf/${id}`, {
+  const response = await fetch(`https://admin.mesudar.com/api/export/admin/pdf/${id}`, {
     method: 'DELETE'
   });
   return await response.json();

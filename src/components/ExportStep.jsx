@@ -368,7 +368,8 @@ doc.addFont('/fonts/Raleway-SemiBold.ttf', 'Raleway', 'bold');
     // });
     
     // Store in database
-    const response = await axios.post('http://localhost:3000/api/export/pdf', {
+    // const response = await axios.post('http://localhost:3000/api/export/pdf', {
+       const response = await axios.post('https://admin.mesudar.com/api/export/pdf', {
       fileName: fileName,
       categoryName: selectedCategory,
       pdfBase64: pdfBase64
