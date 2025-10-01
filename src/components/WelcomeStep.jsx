@@ -1,7 +1,7 @@
-import icon1 from "../Images/icon1.png";
-import icon2 from "../Images/icon2.png";
-import icon3 from "../Images/icon3.png";
-import icon4 from "../Images/icon4.png";
+import icon1 from "../Images/Icon1.png";
+import icon2 from "../Images/Icon2.png";
+import icon3 from "../Images/Icon3.png";
+import icon4 from "../Images/Icon4.png";
 
 export const WelcomeStep = ({ onNext }) => {
   const steps = [
