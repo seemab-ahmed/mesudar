@@ -361,15 +361,15 @@ doc.addFont('/fonts/Raleway-SemiBold.ttf', 'Raleway', 'bold');
     // Get PDF as base64 string for storage
     const pdfBase64 = doc.output('datauristring').split(',')[1];
     
-    // console.log('Attempting to store PDF:', {
-    //   fileName,
-    //   categoryName: selectedCategory,
-    //   pdfSize: pdfBase64.length
-    // });
+    console.log('Attempting to store PDF:', {
+      fileName,
+      categoryName: selectedCategory,
+      pdfSize: pdfBase64.length
+    });
     
     // Store in database
+     const response = await axios.post('https://admin.mesudar.com/api/export/pdf', {
     // const response = await axios.post('http://localhost:3000/api/export/pdf', {
-       const response = await axios.post('https://admin.mesudar.com/api/export/pdf', {
       fileName: fileName,
       categoryName: selectedCategory,
       pdfBase64: pdfBase64
