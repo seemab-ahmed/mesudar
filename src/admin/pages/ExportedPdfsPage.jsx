@@ -20,9 +20,7 @@ const ExportedPdfsPage = () => {
   const fetchExports = async () => {
     try {
       setLoading(true);
-      console.log('Fetching exports from:', `${API_BASE}/admin/pdfs?page=${currentPage}&limit=20`);
       const response = await axios.get(`${API_BASE}/admin/pdfs?page=${currentPage}&limit=20`);
-      console.log('Exports response:', response.data);
       setExports(response.data.exports);
       setPagination(response.data.pagination);
       setError(null);
